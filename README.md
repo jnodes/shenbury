@@ -1,4 +1,4 @@
-# Shenbury 神堡
+# 神堡 Shenbury
 ## The Art of Provenance
 
 A Web3-enabled auction platform for authenticated Chinese ceramics and artifacts, featuring ERC-404 fractional ownership.
