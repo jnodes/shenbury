@@ -1,0 +1,35 @@
+{
+  "name": "shenbury",
+  "version": "1.0.0",
+  "description": "Shenbury 神堡 - The Art of Provenance | Chinese Ceramics Auction Platform",
+  "main": "public/index.html",
+  "scripts": {
+    "start": "npx serve public",
+    "build": "echo 'No build required for static site'",
+    "process-images": "python scripts/process_images.py",
+    "process-videos": "python scripts/process_videos.py",
+    "optimize": "python scripts/seo_optimizer.py"
+  },
+  "keywords": [
+    "shenbury",
+    "chinese-ceramics",
+    "auction",
+    "web3",
+    "erc-404",
+    "nft",
+    "art",
+    "provenance"
+  ],
+  "author": "Shenbury Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yourusername/shenbury.git"
+  },
+  "devDependencies": {
+    "serve": "^14.2.0"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}
