@@ -1,12 +1,9 @@
-// Service Worker for Shenbury
-const CACHE_NAME = 'dynasty-treasures-v1';
+// Service Worker for Shenbury - Production Version
+const CACHE_NAME = 'shenbury-v2';
 const urlsToCache = [
   '/',
   '/index.html',
-  '/assets/css/styles.css',
-  '/assets/js/app.js',
-  '/assets/js/artifacts-data.js',
-  '/assets/images/placeholder.jpg',
+  'https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&display=swap',
   'https://cdn.jsdelivr.net/npm/web3@1.8.0/dist/web3.min.js',
   'https://cdn.ethers.io/lib/ethers-5.7.2.umd.min.js'
 ];
@@ -17,42 +14,53 @@ self.addEventListener('install', event => {
     caches.open(CACHE_NAME)
       .then(cache => {
         console.log('Opened cache');
-        return cache.addAll(urlsToCache);
+        // Try to cache each URL, but don't fail if some aren't available
+        return Promise.allSettled(
+          urlsToCache.map(url => 
+            cache.add(url).catch(err => 
+              console.log(`Failed to cache ${url}:`, err)
+            )
+          )
+        );
       })
   );
+  self.skipWaiting();
 });
 
 // Cache and return requests
 self.addEventListener('fetch', event => {
+  // Skip non-http(s) requests
+  if (!event.request.url.startsWith('http')) {
+    return;
+  }
+
   event.respondWith(
     caches.match(event.request)
       .then(response => {
-        // Cache hit - return response
         if (response) {
           return response;
         }
 
-        return fetch(event.request).then(
-          response => {
-            // Check if we received a valid response
-            if(!response || response.status !== 200 || response.type !== 'basic') {
-              return response;
-            }
-
-            // Clone the response
-            const responseToCache = response.clone();
-
-            caches.open(CACHE_NAME)
-              .then(cache => {
-                // Cache images and other assets
-                if (event.request.url.includes('/assets/')) {
-                  cache.put(event.request, responseToCache);
-                }
-              });
-
+        return fetch(event.request).then(response => {
+          // Check if valid response
+          if(!response || response.status !== 200 || response.type !== 'basic') {
             return response;
           }
-        );
+
+          const responseToCache = response.clone();
+
+          caches.open(CACHE_NAME).then(cache => {
+            // Cache all artifact images
+            if (event.request.url.includes('/assets/images/relics/') || 
+                event.request.url.includes('.jpg') ||
+                event.request.url.includes('.png') ||
+                event.request.url.includes('.svg')) {
+              cache.put(event.request, responseToCache);
+            }
+          });
+
+          return response;
+        });
       })
   );
 });
@@ -69,6 +77,8 @@ self.addEventListener('activate', event => {
           }
         })
       );
+    }).then(() => {
+      return self.clients.claim();
     })
   );
 });
