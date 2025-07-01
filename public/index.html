@@ -65,7 +65,7 @@
     
     <link rel="canonical" href="https://shenbury.com">
     
-    <!-- External Scripts -->
+    <!-- External Scripts - FIXED CDN URLs -->
     <script src="https://cdn.jsdelivr.net/npm/web3@1.8.0/dist/web3.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/ethers@5.7.2/dist/ethers.umd.min.js"></script>
     
@@ -907,6 +907,15 @@
             background: #dc3545;
         }
         
+        .toast.info {
+            background: #17a2b8;
+        }
+        
+        .toast.warning {
+            background: #ffc107;
+            color: #212529;
+        }
+        
         /* Footer */
         footer {
             background: var(--primary);
@@ -1331,7 +1340,7 @@
     </footer>
 
     <script>
-        // Enhanced artifact data with image paths for your new files
+        // Enhanced artifact data with FIXED paths
         const artifacts = [
             {
                 id: 1,
@@ -1347,8 +1356,8 @@
                     '/assets/images/relics/001-song-ru-washer/detail-2.jpg',
                     '/assets/images/relics/001-song-ru-washer/detail-3.jpg'
                 ],
-                thumbnail: '/assets/images/relics/001-song-ru-washer/thumbnail.jpg',
-                placeholder: '/assets/images/relics/001-song-ru-washer/placeholder.jpg',
+                thumbnail: '/assets/images/relics/001-song-ru-washer/main.jpg',
+                placeholder: '/assets/images/relics/001-song-ru-washer/main.jpg',
                 description: 'This extraordinarily rare washer represents the pinnacle of Song ceramic achievement. Ru ware was produced for a mere twenty years at the end of the Northern Song period, exclusively for imperial use. The distinctive sky-blue glaze with its subtle crackle pattern was considered the finest of all Chinese ceramics.',
                 estimate: { low: 5000, high: 8000 },
                 currentBid: 6000,
@@ -1376,8 +1385,8 @@
                     '/assets/images/relics/002-song-ru-bottle/detail-1.jpg',
                     '/assets/images/relics/002-song-ru-bottle/detail-2.jpg'
                 ],
-                thumbnail: '/assets/images/relics/002-song-ru-bottle/thumbnail.jpg',
-                placeholder: '/assets/images/relics/002-song-ru-bottle/placeholder.jpg',
+                thumbnail: '/assets/images/relics/002-song-ru-bottle/main.jpg',
+                placeholder: '/assets/images/relics/002-song-ru-bottle/main.jpg',
                 description: 'This magnificent gourd-form bottle exemplifies the restraint and elegance that characterizes the finest Ru ware. The form, derived from natural gourds used as water containers, was transformed by Song potters into an object of sublime beauty.',
                 estimate: { low: 6000, high: 10000 },
                 currentBid: 7500,
@@ -1405,8 +1414,8 @@
                     '/assets/images/relics/003-ming-cloisonne/detail-2.jpg',
                     '/assets/images/relics/003-ming-cloisonne/mark.jpg'
                 ],
-                thumbnail: '/assets/images/relics/003-ming-cloisonne/thumbnail.jpg',
-                placeholder: '/assets/images/relics/003-ming-cloisonne/placeholder.jpg',
+                thumbnail: '/assets/images/relics/003-ming-cloisonne/main.jpg',
+                placeholder: '/assets/images/relics/003-ming-cloisonne/main.jpg',
                 description: 'This exceptional censer represents the golden age of Chinese cloisonné production during the Xuande period. The technique, introduced from Byzantium via the Silk Road, reached its artistic zenith under imperial patronage.',
                 estimate: { low: 120, high: 180 },
                 currentBid: 150,
@@ -1420,38 +1429,37 @@
                 fractionalAvailable: 4000,
                 tokenHolders: 76
             },
-         // In your index.html, find the lot 004 object and replace it with this:
-{
-    id: 4,
-    lotNumber: '004',
-    title: 'AN EXTRAORDINARILY RARE YUAN JILAN-GLAZED EWER',
-    chinese: '元 霽藍釉白龍紋梨形執壺',
-    dynasty: 'yuan',
-    dynastyInfo: 'Yuan Dynasty (1271-1368)',
-    imageOrientation: 'portrait',
-    images: [
-        'https://raw.githubusercontent.com/jnodes/shenbury/main/public/assets/images/relics/004-yuan-jilan-ewer/main.jpg',
-        'https://raw.githubusercontent.com/jnodes/shenbury/main/public/assets/images/relics/004-yuan-jilan-ewer/detail-1.jpg',
-        'https://raw.githubusercontent.com/jnodes/shenbury/main/public/assets/images/relics/004-yuan-jilan-ewer/detail-2.jpg',
-        'https://raw.githubusercontent.com/jnodes/shenbury/main/public/assets/images/relics/004-yuan-jilan-ewer/detail-3.jpg',
-        'https://raw.githubusercontent.com/jnodes/shenbury/main/public/assets/images/relics/004-yuan-jilan-ewer/detail-4.jpg'
-    ],
-    thumbnail: 'https://raw.githubusercontent.com/jnodes/shenbury/main/public/assets/images/relics/004-yuan-jilan-ewer/main.jpg',
-    placeholder: 'https://raw.githubusercontent.com/jnodes/shenbury/main/public/assets/images/relics/004-yuan-jilan-ewer/main.jpg',
-    description: 'This spectacular ewer showcases the technical mastery achieved by Yuan potters in high-fired cobalt blue glazes. The dramatic contrast between the deep blue ground and white slip-painted dragon demonstrates the sophisticated decorative techniques of the period.',
-    estimate: { low: 250, high: 400 },
-    currentBid: 325,
-    bidCount: 41,
-    endTime: Date.now() + 86400000 * 8,
-    provenance: 'Private Japanese Collection, Kyoto\nFormerly in the Idemitsu Museum of Arts\nAcquired from Yamanaka & Co., Kyoto, 1955',
-    condition: 'Remarkable condition. Small chip to the spout professionally restored. The cobalt blue glaze of exceptional depth and brilliance.',
-    dimensions: 'Height: 31.3 cm\nWidth: 18.5 cm\nWeight: 1.45 kg',
-    literature: 'Published in "Yuan Blue and White Porcelain", National Palace Museum, Taipei, 1998, no. 47',
-    technicalNotes: 'The cobalt used in this piece has been identified through spectrographic analysis as imported Persian cobalt, confirming its imperial quality.',
-    culturalSignificance: 'Yuan dynasty blue and white represents a revolutionary moment in ceramic history, combining Chinese potting techniques with Islamic aesthetic preferences.',
-    fractionalAvailable: 3000,
-    tokenHolders: 92
-}
+            {
+                id: 4,
+                lotNumber: '004',
+                title: 'AN EXTRAORDINARILY RARE YUAN JILAN-GLAZED EWER',
+                chinese: '元 霽藍釉白龍紋梨形執壺',
+                dynasty: 'yuan',
+                dynastyInfo: 'Yuan Dynasty (1271-1368)',
+                imageOrientation: 'portrait',
+                images: [
+                    'https://raw.githubusercontent.com/jnodes/shenbury/main/public/assets/images/relics/004-yuan-jilan-ewer/main.jpg',
+                    'https://raw.githubusercontent.com/jnodes/shenbury/main/public/assets/images/relics/004-yuan-jilan-ewer/detail-1.jpg',
+                    'https://raw.githubusercontent.com/jnodes/shenbury/main/public/assets/images/relics/004-yuan-jilan-ewer/detail-2.jpg',
+                    'https://raw.githubusercontent.com/jnodes/shenbury/main/public/assets/images/relics/004-yuan-jilan-ewer/detail-3.jpg',
+                    'https://raw.githubusercontent.com/jnodes/shenbury/main/public/assets/images/relics/004-yuan-jilan-ewer/detail-4.jpg'
+                ],
+                thumbnail: 'https://raw.githubusercontent.com/jnodes/shenbury/main/public/assets/images/relics/004-yuan-jilan-ewer/main.jpg',
+                placeholder: 'https://raw.githubusercontent.com/jnodes/shenbury/main/public/assets/images/relics/004-yuan-jilan-ewer/main.jpg',
+                description: 'This spectacular ewer showcases the technical mastery achieved by Yuan potters in high-fired cobalt blue glazes. The dramatic contrast between the deep blue ground and white slip-painted dragon demonstrates the sophisticated decorative techniques of the period.',
+                estimate: { low: 250, high: 400 },
+                currentBid: 325,
+                bidCount: 41,
+                endTime: Date.now() + 86400000 * 8,
+                provenance: 'Private Japanese Collection, Kyoto\nFormerly in the Idemitsu Museum of Arts\nAcquired from Yamanaka & Co., Kyoto, 1955',
+                condition: 'Remarkable condition. Small chip to the spout professionally restored. The cobalt blue glaze of exceptional depth and brilliance.',
+                dimensions: 'Height: 31.3 cm\nWidth: 18.5 cm\nWeight: 1.45 kg',
+                literature: 'Published in "Yuan Blue and White Porcelain", National Palace Museum, Taipei, 1998, no. 47',
+                technicalNotes: 'The cobalt used in this piece has been identified through spectrographic analysis as imported Persian cobalt, confirming its imperial quality.',
+                culturalSignificance: 'Yuan dynasty blue and white represents a revolutionary moment in ceramic history, combining Chinese potting techniques with Islamic aesthetic preferences.',
+                fractionalAvailable: 3000,
+                tokenHolders: 92
+            },
             {
                 id: 5,
                 lotNumber: '005',
@@ -1466,8 +1474,8 @@
                     '/assets/images/relics/005-qing-butterfly-vase/detail-2.jpg',
                     '/assets/images/relics/005-qing-butterfly-vase/mark.jpg'
                 ],
-                thumbnail: '/assets/images/relics/005-qing-butterfly-vase/thumbnail.jpg',
-                placeholder: '/assets/images/relics/005-qing-butterfly-vase/placeholder.jpg',
+                thumbnail: '/assets/images/relics/005-qing-butterfly-vase/main.jpg',
+                placeholder: '/assets/images/relics/005-qing-butterfly-vase/main.jpg',
                 description: 'The ovoid body rising from a spreading foot to a waisted neck with a flared rim, brilliantly enamelled with butterflies in flight amidst flowering branches. This piece exemplifies the technical perfection achieved at the imperial kilns during the Qianlong period.',
                 estimate: { low: 80, high: 120 },
                 currentBid: 95,
@@ -1510,322 +1518,19 @@
             }
         ];
         
-        // Add these fixes to your index.html after the artifacts array
+        // Contract addresses (will be replaced after deployment)
+        const AUCTION_CONTRACT_ADDRESS = "0x1234567890123456789012345678901234567890"; // TODO: Replace after deployment
+        const ERC404_CONTRACT_ADDRESS = "0x0987654321098765432109876543210987654321"; // TODO: Replace after deployment
 
-// Fix 1: Update contract addresses (add after the contract address constants)
-const AUCTION_CONTRACT_ADDRESS = "0x1234567890123456789012345678901234567890"; // TODO: Replace after deployment
-const ERC404_CONTRACT_ADDRESS = "0x0987654321098765432109876543210987654321"; // TODO: Replace after deployment
-
-// Fix 2: Enhance error handling for Web3 operations
-async function connectWallet() {
-    if (typeof window.ethereum !== 'undefined') {
-        try {
-            // Request account access
-            const accounts = await window.ethereum.request({ 
-                method: 'eth_requestAccounts' 
-            });
-            userAccount = accounts[0];
-            
-            // Initialize Web3
-            web3 = new Web3(window.ethereum);
-            
-            // Check network
-            const networkId = await web3.eth.getChainId();
-            console.log('Connected to network:', networkId);
-            
-            // Initialize contracts with error handling
-            try {
-                erc404Contract = new web3.eth.Contract(
-                    ERC404_CONTRACT_ABI, 
-                    ERC404_CONTRACT_ADDRESS
-                );
-                console.log('Contracts initialized');
-            } catch (contractError) {
-                console.log('Contracts pending deployment');
-                // Continue in demo mode
-            }
-            
-            updateWalletUI();
-            showToast('Wallet connected successfully!', 'success');
-            
-        } catch (error) {
-            console.error('Error connecting wallet:', error);
-            if (error.code === 4001) {
-                showToast('Connection cancelled', 'error');
-            } else if (error.code === -32002) {
-                showToast('Please unlock MetaMask', 'error');
-            } else {
-                showToast('Failed to connect wallet', 'error');
-            }
-        }
-    } else {
-        showToast('Please install MetaMask to use this dApp', 'error');
-        window.open('https://metamask.io/download/', '_blank');
-    }
-}
-
-// Fix 3: Add demo mode for testing without contracts
-const DEMO_MODE = !window.ethereum || !AUCTION_CONTRACT_ADDRESS.startsWith('0x') || AUCTION_CONTRACT_ADDRESS === "0x1234567890123456789012345678901234567890";
-
-async function placeBid() {
-    if (!userAccount) {
-        showToast('Please connect your wallet first', 'error');
-        return;
-    }
-    
-    const bidInput = document.getElementById('bid-amount');
-    const bidAmount = parseFloat(bidInput.value);
-    const minBid = selectedArtifact.currentBid + 5;
-    
-    if (isNaN(bidAmount) || bidAmount < minBid) {
-        showToast(`Minimum bid is ${minBid} ETH`, 'error');
-        return;
-    }
-    
-    // Disable button during transaction
-    const bidButton = event.target;
-    bidButton.disabled = true;
-    bidButton.textContent = 'Processing...';
-    
-    try {
-        if (DEMO_MODE) {
-            // Demo mode simulation
-            await new Promise(resolve => setTimeout(resolve, 2000));
-            
-            selectedArtifact.currentBid = bidAmount;
-            selectedArtifact.bidCount++;
-            
-            showToast(`Demo Mode: Bid of ${bidAmount} ETH placed successfully!`, 'success');
-            
-            // Update modal
-            document.getElementById('modal-current-bid').textContent = `${bidAmount} ETH`;
-            document.getElementById('modal-bid-count').textContent = `${selectedArtifact.bidCount} bids`;
-            
-            // Update grid after modal closes
-            setTimeout(() => {
-                renderArtifacts();
-                updateStats();
-            }, 500);
-            
-            bidInput.value = '';
-            
-        } else {
-            // Real contract interaction
-            const tx = await auctionContract.methods.placeBid(selectedArtifact.id)
-                .send({ 
-                    from: userAccount, 
-                    value: web3.utils.toWei(bidAmount.toString(), 'ether'),
-                    gas: 200000
-                });
-            
-            showToast(`Bid placed! Transaction: ${tx.transactionHash.slice(0, 10)}...`, 'success');
-            
-            // Update UI after blockchain confirmation
-            selectedArtifact.currentBid = bidAmount;
-            selectedArtifact.bidCount++;
-            renderArtifacts();
-            updateStats();
-        }
-        
-    } catch (error) {
-        console.error('Error placing bid:', error);
-        showToast(error.message || 'Failed to place bid', 'error');
-    } finally {
-        bidButton.disabled = false;
-        bidButton.textContent = 'Place Bid';
-    }
-}
-
-async function buyTokens() {
-    if (!userAccount) {
-        showToast('Please connect your wallet first', 'error');
-        return;
-    }
-    
-    const tokenInput = document.getElementById('token-amount');
-    const tokenAmount = parseInt(tokenInput.value);
-    
-    if (isNaN(tokenAmount) || tokenAmount <= 0) {
-        showToast('Please enter a valid token amount', 'error');
-        return;
-    }
-    
-    if (tokenAmount > selectedArtifact.fractionalAvailable) {
-        showToast('Not enough tokens available', 'error');
-        return;
-    }
-    
-    const totalCost = tokenAmount * 0.0001;
-    const buyButton = event.target;
-    buyButton.disabled = true;
-    buyButton.textContent = 'Processing...';
-    
-    try {
-        if (DEMO_MODE) {
-            // Demo mode simulation
-            await new Promise(resolve => setTimeout(resolve, 2000));
-            
-            selectedArtifact.fractionalAvailable -= tokenAmount;
-            selectedArtifact.tokenHolders++;
-            
-            showToast(`Demo Mode: Purchased ${tokenAmount} SHEN tokens for ${totalCost} ETH!`, 'success');
-            
-            if (tokenAmount >= 10000) {
-                showToast('Congratulations! You now own enough tokens for a full NFT!', 'success');
-            }
-            
-            document.getElementById('available-tokens').textContent = 
-                selectedArtifact.fractionalAvailable.toLocaleString();
-            
-            tokenInput.value = '';
-            
-        } else {
-            // Real contract interaction
-            const tx = await erc404Contract.methods.buyTokens(selectedArtifact.id, tokenAmount)
-                .send({ 
-                    from: userAccount, 
-                    value: web3.utils.toWei(totalCost.toString(), 'ether'),
-                    gas: 300000
-                });
-            
-            showToast(`Tokens purchased! Transaction: ${tx.transactionHash.slice(0, 10)}...`, 'success');
-            
-            selectedArtifact.fractionalAvailable -= tokenAmount;
-            selectedArtifact.tokenHolders++;
-            
-            await updateTokenBalance();
-        }
-        
-        renderArtifacts();
-        
-    } catch (error) {
-        console.error('Error buying tokens:', error);
-        showToast(error.message || 'Failed to purchase tokens', 'error');
-    } finally {
-        buyButton.disabled = false;
-        buyButton.textContent = 'Buy Tokens';
-    }
-}
-
-// Fix 4: Add network detection and switching
-async function checkNetwork() {
-    if (!web3) return;
-    
-    const targetNetwork = '11155111'; // Sepolia testnet
-    const currentNetwork = await web3.eth.getChainId();
-    
-    if (currentNetwork.toString() !== targetNetwork && !DEMO_MODE) {
-        showToast('Please switch to Sepolia testnet', 'warning');
-        
-        try {
-            await window.ethereum.request({
-                method: 'wallet_switchEthereumChain',
-                params: [{ chainId: '0x' + parseInt(targetNetwork).toString(16) }],
-            });
-        } catch (error) {
-            if (error.code === 4902) {
-                // Chain not added, add it
-                await window.ethereum.request({
-                    method: 'wallet_addEthereumChain',
-                    params: [{
-                        chainId: '0x' + parseInt(targetNetwork).toString(16),
-                        chainName: 'Sepolia Testnet',
-                        nativeCurrency: { name: 'ETH', symbol: 'ETH', decimals: 18 },
-                        rpcUrls: ['https://sepolia.infura.io/v3/'],
-                        blockExplorerUrls: ['https://sepolia.etherscan.io/']
-                    }]
-                });
-            }
-        }
-    }
-}
-
-// Fix 5: Update initialization to show demo mode
-async function init() {
-    hideLoading();
-    renderArtifacts();
-    updateStats();
-    startTimers();
-    
-    // Check if Web3 is available
-    if (typeof window.ethereum !== 'undefined') {
-        web3 = new Web3(window.ethereum);
-        
-        // Check if already connected
-        const accounts = await web3.eth.getAccounts();
-        if (accounts.length > 0) {
-            userAccount = accounts[0];
-            await updateWalletUI();
-            await checkNetwork();
-        }
-        
-        // Listen for account changes
-        window.ethereum.on('accountsChanged', handleAccountsChanged);
-        window.ethereum.on('chainChanged', () => window.location.reload());
-    }
-    
-    // Show demo mode notification
-    if (DEMO_MODE) {
-        setTimeout(() => {
-            showToast('Running in Demo Mode - Connect wallet and deploy contracts for real transactions', 'info');
-        }, 2000);
-    }
-}
-
-// Fix 6: Better error messages
-function showToast(message, type = 'info') {
-    const toast = document.getElementById('toast');
-    toast.textContent = message;
-    toast.className = `toast ${type}`;
-    toast.classList.add('show');
-    
-    // Auto-hide after 4 seconds (longer for important messages)
-    setTimeout(() => {
-        toast.classList.remove('show');
-    }, type === 'error' ? 5000 : 4000);
-}
-        
         // State variables
         let currentFilter = 'all';
         let currentSort = 'lot';
         let selectedArtifact = null;
         let currentImageIndex = 0;
         
-        // Image loading with fallback
-        function loadImage(img, src, fallbackSrc) {
-            const tempImg = new Image();
-            tempImg.onload = function() {
-                img.src = src;
-                img.classList.add('loaded');
-            };
-            tempImg.onerror = function() {
-                if (fallbackSrc) {
-                    img.src = fallbackSrc;
-                }
-            };
-            tempImg.src = src;
-        }
-        
-        // Progressive image loading
-        function loadProgressiveImage(container, lowResSrc, highResSrc) {
-            const lowResImg = new Image();
-            const highResImg = new Image();
-            
-            lowResImg.src = lowResSrc;
-            lowResImg.classList.add('placeholder');
-            container.appendChild(lowResImg);
-            
-            highResImg.src = highResSrc;
-            highResImg.classList.add('full-image');
-            highResImg.onload = function() {
-                highResImg.classList.add('loaded');
-                setTimeout(() => {
-                    lowResImg.remove();
-                }, 300);
-            };
-            container.appendChild(highResImg);
-        }
-        
+        // Check if running in demo mode
+        const DEMO_MODE = !window.ethereum || !AUCTION_CONTRACT_ADDRESS.startsWith('0x') || AUCTION_CONTRACT_ADDRESS === "0x1234567890123456789012345678901234567890";
+
         // Initialize
         async function init() {
             hideLoading();
@@ -1841,11 +1546,20 @@ function showToast(message, type = 'info') {
                 const accounts = await web3.eth.getAccounts();
                 if (accounts.length > 0) {
                     userAccount = accounts[0];
-                    updateWalletUI();
+                    await updateWalletUI();
+                    await checkNetwork();
                 }
                 
                 // Listen for account changes
                 window.ethereum.on('accountsChanged', handleAccountsChanged);
+                window.ethereum.on('chainChanged', () => window.location.reload());
+            }
+            
+            // Show demo mode notification
+            if (DEMO_MODE) {
+                setTimeout(() => {
+                    showToast('Running in Demo Mode - Connect wallet and deploy contracts for real transactions', 'info');
+                }, 2000);
             }
         }
         
@@ -1860,29 +1574,80 @@ function showToast(message, type = 'info') {
         async function connectWallet() {
             if (typeof window.ethereum !== 'undefined') {
                 try {
+                    // Request account access
                     const accounts = await window.ethereum.request({ 
                         method: 'eth_requestAccounts' 
                     });
                     userAccount = accounts[0];
                     
+                    // Initialize Web3
                     web3 = new Web3(window.ethereum);
                     
-                    // Initialize contracts
-                    erc404Contract = new web3.eth.Contract(
-                        ERC404_CONTRACT_ABI, 
-                        ERC404_CONTRACT_ADDRESS
-                    );
+                    // Check network
+                    const networkId = await web3.eth.getChainId();
+                    console.log('Connected to network:', networkId);
+                    
+                    // Initialize contracts with error handling
+                    try {
+                        erc404Contract = new web3.eth.Contract(
+                            ERC404_CONTRACT_ABI, 
+                            ERC404_CONTRACT_ADDRESS
+                        );
+                        console.log('Contracts initialized');
+                    } catch (contractError) {
+                        console.log('Contracts pending deployment');
+                        // Continue in demo mode
+                    }
                     
                     updateWalletUI();
                     showToast('Wallet connected successfully!', 'success');
                     
                 } catch (error) {
                     console.error('Error connecting wallet:', error);
-                    showToast('Failed to connect wallet', 'error');
+                    if (error.code === 4001) {
+                        showToast('Connection cancelled', 'error');
+                    } else if (error.code === -32002) {
+                        showToast('Please unlock MetaMask', 'error');
+                    } else {
+                        showToast('Failed to connect wallet', 'error');
+                    }
                 }
             } else {
                 showToast('Please install MetaMask to use this dApp', 'error');
                 window.open('https://metamask.io/download/', '_blank');
+            }
+        }
+        
+        // Check network
+        async function checkNetwork() {
+            if (!web3) return;
+            
+            const targetNetwork = '11155111'; // Sepolia testnet
+            const currentNetwork = await web3.eth.getChainId();
+            
+            if (currentNetwork.toString() !== targetNetwork && !DEMO_MODE) {
+                showToast('Please switch to Sepolia testnet', 'warning');
+                
+                try {
+                    await window.ethereum.request({
+                        method: 'wallet_switchEthereumChain',
+                        params: [{ chainId: '0x' + parseInt(targetNetwork).toString(16) }],
+                    });
+                } catch (error) {
+                    if (error.code === 4902) {
+                        // Chain not added, add it
+                        await window.ethereum.request({
+                            method: 'wallet_addEthereumChain',
+                            params: [{
+                                chainId: '0x' + parseInt(targetNetwork).toString(16),
+                                chainName: 'Sepolia Testnet',
+                                nativeCurrency: { name: 'ETH', symbol: 'ETH', decimals: 18 },
+                                rpcUrls: ['https://sepolia.infura.io/v3/'],
+                                blockExplorerUrls: ['https://sepolia.etherscan.io/']
+                            }]
+                        });
+                    }
+                }
             }
         }
         
@@ -1932,7 +1697,7 @@ function showToast(message, type = 'info') {
             }
         }
         
-        // Render artifacts with optimized images
+        // Render artifacts
         function renderArtifacts() {
             const grid = document.getElementById('artifacts-grid');
             let filteredArtifacts = artifacts;
@@ -2001,7 +1766,7 @@ function showToast(message, type = 'info') {
             renderArtifacts();
         }
         
-        // Open artifact modal with image gallery
+        // Open artifact modal
         function openArtifactModal(id) {
             selectedArtifact = artifacts.find(a => a.id === id);
             if (!selectedArtifact) return;
@@ -2059,12 +1824,12 @@ function showToast(message, type = 'info') {
             
             modalImage.style.opacity = '0';
             setTimeout(() => {
-                loadImage(modalImage, imageSrc, '/assets/images/placeholder.jpg');
+                modalImage.src = imageSrc;
                 modalImage.style.opacity = '1';
             }, 200);
         }
         
-        // Create gallery dots for multiple images
+        // Create gallery dots
         function createGalleryDots() {
             const dotsContainer = document.getElementById('gallery-dots');
             if (!selectedArtifact.images || selectedArtifact.images.length <= 1) {
@@ -2119,25 +1884,48 @@ function showToast(message, type = 'info') {
             bidButton.textContent = 'Processing...';
             
             try {
-                // In production, this would call the smart contract
-                // const tx = await auctionContract.methods.placeBid(selectedArtifact.id)
-                //     .send({ from: userAccount, value: web3.utils.toWei(bidAmount.toString(), 'ether') });
-                
-                // Simulate transaction delay
-                await new Promise(resolve => setTimeout(resolve, 2000));
-                
-                // Update local state
-                selectedArtifact.currentBid = bidAmount;
-                selectedArtifact.bidCount++;
-                
-                showToast(`Bid of ${bidAmount} ETH placed successfully!`, 'success');
-                closeModal();
-                renderArtifacts();
-                updateStats();
+                if (DEMO_MODE) {
+                    // Demo mode simulation
+                    await new Promise(resolve => setTimeout(resolve, 2000));
+                    
+                    selectedArtifact.currentBid = bidAmount;
+                    selectedArtifact.bidCount++;
+                    
+                    showToast(`Demo Mode: Bid of ${bidAmount} ETH placed successfully!`, 'success');
+                    
+                    // Update modal
+                    document.getElementById('modal-current-bid').textContent = `${bidAmount} ETH`;
+                    document.getElementById('modal-bid-count').textContent = `${selectedArtifact.bidCount} bids`;
+                    
+                    // Update grid after modal closes
+                    setTimeout(() => {
+                        renderArtifacts();
+                        updateStats();
+                    }, 500);
+                    
+                    bidInput.value = '';
+                    
+                } else {
+                    // Real contract interaction
+                    const tx = await auctionContract.methods.placeBid(selectedArtifact.id)
+                        .send({ 
+                            from: userAccount, 
+                            value: web3.utils.toWei(bidAmount.toString(), 'ether'),
+                            gas: 200000
+                        });
+                    
+                    showToast(`Bid placed! Transaction: ${tx.transactionHash.slice(0, 10)}...`, 'success');
+                    
+                    // Update UI after blockchain confirmation
+                    selectedArtifact.currentBid = bidAmount;
+                    selectedArtifact.bidCount++;
+                    renderArtifacts();
+                    updateStats();
+                }
                 
             } catch (error) {
                 console.error('Error placing bid:', error);
-                showToast('Failed to place bid. Please try again.', 'error');
+                showToast(error.message || 'Failed to place bid', 'error');
             } finally {
                 bidButton.disabled = false;
                 bidButton.textContent = 'Place Bid';
@@ -2165,39 +1953,51 @@ function showToast(message, type = 'info') {
             }
             
             const totalCost = tokenAmount * 0.0001;
-            
-            // Disable button during transaction
             const buyButton = event.target;
             buyButton.disabled = true;
             buyButton.textContent = 'Processing...';
             
             try {
-                // In production, this would call the smart contract
-                // const tx = await erc404Contract.methods.buyTokens(selectedArtifact.id, tokenAmount)
-                //     .send({ from: userAccount, value: web3.utils.toWei(totalCost.toString(), 'ether') });
-                
-                // Simulate transaction delay
-                await new Promise(resolve => setTimeout(resolve, 2000));
-                
-                // Update local state
-                selectedArtifact.fractionalAvailable -= tokenAmount;
-                if (!artifacts.find(a => a.id === selectedArtifact.id).tokenHolders.includes(userAccount)) {
+                if (DEMO_MODE) {
+                    // Demo mode simulation
+                    await new Promise(resolve => setTimeout(resolve, 2000));
+                    
+                    selectedArtifact.fractionalAvailable -= tokenAmount;
                     selectedArtifact.tokenHolders++;
+                    
+                    showToast(`Demo Mode: Purchased ${tokenAmount} SHEN tokens for ${totalCost} ETH!`, 'success');
+                    
+                    if (tokenAmount >= 10000) {
+                        showToast('Congratulations! You now own enough tokens for a full NFT!', 'success');
+                    }
+                    
+                    document.getElementById('available-tokens').textContent = 
+                        selectedArtifact.fractionalAvailable.toLocaleString();
+                    
+                    tokenInput.value = '';
+                    
+                } else {
+                    // Real contract interaction
+                    const tx = await erc404Contract.methods.buyTokens(selectedArtifact.id, tokenAmount)
+                        .send({ 
+                            from: userAccount, 
+                            value: web3.utils.toWei(totalCost.toString(), 'ether'),
+                            gas: 300000
+                        });
+                    
+                    showToast(`Tokens purchased! Transaction: ${tx.transactionHash.slice(0, 10)}...`, 'success');
+                    
+                    selectedArtifact.fractionalAvailable -= tokenAmount;
+                    selectedArtifact.tokenHolders++;
+                    
+                    await updateTokenBalance();
                 }
                 
-                showToast(`Successfully purchased ${tokenAmount} SHEN tokens for ${totalCost} ETH!`, 'success');
-                
-                if (tokenAmount >= 10000) {
-                    showToast('Congratulations! You now own enough tokens for a full NFT!', 'success');
-                }
-                
-                closeModal();
                 renderArtifacts();
-                updateTokenBalance();
                 
             } catch (error) {
                 console.error('Error buying tokens:', error);
-                showToast('Failed to purchase tokens. Please try again.', 'error');
+                showToast(error.message || 'Failed to purchase tokens', 'error');
             } finally {
                 buyButton.disabled = false;
                 buyButton.textContent = 'Buy Tokens';
@@ -2229,7 +2029,7 @@ function showToast(message, type = 'info') {
             return `${minutes}m`;
         }
         
-        // Start timers to update time left
+        // Start timers
         function startTimers() {
             setInterval(() => {
                 // Update time left in grid
@@ -2251,9 +2051,10 @@ function showToast(message, type = 'info') {
             toast.className = `toast ${type}`;
             toast.classList.add('show');
             
+            // Auto-hide after 4 seconds (longer for important messages)
             setTimeout(() => {
                 toast.classList.remove('show');
-            }, 3000);
+            }, type === 'error' ? 5000 : 4000);
         }
         
         // Scroll functions
@@ -2265,7 +2066,7 @@ function showToast(message, type = 'info') {
             document.getElementById('auctions').scrollIntoView({ behavior: 'smooth' });
         }
         
-        // Toggle mobile menu (placeholder)
+        // Toggle mobile menu
         function toggleMobileMenu() {
             showToast('Mobile menu coming soon', 'info');
         }
@@ -2303,12 +2104,7 @@ function showToast(message, type = 'info') {
             }, 250);
         });
         
-        // Service Worker for offline capability and better performance
-        if ('serviceWorker' in navigator && window.location.protocol === 'https:') {
-            navigator.serviceWorker.register('/sw.js').catch(() => {
-                // Service worker registration failed, app will still work online
-            });
-        }
+        // REMOVED SERVICE WORKER - No more caching issues!
         
         // Initialize on load
         window.addEventListener('load', init);
