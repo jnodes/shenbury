@@ -1509,9 +1509,280 @@
             }
         ];
         
-        // Contract addresses (update these after deployment)
-        const AUCTION_CONTRACT_ADDRESS = "0x1234567890123456789012345678901234567890";
-        const ERC404_CONTRACT_ADDRESS = "0x0987654321098765432109876543210987654321";
+        // Add these fixes to your index.html after the artifacts array
+
+// Fix 1: Update contract addresses (add after the contract address constants)
+const AUCTION_CONTRACT_ADDRESS = "0x1234567890123456789012345678901234567890"; // TODO: Replace after deployment
+const ERC404_CONTRACT_ADDRESS = "0x0987654321098765432109876543210987654321"; // TODO: Replace after deployment
+
+// Fix 2: Enhance error handling for Web3 operations
+async function connectWallet() {
+    if (typeof window.ethereum !== 'undefined') {
+        try {
+            // Request account access
+            const accounts = await window.ethereum.request({ 
+                method: 'eth_requestAccounts' 
+            });
+            userAccount = accounts[0];
+            
+            // Initialize Web3
+            web3 = new Web3(window.ethereum);
+            
+            // Check network
+            const networkId = await web3.eth.getChainId();
+            console.log('Connected to network:', networkId);
+            
+            // Initialize contracts with error handling
+            try {
+                erc404Contract = new web3.eth.Contract(
+                    ERC404_CONTRACT_ABI, 
+                    ERC404_CONTRACT_ADDRESS
+                );
+                console.log('Contracts initialized');
+            } catch (contractError) {
+                console.log('Contracts pending deployment');
+                // Continue in demo mode
+            }
+            
+            updateWalletUI();
+            showToast('Wallet connected successfully!', 'success');
+            
+        } catch (error) {
+            console.error('Error connecting wallet:', error);
+            if (error.code === 4001) {
+                showToast('Connection cancelled', 'error');
+            } else if (error.code === -32002) {
+                showToast('Please unlock MetaMask', 'error');
+            } else {
+                showToast('Failed to connect wallet', 'error');
+            }
+        }
+    } else {
+        showToast('Please install MetaMask to use this dApp', 'error');
+        window.open('https://metamask.io/download/', '_blank');
+    }
+}
+
+// Fix 3: Add demo mode for testing without contracts
+const DEMO_MODE = !window.ethereum || !AUCTION_CONTRACT_ADDRESS.startsWith('0x') || AUCTION_CONTRACT_ADDRESS === "0x1234567890123456789012345678901234567890";
+
+async function placeBid() {
+    if (!userAccount) {
+        showToast('Please connect your wallet first', 'error');
+        return;
+    }
+    
+    const bidInput = document.getElementById('bid-amount');
+    const bidAmount = parseFloat(bidInput.value);
+    const minBid = selectedArtifact.currentBid + 5;
+    
+    if (isNaN(bidAmount) || bidAmount < minBid) {
+        showToast(`Minimum bid is ${minBid} ETH`, 'error');
+        return;
+    }
+    
+    // Disable button during transaction
+    const bidButton = event.target;
+    bidButton.disabled = true;
+    bidButton.textContent = 'Processing...';
+    
+    try {
+        if (DEMO_MODE) {
+            // Demo mode simulation
+            await new Promise(resolve => setTimeout(resolve, 2000));
+            
+            selectedArtifact.currentBid = bidAmount;
+            selectedArtifact.bidCount++;
+            
+            showToast(`Demo Mode: Bid of ${bidAmount} ETH placed successfully!`, 'success');
+            
+            // Update modal
+            document.getElementById('modal-current-bid').textContent = `${bidAmount} ETH`;
+            document.getElementById('modal-bid-count').textContent = `${selectedArtifact.bidCount} bids`;
+            
+            // Update grid after modal closes
+            setTimeout(() => {
+                renderArtifacts();
+                updateStats();
+            }, 500);
+            
+            bidInput.value = '';
+            
+        } else {
+            // Real contract interaction
+            const tx = await auctionContract.methods.placeBid(selectedArtifact.id)
+                .send({ 
+                    from: userAccount, 
+                    value: web3.utils.toWei(bidAmount.toString(), 'ether'),
+                    gas: 200000
+                });
+            
+            showToast(`Bid placed! Transaction: ${tx.transactionHash.slice(0, 10)}...`, 'success');
+            
+            // Update UI after blockchain confirmation
+            selectedArtifact.currentBid = bidAmount;
+            selectedArtifact.bidCount++;
+            renderArtifacts();
+            updateStats();
+        }
+        
+    } catch (error) {
+        console.error('Error placing bid:', error);
+        showToast(error.message || 'Failed to place bid', 'error');
+    } finally {
+        bidButton.disabled = false;
+        bidButton.textContent = 'Place Bid';
+    }
+}
+
+async function buyTokens() {
+    if (!userAccount) {
+        showToast('Please connect your wallet first', 'error');
+        return;
+    }
+    
+    const tokenInput = document.getElementById('token-amount');
+    const tokenAmount = parseInt(tokenInput.value);
+    
+    if (isNaN(tokenAmount) || tokenAmount <= 0) {
+        showToast('Please enter a valid token amount', 'error');
+        return;
+    }
+    
+    if (tokenAmount > selectedArtifact.fractionalAvailable) {
+        showToast('Not enough tokens available', 'error');
+        return;
+    }
+    
+    const totalCost = tokenAmount * 0.0001;
+    const buyButton = event.target;
+    buyButton.disabled = true;
+    buyButton.textContent = 'Processing...';
+    
+    try {
+        if (DEMO_MODE) {
+            // Demo mode simulation
+            await new Promise(resolve => setTimeout(resolve, 2000));
+            
+            selectedArtifact.fractionalAvailable -= tokenAmount;
+            selectedArtifact.tokenHolders++;
+            
+            showToast(`Demo Mode: Purchased ${tokenAmount} SHEN tokens for ${totalCost} ETH!`, 'success');
+            
+            if (tokenAmount >= 10000) {
+                showToast('Congratulations! You now own enough tokens for a full NFT!', 'success');
+            }
+            
+            document.getElementById('available-tokens').textContent = 
+                selectedArtifact.fractionalAvailable.toLocaleString();
+            
+            tokenInput.value = '';
+            
+        } else {
+            // Real contract interaction
+            const tx = await erc404Contract.methods.buyTokens(selectedArtifact.id, tokenAmount)
+                .send({ 
+                    from: userAccount, 
+                    value: web3.utils.toWei(totalCost.toString(), 'ether'),
+                    gas: 300000
+                });
+            
+            showToast(`Tokens purchased! Transaction: ${tx.transactionHash.slice(0, 10)}...`, 'success');
+            
+            selectedArtifact.fractionalAvailable -= tokenAmount;
+            selectedArtifact.tokenHolders++;
+            
+            await updateTokenBalance();
+        }
+        
+        renderArtifacts();
+        
+    } catch (error) {
+        console.error('Error buying tokens:', error);
+        showToast(error.message || 'Failed to purchase tokens', 'error');
+    } finally {
+        buyButton.disabled = false;
+        buyButton.textContent = 'Buy Tokens';
+    }
+}
+
+// Fix 4: Add network detection and switching
+async function checkNetwork() {
+    if (!web3) return;
+    
+    const targetNetwork = '11155111'; // Sepolia testnet
+    const currentNetwork = await web3.eth.getChainId();
+    
+    if (currentNetwork.toString() !== targetNetwork && !DEMO_MODE) {
+        showToast('Please switch to Sepolia testnet', 'warning');
+        
+        try {
+            await window.ethereum.request({
+                method: 'wallet_switchEthereumChain',
+                params: [{ chainId: '0x' + parseInt(targetNetwork).toString(16) }],
+            });
+        } catch (error) {
+            if (error.code === 4902) {
+                // Chain not added, add it
+                await window.ethereum.request({
+                    method: 'wallet_addEthereumChain',
+                    params: [{
+                        chainId: '0x' + parseInt(targetNetwork).toString(16),
+                        chainName: 'Sepolia Testnet',
+                        nativeCurrency: { name: 'ETH', symbol: 'ETH', decimals: 18 },
+                        rpcUrls: ['https://sepolia.infura.io/v3/'],
+                        blockExplorerUrls: ['https://sepolia.etherscan.io/']
+                    }]
+                });
+            }
+        }
+    }
+}
+
+// Fix 5: Update initialization to show demo mode
+async function init() {
+    hideLoading();
+    renderArtifacts();
+    updateStats();
+    startTimers();
+    
+    // Check if Web3 is available
+    if (typeof window.ethereum !== 'undefined') {
+        web3 = new Web3(window.ethereum);
+        
+        // Check if already connected
+        const accounts = await web3.eth.getAccounts();
+        if (accounts.length > 0) {
+            userAccount = accounts[0];
+            await updateWalletUI();
+            await checkNetwork();
+        }
+        
+        // Listen for account changes
+        window.ethereum.on('accountsChanged', handleAccountsChanged);
+        window.ethereum.on('chainChanged', () => window.location.reload());
+    }
+    
+    // Show demo mode notification
+    if (DEMO_MODE) {
+        setTimeout(() => {
+            showToast('Running in Demo Mode - Connect wallet and deploy contracts for real transactions', 'info');
+        }, 2000);
+    }
+}
+
+// Fix 6: Better error messages
+function showToast(message, type = 'info') {
+    const toast = document.getElementById('toast');
+    toast.textContent = message;
+    toast.className = `toast ${type}`;
+    toast.classList.add('show');
+    
+    // Auto-hide after 4 seconds (longer for important messages)
+    setTimeout(() => {
+        toast.classList.remove('show');
+    }, type === 'error' ? 5000 : 4000);
+}
         
         // State variables
         let currentFilter = 'all';
