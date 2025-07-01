@@ -1,9 +1,8 @@
-// Service Worker for Shenbury - Fixed Version
-const CACHE_NAME = 'shenbury-v3';
+// Service Worker for Shenbury - Fixed Version with Cache Bust
+const CACHE_NAME = 'shenbury-v4'; // CHANGED FROM v3 to v4 - THIS IS IMPORTANT!
 const urlsToCache = [
   '/',
   '/index.html'
-  // Removed external URLs that were causing failures
 ];
 
 // Install Service Worker
@@ -12,11 +11,10 @@ self.addEventListener('install', event => {
     caches.open(CACHE_NAME)
       .then(cache => {
         console.log('Opened cache');
-        // Only cache local files, not external CDNs
         return cache.addAll(urlsToCache);
       })
   );
-  self.skipWaiting();
+  self.skipWaiting(); // Force immediate activation
 });
 
 // Fetch handler with proper error handling
@@ -30,9 +28,9 @@ self.addEventListener('fetch', event => {
   // Parse URL
   const requestURL = new URL(event.request.url);
 
-  // Skip external domains (CDNs)
+  // Skip external domains (CDNs) - DO NOT CACHE EXTERNAL RESOURCES
   if (requestURL.origin !== location.origin) {
-    // Let external requests go through normally
+    // Let external requests go through normally without caching
     event.respondWith(fetch(event.request));
     return;
   }
@@ -41,7 +39,30 @@ self.addEventListener('fetch', event => {
   event.respondWith(
     caches.match(event.request)
       .then(response => {
-        // Return cached response if found
+        // Always fetch fresh HTML files to avoid cache issues
+        if (event.request.url.endsWith('.html') || event.request.url.endsWith('/')) {
+          return fetch(event.request).then(response => {
+            // Update cache with fresh version
+            if (response && response.status === 200) {
+              const responseToCache = response.clone();
+              caches.open(CACHE_NAME).then(cache => {
+                cache.put(event.request, responseToCache);
+              });
+            }
+            return response;
+          }).catch(() => {
+            // If offline, return cached version
+            return response || new Response('Offline', {
+              status: 503,
+              statusText: 'Service Unavailable',
+              headers: new Headers({
+                'Content-Type': 'text/plain'
+              })
+            });
+          });
+        }
+
+        // For non-HTML resources, use cache-first strategy
         if (response) {
           return response;
         }
@@ -72,7 +93,7 @@ self.addEventListener('fetch', event => {
           if (event.request.destination === 'image') {
             return caches.match('/assets/images/placeholder.jpg');
           }
-          // For other failures, return offline page if you have one
+          // For other failures, return offline message
           return new Response('Offline', {
             status: 503,
             statusText: 'Service Unavailable',
@@ -94,11 +115,13 @@ self.addEventListener('activate', event => {
       return Promise.all(
         cacheNames.map(cacheName => {
           if (cacheWhitelist.indexOf(cacheName) === -1) {
+            console.log('Deleting old cache:', cacheName);
             return caches.delete(cacheName);
           }
         })
       );
     }).then(() => {
+      console.log('Service worker activated with cache:', CACHE_NAME);
       return self.clients.claim();
     })
   );
