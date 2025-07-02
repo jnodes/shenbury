@@ -20,14 +20,14 @@
     <!-- Open Graph for Social -->
     <meta property="og:title" content="Shenbury 神堡 | $500M Chinese Imperial Ceramics Collection">
     <meta property="og:description" content="The Art of Provenance. Own fractional shares of museum-quality Ru kiln and imperial Chinese artifacts.">
-    <meta property="og:image" content="/assets/images/relics/001-ru-kiln-washer/hero.jpg">
+    <meta property="og:image" content="/assets/images/relics/001-song-ru-washer/main.jpg">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://shenbury.com">
     
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Shenbury 神堡 - Rare Ru Kiln Ceramics at Auction">
-    <meta name="twitter:image" content="/assets/images/relics/001-ru-kiln-washer/hero.jpg">
+    <meta name="twitter:image" content="/assets/images/relics/001-song-ru-washer/main.jpg">
     
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -65,7 +65,7 @@
     
     <link rel="canonical" href="https://shenbury.com">
     
-    <!-- External Scripts - Updated to CSP-compliant versions -->
+    <!-- External Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/ethers@6.11.1/dist/ethers.umd.min.js"></script>
     
     <style>
@@ -275,7 +275,7 @@
             color: var(--primary);
         }
         
-        /* Hero Section */
+        /* Hero Section - FIXED */
         .hero {
             height: 500px;
             position: relative;
@@ -283,26 +283,25 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.6)),
-            url('/assets/images/hero-bg.jpg');
-            background-size: cover;
-            background-position: center;
-        }
-        
-        .hero-background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
             background-image: url('/assets/images/hero-bg.jpg');
             background-size: cover;
             background-position: center;
-            filter: brightness(0.8);
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.6));
+            z-index: 1;
         }
         
         .hero-content {
+            position: relative;
+            z-index: 2;
             text-align: center;
             color: white;
             max-width: 800px;
@@ -1168,7 +1167,6 @@
     </header>
 
     <section class="hero">
-        <div class="hero-background"></div>
         <div class="hero-content">
             <h1>Exceptional Chinese Art</h1>
             <p>Qing, Ming, Song & Yuan Dynasty Masterpieces</p>
@@ -1339,7 +1337,7 @@
     </footer>
 
     <script>
-        // Enhanced artifact data with FIXED paths
+        // FIXED artifact data with proper paths
         const artifacts = [
             {
                 id: 1,
@@ -1350,13 +1348,13 @@
                 dynastyInfo: 'Northern Song Dynasty, 11th-12th Century',
                 imageOrientation: 'landscape',
                 images: [
-                    'https://raw.githubusercontent.com/jnodes/shenbury/main/public/assets/images/relics/001-song-ru-washer/main.jpg',
-                    'https://raw.githubusercontent.com/jnodes/shenbury/main/public/assets/images/relics/001-song-ru-washer/detail-1.jpg',
-                    'https://raw.githubusercontent.com/jnodes/shenbury/main/public/assets/images/relics/001-song-ru-washer/detail-2.jpg',
-                    'https://raw.githubusercontent.com/jnodes/shenbury/main/public/assets/images/relics/001-song-ru-washer/detail-3.jpg'
+                    '/assets/images/relics/001-song-ru-washer/main.jpg',
+                    '/assets/images/relics/001-song-ru-washer/detail-1.jpg',
+                    '/assets/images/relics/001-song-ru-washer/detail-2.jpg',
+                    '/assets/images/relics/001-song-ru-washer/detail-3.jpg',
+                    '/assets/images/relics/001-song-ru-washer/detail-4.jpg'
                 ],
-                thumbnail: 'https://raw.githubusercontent.com/jnodes/shenbury/main/public/assets/images/relics/001-song-ru-washer/main.jpg',
-                placeholder: 'https://raw.githubusercontent.com/jnodes/shenbury/main/public/assets/images/relics/001-song-ru-washer/main.jpg',
+                thumbnail: '/assets/images/relics/001-song-ru-washer/main.jpg',
                 description: 'This extraordinarily rare washer represents the pinnacle of Song ceramic achievement. Ru ware was produced for a mere twenty years at the end of the Northern Song period, exclusively for imperial use. The distinctive sky-blue glaze with its subtle crackle pattern was considered the finest of all Chinese ceramics.',
                 estimate: { low: 5000, high: 8000 },
                 currentBid: 6000,
@@ -1380,12 +1378,11 @@
                 dynastyInfo: 'Northern Song Dynasty, 11th-12th Century',
                 imageOrientation: 'portrait',
                 images: [
-                    'https://raw.githubusercontent.com/jnodes/shenbury/main/public/assets/images/relics/002-song-ru-bottle/main.jpg',
-                    'https://raw.githubusercontent.com/jnodes/shenbury/main/public/assets/images/relics/002-song-ru-bottle/detail-1.jpg',
-                    'https://raw.githubusercontent.com/jnodes/shenbury/main/public/assets/images/relics/002-song-ru-bottle/detail-2.jpg'
+                    '/assets/images/relics/002-song-ru-bottle/main.jpg',
+                    '/assets/images/relics/002-song-ru-bottle/detail-1.jpg',
+                    '/assets/images/relics/002-song-ru-bottle/detail-2.jpg'
                 ],
-                thumbnail: 'https://raw.githubusercontent.com/jnodes/shenbury/main/public/assets/images/relics/002-song-ru-bottle/main.jpg',
-                placeholder: 'https://raw.githubusercontent.com/jnodes/shenbury/main/public/assets/images/relics/002-song-ru-bottle/main.jpg',
+                thumbnail: '/assets/images/relics/002-song-ru-bottle/main.jpg',
                 description: 'This magnificent gourd-form bottle exemplifies the restraint and elegance that characterizes the finest Ru ware. The form, derived from natural gourds used as water containers, was transformed by Song potters into an object of sublime beauty.',
                 estimate: { low: 6000, high: 10000 },
                 currentBid: 7500,
@@ -1408,13 +1405,12 @@
                 dynastyInfo: 'Xuande Period (1426-1435)',
                 imageOrientation: 'square',
                 images: [
-                    'https://raw.githubusercontent.com/jnodes/shenbury/main/public/assets/images/relics/003-ming-cloisonne/main.jpg',
-                    'https://raw.githubusercontent.com/jnodes/shenbury/main/public/assets/images/relics/003-ming-cloisonne/detail-1.jpg',
-                    'https://raw.githubusercontent.com/jnodes/shenbury/main/public/assets/images/relics/003-ming-cloisonne/detail-2.jpg',
-                    'https://raw.githubusercontent.com/jnodes/shenbury/main/public/assets/images/relics/003-ming-cloisonne/mark.jpg'
+                    '/assets/images/relics/003-ming-cloisonne/main.jpg',
+                    '/assets/images/relics/003-ming-cloisonne/detail-1.jpg',
+                    '/assets/images/relics/003-ming-cloisonne/detail-2.jpg',
+                    '/assets/images/relics/003-ming-cloisonne/mark.jpg'
                 ],
-                thumbnail: 'https://raw.githubusercontent.com/jnodes/shenbury/main/public/assets/images/relics/003-ming-cloisonne/main.jpg',
-                placeholder: 'https://raw.githubusercontent.com/jnodes/shenbury/main/public/assets/images/relics/003-ming-cloisonne/main.jpg',
+                thumbnail: '/assets/images/relics/003-ming-cloisonne/main.jpg',
                 description: 'This exceptional censer represents the golden age of Chinese cloisonné production during the Xuande period. The technique, introduced from Byzantium via the Silk Road, reached its artistic zenith under imperial patronage.',
                 estimate: { low: 120, high: 180 },
                 currentBid: 150,
@@ -1437,14 +1433,12 @@
                 dynastyInfo: 'Yuan Dynasty (1271-1368)',
                 imageOrientation: 'portrait',
                 images: [
-                    'https://raw.githubusercontent.com/jnodes/shenbury/main/public/assets/images/relics/004-yuan-jilan-ewer/main.jpg',
-                    'https://raw.githubusercontent.com/jnodes/shenbury/main/public/assets/images/relics/004-yuan-jilan-ewer/detail-1.jpg',
-                    'https://raw.githubusercontent.com/jnodes/shenbury/main/public/assets/images/relics/004-yuan-jilan-ewer/detail-2.jpg',
-                    'https://raw.githubusercontent.com/jnodes/shenbury/main/public/assets/images/relics/004-yuan-jilan-ewer/detail-3.jpg',
-                    'https://raw.githubusercontent.com/jnodes/shenbury/main/public/assets/images/relics/004-yuan-jilan-ewer/detail-4.jpg'
+                    '/assets/images/relics/004-yuan-jilan-ewer/main.jpg',
+                    '/assets/images/relics/004-yuan-jilan-ewer/detail-1.jpg',
+                    '/assets/images/relics/004-yuan-jilan-ewer/detail-2.jpg',
+                    '/assets/images/relics/004-yuan-jilan-ewer/detail-3.jpg'
                 ],
-                thumbnail: 'https://raw.githubusercontent.com/jnodes/shenbury/main/public/assets/images/relics/004-yuan-jilan-ewer/main.jpg',
-                placeholder: 'https://raw.githubusercontent.com/jnodes/shenbury/main/public/assets/images/relics/004-yuan-jilan-ewer/main.jpg',
+                thumbnail: '/assets/images/relics/004-yuan-jilan-ewer/main.jpg',
                 description: 'This spectacular ewer showcases the technical mastery achieved by Yuan potters in high-fired cobalt blue glazes. The dramatic contrast between the deep blue ground and white slip-painted dragon demonstrates the sophisticated decorative techniques of the period.',
                 estimate: { low: 250, high: 400 },
                 currentBid: 325,
@@ -1468,13 +1462,12 @@
                 dynastyInfo: 'Qianlong Period (1736-1795)',
                 imageOrientation: 'portrait',
                 images: [
-                    'https://raw.githubusercontent.com/jnodes/shenbury/main/public/assets/images/relics/005-qing-butterfly-vase/main.jpg',
-                    'https://raw.githubusercontent.com/jnodes/shenbury/main/public/assets/images/relics/005-qing-butterfly-vase/detail-1.jpg',
-                    'https://raw.githubusercontent.com/jnodes/shenbury/main/public/assets/images/relics/005-qing-butterfly-vase/detail-2.jpg',
-                    'https://raw.githubusercontent.com/jnodes/shenbury/main/public/assets/images/relics/005-qing-butterfly-vase/mark.jpg'
+                    '/assets/images/relics/005-qing-butterfly-vase/main.jpg',
+                    '/assets/images/relics/005-qing-butterfly-vase/detail-1.jpg',
+                    '/assets/images/relics/005-qing-butterfly-vase/detail-2.jpg',
+                    '/assets/images/relics/005-qing-butterfly-vase/mark.jpg'
                 ],
-                thumbnail: 'https://raw.githubusercontent.com/jnodes/shenbury/main/public/assets/images/relics/005-qing-butterfly-vase/main.jpg',
-                placeholder: 'https://raw.githubusercontent.com/jnodes/shenbury/main/public/assets/images/relics/005-qing-butterfly-vase/main.jpg',
+                thumbnail: '/assets/images/relics/005-qing-butterfly-vase/main.jpg',
                 description: 'The ovoid body rising from a spreading foot to a waisted neck with a flared rim, brilliantly enamelled with butterflies in flight amidst flowering branches. This piece exemplifies the technical perfection achieved at the imperial kilns during the Qianlong period.',
                 estimate: { low: 80, high: 120 },
                 currentBid: 95,
@@ -1519,8 +1512,8 @@
         ];
         
         // Contract addresses (will be replaced after deployment)
-        const AUCTION_CONTRACT_ADDRESS = "0x1234567890123456789012345678901234567890"; // TODO: Replace after deployment
-        const ERC404_CONTRACT_ADDRESS = "0x0987654321098765432109876543210987654321"; // TODO: Replace after deployment
+        const AUCTION_CONTRACT_ADDRESS = "0x1234567890123456789012345678901234567890";
+        const ERC404_CONTRACT_ADDRESS = "0x0987654321098765432109876543210987654321";
 
         // State variables
         let currentFilter = 'all';
@@ -2108,8 +2101,6 @@
                 renderArtifacts();
             }, 250);
         });
-        
-        // REMOVED SERVICE WORKER - No more caching issues!
         
         // Initialize on load
         window.addEventListener('load', init);
