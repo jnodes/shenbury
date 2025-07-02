@@ -296,7 +296,7 @@
             width: 100%;
             height: 100%;
             z-index: -1;
-            background-image: url('https://raw.githubusercontent.com/jnodes/shenbury/main/public/assets/images/hero-bg.jpg');
+            background-image: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
             background-size: cover;
             background-position: center;
             filter: brightness(0.8);
@@ -498,6 +498,19 @@
             justify-content: center;
         }
         
+        .artifact-image-container::before {
+            content: "Image Coming Soon";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: var(--gray-dark);
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            opacity: 0.5;
+        }
+        
         /* Dynamic aspect ratios */
         .artifact-image-container.portrait {
             padding-bottom: 133%; /* 3:4 ratio */
@@ -662,6 +675,19 @@
             display: flex;
             align-items: center;
             justify-content: center;
+        }
+        
+        .modal-image-section::before {
+            content: "Image Coming Soon";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: var(--gray-dark);
+            font-size: 1.125rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            opacity: 0.5;
         }
         
         .modal-image {
@@ -1223,7 +1249,7 @@
             <button class="close-modal" onclick="closeModal()">&times;</button>
             <div class="modal-body">
                 <div class="modal-image-section">
-                    <img src="" alt="" class="modal-image" id="modal-image">
+                    <img src="" alt="" class="modal-image" id="modal-image" onerror="this.style.opacity='0'">
                     <div class="image-gallery-dots" id="gallery-dots"></div>
                 </div>
                 <div class="modal-info-section">
@@ -1339,7 +1365,7 @@
     </footer>
 
     <script>
-        // Enhanced artifact data with FIXED paths
+        // Enhanced artifact data with FIXED paths and ESCAPED quotes
         const artifacts = [
             {
                 id: 1,
@@ -1365,8 +1391,8 @@
                 provenance: 'Private Collection, Hong Kong\nFormed in the 1970s\nAcquired from J.J. Lally & Co., New York, 1985',
                 condition: 'Excellent condition with characteristic ice-crackle throughout the glaze. Minor expected wear to the foot ring consistent with age.',
                 dimensions: 'Diameter: 14.6 cm\nHeight: 3.65 cm\nWeight: 285g',
-                literature: 'Compare a similar example in the Palace Museum, Beijing, illustrated in "Complete Collection of Treasures of the Palace Museum: Porcelain of the Song Dynasty (I)", Hong Kong, 1996, pl. 5',
-                technicalNotes: 'The glaze exhibits the characteristic "sky-blue" color achieved through reduction firing. X-ray fluorescence analysis confirms the presence of agate powder in the glaze composition, a hallmark of authentic Ru ware.',
+                literature: 'Compare a similar example in the Palace Museum, Beijing, illustrated in \"Complete Collection of Treasures of the Palace Museum: Porcelain of the Song Dynasty (I)\", Hong Kong, 1996, pl. 5',
+                technicalNotes: 'The glaze exhibits the characteristic \"sky-blue\" color achieved through reduction firing. X-ray fluorescence analysis confirms the presence of agate powder in the glaze composition, a hallmark of authentic Ru ware.',
                 culturalSignificance: 'Ru kilns operated for only about 20 years (1086-1106) exclusively for the Northern Song court. Fewer than 100 genuine pieces are known to exist worldwide.',
                 fractionalAvailable: 1000,
                 tokenHolders: 125
@@ -1392,9 +1418,9 @@
                 bidCount: 62,
                 endTime: Date.now() + 86400000 * 10,
                 provenance: 'Private Collection, Taiwan\nFormerly in the collection of Sakamoto Gorō (1923-2016)\nAcquired at Sotheby\'s Hong Kong, April 2005',
-                condition: 'Perfect condition. The glaze is of exceptional quality with the desirable "ice crackle" pattern throughout.',
+                condition: 'Perfect condition. The glaze is of exceptional quality with the desirable \"ice crackle\" pattern throughout.',
                 dimensions: 'Height: 22.8 cm\nDiameter: 12.5 cm\nWeight: 680g',
-                literature: 'For a closely related example, see the gourd vase in the British Museum, London, published in Jessica Harrison-Hall, "Catalogue of Late Yuan and Ming Ceramics in the British Museum", London, 2001, no. 15:1',
+                literature: 'For a closely related example, see the gourd vase in the British Museum, London, published in Jessica Harrison-Hall, \"Catalogue of Late Yuan and Ming Ceramics in the British Museum\", London, 2001, no. 15:1',
                 technicalNotes: 'Thermoluminescence test certificate from Oxford Authentication Ltd. confirms dating to 900 ± 100 years.',
                 fractionalAvailable: 500,
                 tokenHolders: 198
@@ -1423,7 +1449,7 @@
                 provenance: 'Private Collection, Hong Kong\nFormerly from the Qing Court Collection\nChristie\'s London, November 1989, lot 234',
                 condition: 'Excellent condition. Minor restoration to one cloud-scroll on the rim professionally executed.',
                 dimensions: 'Height: 28.5 cm\nWidth: 35.2 cm\nWeight: 4.2 kg',
-                literature: 'Illustrated in Harry Garner, "Chinese and Japanese Cloisonné Enamels", London, 1962, pl. 48A',
+                literature: 'Illustrated in Harry Garner, \"Chinese and Japanese Cloisonné Enamels\", London, 1962, pl. 48A',
                 culturalSignificance: 'Xuande marked cloisonné pieces are among the rarest and most sought-after works of Chinese decorative arts. This example bears the imperial six-character mark.',
                 fractionalAvailable: 4000,
                 tokenHolders: 76
@@ -1453,7 +1479,7 @@
                 provenance: 'Private Japanese Collection, Kyoto\nFormerly in the Idemitsu Museum of Arts\nAcquired from Yamanaka & Co., Kyoto, 1955',
                 condition: 'Remarkable condition. Small chip to the spout professionally restored. The cobalt blue glaze of exceptional depth and brilliance.',
                 dimensions: 'Height: 31.3 cm\nWidth: 18.5 cm\nWeight: 1.45 kg',
-                literature: 'Published in "Yuan Blue and White Porcelain", National Palace Museum, Taipei, 1998, no. 47',
+                literature: 'Published in \"Yuan Blue and White Porcelain\", National Palace Museum, Taipei, 1998, no. 47',
                 technicalNotes: 'The cobalt used in this piece has been identified through spectrographic analysis as imported Persian cobalt, confirming its imperial quality.',
                 culturalSignificance: 'Yuan dynasty blue and white represents a revolutionary moment in ceramic history, combining Chinese potting techniques with Islamic aesthetic preferences.',
                 fractionalAvailable: 3000,
@@ -1483,7 +1509,7 @@
                 provenance: 'Private European Collection, acquired 1960s\nFormerly in the collection of Baron von H., Switzerland',
                 condition: 'Excellent condition with minor wear to the gilding on the rim, consistent with age.',
                 dimensions: 'Height: 38.5 cm\nDiameter: 19.2 cm',
-                literature: 'Compare a similar example in the Palace Museum, Beijing, illustrated in "The Complete Collection of Treasures of the Palace Museum: Porcelains with Cloisonné Enamel Decoration", vol. 39, Hong Kong, 2009, pl. 165',
+                literature: 'Compare a similar example in the Palace Museum, Beijing, illustrated in \"The Complete Collection of Treasures of the Palace Museum: Porcelains with Cloisonné Enamel Decoration\", vol. 39, Hong Kong, 2009, pl. 165',
                 fractionalAvailable: 8500,
                 tokenHolders: 15
             }
@@ -1729,7 +1755,7 @@
             });
             
             grid.innerHTML = filteredArtifacts.map(artifact => {
-                const imageSrc = artifact.thumbnail || artifact.images[0] || 'https://via.placeholder.com/600x600/f8f8f8/666666?text=Image+Coming+Soon';
+                const imageSrc = artifact.thumbnail || artifact.images[0] || '';
                 return `
                     <div class="artifact-card" onclick="openArtifactModal(${artifact.id})">
                         <div class="artifact-image-container ${artifact.imageOrientation || 'square'}">
@@ -1738,7 +1764,7 @@
                                  class="artifact-image loading" 
                                  loading="lazy"
                                  onload="this.classList.remove('loading'); this.classList.add('loaded');"
-                                 onerror="this.src='https://via.placeholder.com/600x600/f8f8f8/666666?text=Image+Coming+Soon'">
+                                 onerror="this.style.opacity='0'">
                         </div>
                         <div class="artifact-info">
                             <div class="artifact-lot">LOT ${artifact.lotNumber}</div>
@@ -1827,12 +1853,15 @@
             if (!selectedArtifact || !selectedArtifact.images) return;
             
             const modalImage = document.getElementById('modal-image');
-            const imageSrc = selectedArtifact.images[currentImageIndex] || 'https://via.placeholder.com/800x600/f8f8f8/666666?text=Image+Coming+Soon';
+            const imageSrc = selectedArtifact.images[currentImageIndex] || '';
             
             modalImage.style.opacity = '0';
             setTimeout(() => {
                 modalImage.src = imageSrc;
                 modalImage.style.opacity = '1';
+                modalImage.onerror = function() {
+                    this.style.opacity = '0';
+                };
             }, 200);
         }
         
@@ -2109,7 +2138,14 @@
             }, 250);
         });
         
-        // REMOVED SERVICE WORKER - No more caching issues!
+        // Unregister any existing service workers
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.getRegistrations().then(function(registrations) {
+                for(let registration of registrations) {
+                    registration.unregister();
+                }
+            });
+        }
         
         // Initialize on load
         window.addEventListener('load', init);
