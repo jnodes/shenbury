@@ -3,71 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ru Kiln Ceramics & Chinese Imperial Artifacts | Shenbury 神堡</title>
+    <title>Shenbury 神堡 | Authenticated Chinese Imperial Ceramics - Web3 Auction Platform</title>
     
-    <!-- Preconnect to external domains -->
-    <link rel="preconnect" href="https://cdn.jsdelivr.net">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Critical Meta Tags -->
+    <meta name="description" content="Discover and own authenticated Chinese imperial ceramics from Song, Yuan, Ming & Qing dynasties. Web3-enabled fractional ownership through ERC-404 tokens. Museum-quality artifacts with 360° viewing.">
+    <meta name="keywords" content="Chinese ceramics, imperial porcelain, Song dynasty, Ming dynasty, Qing dynasty, Web3 auction, ERC-404, fractional ownership, Chinese art investment">
     
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&display=swap" rel="stylesheet">
-    
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="Shenbury 神堡 - The Art of Provenance. Authenticated Ru kiln ceramics from Northern Song Dynasty. Museum-quality Chinese artifacts with ERC-404 fractional ownership.">
-    <meta name="keywords" content="Shenbury, 神堡, Ru kiln, Ru ware, Song Dynasty, Chinese ceramics, 汝窯, 宋代瓷器, auction, ERC-404, NFT, provenance">
-    
-    <!-- Open Graph for Social -->
-    <meta property="og:title" content="Shenbury 神堡 | $500M Chinese Imperial Ceramics Collection">
-    <meta property="og:description" content="The Art of Provenance. Own fractional shares of museum-quality Ru kiln and imperial Chinese artifacts.">
-    <meta property="og:image" content="/assets/images/relics/001-ru-kiln-washer/hero.jpg">
+    <!-- Open Graph -->
+    <meta property="og:title" content="Shenbury - $500M Chinese Imperial Ceramics Collection">
+    <meta property="og:description" content="Own authenticated Chinese imperial ceramics through innovative Web3 fractional ownership">
+    <meta property="og:image" content="https://shenbury.vercel.app/assets/images/hero-ceramic.jpg">
+    <meta property="og:url" content="https://shenbury.vercel.app">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://shenbury.com">
     
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Shenbury 神堡 - Rare Ru Kiln Ceramics at Auction">
-    <meta name="twitter:image" content="/assets/images/relics/001-ru-kiln-washer/hero.jpg">
+    <meta name="twitter:title" content="Shenbury - Chinese Imperial Ceramics Web3 Platform">
+    <meta name="twitter:description" content="Authenticated ceramics from Song to Qing dynasties with ERC-404 fractional ownership">
+    <meta name="twitter:image" content="https://shenbury.vercel.app/assets/images/hero-ceramic.jpg">
     
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-    <link rel="alternate icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" href="/favicon.png">
     
-    <!-- Structured Data for Google -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "ArtGallery",
-      "name": "Shenbury 神堡",
-      "description": "The Art of Provenance - Web3 auction house for Chinese imperial ceramics",
-      "url": "https://shenbury.com",
-      "slogan": "The Art of Provenance",
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "Imperial Chinese Ceramics",
-        "itemListElement": [
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "VisualArtwork",
-              "name": "Ru Kiln Sunflower Washer",
-              "creator": "Northern Song Dynasty",
-              "dateCreated": "11th-12th Century",
-              "material": "Ceramic with Ru glaze"
-            },
-            "price": "35000000",
-            "priceCurrency": "USD"
-          }
-        ]
-      }
-    }
-    </script>
+    <!-- Preconnect to speed up external resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     
-    <link rel="canonical" href="https://shenbury.com">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     
-    <!-- External Scripts - Updated to CSP-compliant versions -->
-    <script src="https://cdn.jsdelivr.net/npm/ethers@6.11.1/dist/ethers.umd.min.js"></script>
-    
+    <!-- Critical CSS -->
     <style>
         * {
             margin: 0;
@@ -76,62 +41,45 @@
         }
         
         :root {
-            --primary: #000000;
-            --secondary: #ffffff;
-            --accent: #c9302c;
-            --gray-light: #f8f8f8;
-            --gray-medium: #e5e5e5;
-            --gray-dark: #666666;
-            --text-primary: #000000;
-            --text-secondary: #666666;
-            --hover: #c9302c;
-            --shadow: rgba(0, 0, 0, 0.08);
-            --font-primary: 'Cormorant Garamond', serif;
-            --font-secondary: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            --primary-gold: #C9A961;
+            --primary-red: #B91C1C;
+            --bg-dark: #0F0F0F;
+            --bg-light: #1A1A1A;
+            --text-primary: #FFFFFF;
+            --text-secondary: #A0A0A0;
+            --border-color: #2A2A2A;
         }
         
         body {
-            font-family: var(--font-secondary);
-            background: var(--secondary);
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
             color: var(--text-primary);
             line-height: 1.6;
-            font-weight: 300;
-        }
-        
-        /* Typography */
-        h1, h2, h3, h4, h5, h6 {
-            font-family: var(--font-primary);
-            font-weight: 300;
-            letter-spacing: -0.02em;
+            overflow-x: hidden;
         }
         
         /* Loading State */
-        .loading {
+        .loading-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: white;
+            background: var(--bg-dark);
             display: flex;
             align-items: center;
             justify-content: center;
             z-index: 9999;
-            transition: opacity 0.3s ease;
+            transition: opacity 0.5s ease;
         }
         
-        .loading.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-        
-        .loader {
-            width: 40px;
-            height: 40px;
-            border: 2px solid var(--gray-medium);
-            border-top-color: var(--accent);
+        .loading-spinner {
+            width: 60px;
+            height: 60px;
+            border: 3px solid var(--border-color);
+            border-top-color: var(--primary-gold);
             border-radius: 50%;
-            animation: spin 0.8s linear infinite;
+            animation: spin 1s linear infinite;
         }
         
         @keyframes spin {
@@ -140,2022 +88,849 @@
         
         /* Header */
         header {
-            background: var(--secondary);
-            border-bottom: 1px solid var(--gray-medium);
-            position: sticky;
+            position: fixed;
             top: 0;
-            z-index: 1000;
-            padding: 0 2rem;
+            width: 100%;
+            background: rgba(15, 15, 15, 0.95);
             backdrop-filter: blur(10px);
-            background: rgba(255, 255, 255, 0.95);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            transition: transform 0.3s ease;
         }
         
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 80px;
+            padding: 1rem 5%;
             max-width: 1400px;
             margin: 0 auto;
         }
         
         .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-gold);
+            text-decoration: none;
             display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            cursor: pointer;
-        }
-        
-        .logo-text {
-            display: flex;
-            align-items: baseline;
+            align-items: center;
             gap: 0.5rem;
         }
         
-        .logo-chinese {
-            font-family: var(--font-primary);
-            font-size: 1.25rem;
-            font-weight: 400;
+        .logo span {
+            font-size: 1.2rem;
+            opacity: 0.8;
         }
         
-        .logo-english {
-            font-family: var(--font-primary);
-            font-size: 1.75rem;
-            font-weight: 400;
-            letter-spacing: 0.05em;
-        }
-        
-        .logo-tagline {
-            font-size: 0.625rem;
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
-            color: var(--text-secondary);
-            margin-top: 0.25rem;
-            font-family: var(--font-secondary);
-        }
-        
-        .nav-center {
+        .nav-links {
             display: flex;
-            gap: 3rem;
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
+            gap: 2rem;
+            align-items: center;
         }
         
-        .nav-center a {
+        .nav-links a {
             color: var(--text-primary);
             text-decoration: none;
-            font-size: 0.875rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
+            font-weight: 500;
             transition: color 0.3s ease;
-            position: relative;
         }
         
-        .nav-center a:hover {
-            color: var(--hover);
+        .nav-links a:hover {
+            color: var(--primary-gold);
         }
         
-        .nav-center a.active::after {
-            content: '';
-            position: absolute;
-            bottom: -29px;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: var(--accent);
-        }
-        
-        .nav-right {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-        }
-        
-        .wallet-info {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            font-size: 0.875rem;
-        }
-        
-        .erc404-balance {
-            background: var(--gray-light);
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            display: none;
-            animation: fadeIn 0.3s ease;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .connect-wallet {
-            background: var(--primary);
-            color: var(--secondary);
-            border: 1px solid var(--primary);
-            padding: 0.75rem 2rem;
-            font-size: 0.875rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
+        .wallet-btn {
+            background: var(--primary-gold);
+            color: var(--bg-dark);
+            padding: 0.7rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
-            font-weight: 400;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
         
-        .connect-wallet:hover {
-            background: transparent;
-            color: var(--primary);
+        .wallet-btn:hover {
+            background: #B89851;
+            transform: translateY(-2px);
         }
         
-        .connect-wallet.connected {
-            background: transparent;
-            color: var(--primary);
+        .wallet-btn.connected {
+            background: var(--bg-light);
+            color: var(--primary-gold);
+            border: 1px solid var(--primary-gold);
         }
         
         /* Hero Section */
         .hero {
-            height: 500px;
-            position: relative;
-            overflow: hidden;
+            margin-top: 80px;
+            min-height: calc(100vh - 80px);
             display: flex;
             align-items: center;
-            justify-content: center;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.6)),
-                        linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
-            background-size: cover;
-            background-position: center;
+            position: relative;
+            overflow: hidden;
         }
         
-        .hero-background {
+        .hero-bg {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
+            background: radial-gradient(circle at 70% 50%, rgba(201, 169, 97, 0.1) 0%, transparent 50%);
             z-index: -1;
-            background-image: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
-            background-size: cover;
-            background-position: center;
-            filter: brightness(0.8);
         }
         
         .hero-content {
-            text-align: center;
-            color: white;
-            max-width: 800px;
-            padding: 0 2rem;
-            animation: heroFadeIn 1s ease;
-        }
-        
-        @keyframes heroFadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 300;
-            margin-bottom: 1rem;
-            letter-spacing: -0.02em;
-            font-family: var(--font-primary);
-        }
-        
-        .hero p {
-            font-size: 1.25rem;
-            font-weight: 300;
-            opacity: 0.9;
-            margin-bottom: 2rem;
-            font-family: var(--font-secondary);
-        }
-        
-        .hero-cta {
-            background: var(--accent);
-            color: white;
-            border: none;
-            padding: 1rem 3rem;
-            font-size: 0.875rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .hero-cta:hover {
-            background: #a02622;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(201, 48, 44, 0.3);
-        }
-        
-        /* Auction Header */
-        .auction-header {
             max-width: 1400px;
-            margin: 4rem auto 2rem;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
+            margin: 0 auto;
+            padding: 0 5%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
         }
         
-        .auction-header h2 {
-            font-size: 2rem;
-            font-weight: 300;
-            font-family: var(--font-primary);
+        .hero-text h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--primary-gold) 0%, #E0C174 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
         
-        .auction-stats {
+        .hero-text .subtitle {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+        
+        .hero-stats {
             display: flex;
             gap: 3rem;
-            font-size: 0.875rem;
-            color: var(--text-secondary);
+            margin-bottom: 2rem;
         }
         
-        .stat-item {
+        .stat {
             text-align: center;
         }
         
         .stat-value {
-            font-size: 1.5rem;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-gold);
+        }
+        
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .btn-primary {
+            background: var(--primary-gold);
+            color: var(--bg-dark);
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn-primary:hover {
+            background: #B89851;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(201, 169, 97, 0.3);
+        }
+        
+        .btn-secondary {
+            background: transparent;
             color: var(--text-primary);
-            display: block;
-            font-weight: 400;
+            padding: 1rem 2rem;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
         }
         
-        /* Filter Bar */
-        .filter-bar {
+        .btn-secondary:hover {
+            border-color: var(--primary-gold);
+            color: var(--primary-gold);
+        }
+        
+        .hero-image {
+            position: relative;
+            height: 600px;
+        }
+        
+        .ceramic-showcase {
+            width: 100%;
+            height: 100%;
+            background: var(--bg-light);
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+        
+        .ceramic-showcase img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .ceramic-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%);
+            padding: 2rem;
+        }
+        
+        .ceramic-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .ceramic-dynasty {
+            color: var(--primary-gold);
+            font-weight: 600;
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 5rem 5%;
             max-width: 1400px;
-            margin: 0 auto 3rem;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-top: 1px solid var(--gray-medium);
-            border-bottom: 1px solid var(--gray-medium);
-            padding-top: 1rem;
-            padding-bottom: 1rem;
+            margin: 0 auto;
         }
         
-        .dynasty-filters {
-            display: flex;
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--primary-gold);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
         }
         
-        .dynasty-filter {
-            background: none;
-            border: none;
-            color: var(--text-secondary);
-            cursor: pointer;
-            font-size: 0.875rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            padding: 0.5rem 0;
+        .feature-card {
+            background: var(--bg-light);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
             transition: all 0.3s ease;
-            position: relative;
         }
         
-        .dynasty-filter:hover,
-        .dynasty-filter.active {
-            color: var(--text-primary);
-        }
-        
-        .dynasty-filter.active::after {
-            content: '';
-            position: absolute;
-            bottom: -1rem;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: var(--accent);
-        }
-        
-        .sort-controls {
-            display: flex;
-            gap: 1rem;
-            align-items: center;
-            font-size: 0.875rem;
-        }
-        
-        .sort-select {
-            border: 1px solid var(--gray-medium);
-            padding: 0.5rem 1rem;
-            background: white;
-            cursor: pointer;
-            outline: none;
-        }
-        
-        .sort-select:focus {
-            border-color: var(--text-primary);
-        }
-        
-        /* Artifact Grid */
-        .artifacts-grid {
-            max-width: 1400px;
-            margin: 0 auto 4rem;
-            padding: 0 2rem;
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-            gap: 3rem;
-        }
-        
-        .artifact-card {
-            cursor: pointer;
-            transition: all 0.3s ease;
-            opacity: 0;
-            animation: cardFadeIn 0.5s ease forwards;
-        }
-        
-        .artifact-card:nth-child(1) { animation-delay: 0.1s; }
-        .artifact-card:nth-child(2) { animation-delay: 0.2s; }
-        .artifact-card:nth-child(3) { animation-delay: 0.3s; }
-        .artifact-card:nth-child(4) { animation-delay: 0.4s; }
-        .artifact-card:nth-child(5) { animation-delay: 0.5s; }
-        
-        @keyframes cardFadeIn {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-        }
-        
-        .artifact-card:hover {
+        .feature-card:hover {
+            border-color: var(--primary-gold);
             transform: translateY(-5px);
-            box-shadow: 0 20px 40px var(--shadow);
+            box-shadow: 0 10px 40px rgba(201, 169, 97, 0.1);
         }
         
-        .artifact-image-container {
-            position: relative;
-            background: var(--gray-light);
-            overflow: hidden;
-            margin-bottom: 1.5rem;
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(201, 169, 97, 0.1);
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
         }
         
-        .artifact-image-container::before {
-            content: "Image Coming Soon";
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: var(--gray-dark);
-            font-size: 0.875rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            opacity: 0.5;
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
         }
         
-        /* Dynamic aspect ratios */
-        .artifact-image-container.portrait {
-            padding-bottom: 133%; /* 3:4 ratio */
+        .feature-card p {
+            color: var(--text-secondary);
+            line-height: 1.8;
         }
         
-        .artifact-image-container.landscape {
-            padding-bottom: 75%; /* 4:3 ratio */
+        /* Collection Grid */
+        .collection {
+            padding: 5rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
         }
         
-        .artifact-image-container.square {
-            padding-bottom: 100%; /* 1:1 ratio */
+        .collection-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+        
+        .artifact-card {
+            background: var(--bg-light);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .artifact-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            border-color: var(--primary-gold);
         }
         
         .artifact-image {
-            position: absolute;
-            top: 0;
-            left: 0;
             width: 100%;
-            height: 100%;
-            object-fit: contain;
-            background-color: #f8f8f8;
+            height: 300px;
+            object-fit: cover;
             transition: transform 0.5s ease;
-        }
-        
-        /* Image loading states */
-        .artifact-image.loading {
-            opacity: 0;
-        }
-        
-        .artifact-image.loaded {
-            opacity: 1;
-            animation: imageReveal 0.5s ease;
-        }
-        
-        @keyframes imageReveal {
-            from { opacity: 0; transform: scale(0.95); }
-            to { opacity: 1; transform: scale(1); }
         }
         
         .artifact-card:hover .artifact-image {
             transform: scale(1.05);
         }
         
-        .artifact-info {
-            padding: 0 0.5rem;
-        }
-        
-        .artifact-lot {
-            font-size: 0.75rem;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 0.5rem;
+        .artifact-details {
+            padding: 1.5rem;
         }
         
         .artifact-title {
-            font-size: 1.125rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
             margin-bottom: 0.5rem;
-            font-weight: 400;
-            line-height: 1.4;
-            font-family: var(--font-primary);
         }
         
-        .artifact-dynasty {
-            font-size: 0.875rem;
-            color: var(--text-secondary);
+        .artifact-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             margin-bottom: 1rem;
         }
         
-        .artifact-estimate {
-            font-size: 0.875rem;
+        .dynasty-tag {
+            background: rgba(201, 169, 97, 0.1);
+            color: var(--primary-gold);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        
+        .artifact-price {
+            font-size: 0.9rem;
             color: var(--text-secondary);
-            margin-bottom: 0.25rem;
         }
         
-        .artifact-bid {
-            font-size: 1.125rem;
-            font-weight: 400;
-            margin-bottom: 0.5rem;
+        .artifact-actions {
+            display: flex;
+            gap: 0.5rem;
         }
         
-        .artifact-erc404 {
-            background: var(--gray-light);
-            padding: 0.75rem;
-            margin-top: 1rem;
-            font-size: 0.75rem;
-            color: var(--text-secondary);
-            border-radius: 4px;
-        }
-        
-        .artifact-erc404 strong {
+        .action-btn {
+            flex: 1;
+            padding: 0.8rem;
+            border: 1px solid var(--border-color);
+            background: transparent;
             color: var(--text-primary);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
             font-weight: 500;
         }
         
-        /* Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            z-index: 2000;
-            overflow-y: auto;
-            animation: modalFadeIn 0.3s ease;
+        .action-btn:hover {
+            background: var(--primary-gold);
+            color: var(--bg-dark);
+            border-color: var(--primary-gold);
         }
         
-        @keyframes modalFadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        .modal-content {
-            background: white;
-            max-width: 1200px;
-            margin: 2rem auto;
-            position: relative;
-            animation: modalSlideIn 0.3s ease;
-        }
-        
-        @keyframes modalSlideIn {
-            from { transform: translateY(50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-        
-        .close-modal {
-            position: absolute;
-            top: 2rem;
-            right: 2rem;
-            background: white;
-            border: none;
-            width: 40px;
-            height: 40px;
-            cursor: pointer;
-            font-size: 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            z-index: 10;
-            border-radius: 50%;
-            box-shadow: 0 2px 10px var(--shadow);
-        }
-        
-        .close-modal:hover {
-            transform: rotate(90deg);
-            background: var(--gray-light);
-        }
-        
-        .modal-body {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            min-height: 600px;
-        }
-        
-        .modal-image-section {
-            background: var(--gray-light);
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .modal-image-section::before {
-            content: "Image Coming Soon";
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: var(--gray-dark);
-            font-size: 1.125rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            opacity: 0.5;
-        }
-        
-        .modal-image {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            padding: 2rem;
-        }
-        
-        /* Image gallery dots */
-        .image-gallery-dots {
-            position: absolute;
-            bottom: 1rem;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 0.5rem;
-        }
-        
-        .gallery-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: rgba(0, 0, 0, 0.3);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .gallery-dot.active {
-            background: var(--accent);
-            width: 24px;
-            border-radius: 4px;
-        }
-        
-        .modal-info-section {
-            padding: 3rem;
-            overflow-y: auto;
-            max-height: 90vh;
-        }
-        
-        .modal-lot-number {
-            font-size: 0.875rem;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 1rem;
-        }
-        
-        .modal-title {
-            font-size: 2rem;
-            font-weight: 300;
-            margin-bottom: 0.5rem;
-            line-height: 1.3;
-            font-family: var(--font-primary);
-        }
-        
-        .modal-dynasty {
-            font-size: 1.125rem;
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-        }
-        
-        .modal-description {
-            font-size: 1rem;
-            line-height: 1.8;
-            margin-bottom: 2rem;
-            color: var(--text-secondary);
-        }
-        
-        .detail-sections {
-            border-top: 1px solid var(--gray-medium);
-            padding-top: 2rem;
-            margin-bottom: 2rem;
-        }
-        
-        .detail-section {
-            margin-bottom: 1.5rem;
-        }
-        
-        .detail-section h4 {
-            font-size: 0.875rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 0.5rem;
-            font-weight: 400;
-        }
-        
-        .detail-section p {
-            color: var(--text-secondary);
-            font-size: 0.875rem;
-            line-height: 1.6;
-        }
-        
-        .bidding-section {
-            border-top: 1px solid var(--gray-medium);
-            padding-top: 2rem;
-        }
-        
-        .current-bid-info {
-            margin-bottom: 2rem;
-        }
-        
-        .current-bid-label {
-            font-size: 0.875rem;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-        }
-        
-        .current-bid-amount {
-            font-size: 2rem;
-            font-weight: 400;
-            margin: 0.5rem 0;
-            font-family: var(--font-primary);
-        }
-        
-        .bid-count {
-            font-size: 0.875rem;
-            color: var(--text-secondary);
-        }
-        
-        .bid-options {
-            display: grid;
-            gap: 2rem;
-        }
-        
-        .bid-option {
-            border: 1px solid var(--gray-medium);
-            padding: 1.5rem;
-            border-radius: 4px;
-            transition: border-color 0.3s ease;
-        }
-        
-        .bid-option:hover {
-            border-color: var(--text-primary);
-        }
-        
-        .bid-option h5 {
-            font-size: 1rem;
-            margin-bottom: 0.5rem;
-            font-weight: 400;
-        }
-        
-        .bid-option p {
-            font-size: 0.875rem;
-            color: var(--text-secondary);
-            margin-bottom: 1rem;
-        }
-        
-        .bid-input-group {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-        
-        .bid-input {
-            flex: 1;
-            border: 1px solid var(--gray-medium);
-            padding: 0.75rem 1rem;
-            font-size: 1rem;
-            border-radius: 4px;
-            outline: none;
-            transition: border-color 0.3s ease;
-        }
-        
-        .bid-input:focus {
-            border-color: var(--text-primary);
-        }
-        
-        .bid-button {
-            background: var(--primary);
-            color: white;
-            border: none;
-            padding: 0.75rem 2rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 0.875rem;
-            border-radius: 4px;
-        }
-        
-        .bid-button:hover {
-            background: var(--hover);
-            transform: translateY(-1px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-        
-        .bid-button:disabled {
-            background: var(--gray-medium);
-            cursor: not-allowed;
-            transform: none;
-        }
-        
-        .bid-button.secondary {
-            background: white;
-            color: var(--primary);
-            border: 1px solid var(--primary);
-        }
-        
-        .bid-button.secondary:hover {
-            background: var(--primary);
-            color: white;
-        }
-        
-        .erc404-info {
-            background: var(--gray-light);
-            padding: 1rem;
-            font-size: 0.75rem;
-            color: var(--text-secondary);
-            border-radius: 4px;
-            line-height: 1.6;
-        }
-        
-        /* Toast Notifications */
-        .toast {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            background: var(--primary);
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 4px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            transform: translateY(100px);
-            opacity: 0;
-            transition: all 0.3s ease;
-            z-index: 3000;
-            max-width: 400px;
-        }
-        
-        .toast.show {
-            transform: translateY(0);
-            opacity: 1;
-        }
-        
-        .toast.success {
-            background: #28a745;
-        }
-        
-        .toast.error {
-            background: #dc3545;
-        }
-        
-        .toast.info {
-            background: #17a2b8;
-        }
-        
-        .toast.warning {
-            background: #ffc107;
-            color: #212529;
-        }
-        
-        /* Footer */
-        footer {
-            background: var(--primary);
-            color: white;
-            padding: 3rem 2rem;
-            margin-top: 6rem;
-        }
-        
-        .footer-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 3rem;
-        }
-        
-        .footer-section h4 {
-            font-size: 0.875rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 1rem;
-            font-weight: 400;
-            font-family: var(--font-secondary);
-        }
-        
-        .footer-section a {
-            color: rgba(255, 255, 255, 0.7);
-            text-decoration: none;
-            font-size: 0.875rem;
-            display: block;
-            margin-bottom: 0.5rem;
-            transition: color 0.3s ease;
-        }
-        
-        .footer-section a:hover {
-            color: white;
-        }
-        
-        .footer-bottom {
-            text-align: center;
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 0.875rem;
-            color: rgba(255, 255, 255, 0.5);
-        }
-        
-        .footer-logo {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            margin-bottom: 1rem;
-        }
-        
-        .footer-logo .logo-text {
-            display: flex;
-            align-items: baseline;
-            gap: 0.5rem;
-        }
-        
-        .footer-logo .logo-chinese {
-            font-family: var(--font-primary);
-            font-size: 1rem;
-            color: rgba(255, 255, 255, 0.9);
-        }
-        
-        .footer-logo .logo-english {
-            font-family: var(--font-primary);
-            font-size: 1.5rem;
-            font-weight: 400;
-            color: white;
-        }
-        
-        /* Mobile Menu */
-        .mobile-menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 0.5rem;
-        }
-        
-        .mobile-menu-toggle span {
-            display: block;
-            width: 25px;
-            height: 2px;
-            background: var(--primary);
-            margin: 5px 0;
-            transition: all 0.3s ease;
-        }
-        
-        /* Responsive */
-        @media (max-width: 1024px) {
-            .nav-center {
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
                 display: none;
             }
             
-            .mobile-menu-toggle {
-                display: block;
-            }
-            
-            .modal-body {
+            .hero-content {
                 grid-template-columns: 1fr;
+                text-align: center;
             }
             
-            .modal-image-section {
+            .hero-stats {
+                justify-content: center;
+            }
+            
+            .cta-buttons {
+                justify-content: center;
+            }
+            
+            .hero-image {
                 height: 400px;
             }
-            
-            .artifacts-grid {
-                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-                gap: 2rem;
-            }
         }
         
-        @media (max-width: 768px) {
-            .logo-text {
-                gap: 0.25rem;
-            }
-            
-            .logo-chinese {
-                font-size: 1rem;
-            }
-            
-            .logo-english {
-                font-size: 1.25rem;
-            }
-            
-            .logo-tagline {
-                display: none;
-            }
-            
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .hero p {
-                font-size: 1.125rem;
-            }
-            
-            .artifacts-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .footer-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-            
-            .footer-logo {
-                align-items: center;
-            }
-            
-            .auction-header {
-                flex-direction: column;
-                gap: 2rem;
-                text-align: center;
-            }
-            
-            .filter-bar {
-                flex-direction: column;
-                gap: 1rem;
-            }
-            
-            .dynasty-filters {
-                overflow-x: auto;
-                width: 100%;
-                justify-content: flex-start;
-                padding-bottom: 0.5rem;
-            }
-            
-            .modal-info-section {
-                padding: 2rem;
-            }
-            
-            .toast {
-                left: 1rem;
-                right: 1rem;
-                bottom: 1rem;
-            }
+        /* Error State */
+        .error-message {
+            background: rgba(185, 28, 28, 0.1);
+            border: 1px solid var(--primary-red);
+            color: #EF4444;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            display: none;
         }
         
-        /* Progressive Image Loading */
-        .progressive-image {
-            position: relative;
-            overflow: hidden;
-            background: var(--gray-light);
-        }
-        
-        .progressive-image img {
-            display: block;
-            width: 100%;
-            height: auto;
-            transition: opacity 0.3s ease;
-        }
-        
-        .progressive-image .placeholder {
-            filter: blur(20px);
-            transform: scale(1.1);
-        }
-        
-        .progressive-image .full-image {
-            position: absolute;
-            top: 0;
-            left: 0;
-            opacity: 0;
-        }
-        
-        .progressive-image .full-image.loaded {
-            opacity: 1;
+        /* Success State */
+        .success-message {
+            background: rgba(201, 169, 97, 0.1);
+            border: 1px solid var(--primary-gold);
+            color: var(--primary-gold);
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            display: none;
         }
     </style>
 </head>
 <body>
-    <!-- Loading Screen -->
-    <div class="loading" id="loading">
-        <div class="loader"></div>
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner"></div>
     </div>
-
-    <header>
+    
+    <!-- Header -->
+    <header id="header">
         <nav>
-            <div class="logo" onclick="scrollToTop()">
-                <div class="logo-text">
-                    <div class="logo-chinese">神堡</div>
-                    <div class="logo-english">Shenbury</div>
-                </div>
-                <div class="logo-tagline">The Art of Provenance</div>
-            </div>
-            <div class="nav-center">
-                <a href="#auctions" class="active">Auctions</a>
-                <a href="#private">Private Sales</a>
-                <a href="#exhibitions">Exhibitions</a>
+            <a href="/" class="logo">
+                Shenbury <span>神堡</span>
+            </a>
+            <div class="nav-links">
+                <a href="#collection">Collection</a>
+                <a href="#how-it-works">How It Works</a>
                 <a href="#about">About</a>
-            </div>
-            <div class="nav-right">
-                <div class="wallet-info">
-                    <div class="erc404-balance" id="token-balance">
-                        <span id="balance-amount">0</span> SHEN
-                    </div>
-                    <button class="connect-wallet" onclick="connectWallet()">
-                        <span id="wallet-text">Connect Wallet</span>
-                    </button>
-                </div>
-                <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                <a href="#contact">Contact</a>
+                <button class="wallet-btn" id="walletBtn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="4" width="20" height="16" rx="2"/>
+                        <path d="M7 4v16"/>
+                    </svg>
+                    Connect Wallet
                 </button>
             </div>
         </nav>
     </header>
-
+    
+    <!-- Hero Section -->
     <section class="hero">
-        <div class="hero-background"></div>
+        <div class="hero-bg"></div>
         <div class="hero-content">
-            <h1>Exceptional Chinese Art</h1>
-            <p>Qing, Ming, Song & Yuan Dynasty Masterpieces</p>
-            <button class="hero-cta" onclick="scrollToAuctions()">View Current Auctions</button>
+            <div class="hero-text">
+                <h1>Own Authenticated Chinese Imperial Ceramics</h1>
+                <p class="subtitle">Song, Yuan, Ming & Qing Dynasty Masterpieces</p>
+                
+                <div class="hero-stats">
+                    <div class="stat">
+                        <div class="stat-value">$500M</div>
+                        <div class="stat-label">Collection Value</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">1,200+</div>
+                        <div class="stat-label">Artifacts</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">100%</div>
+                        <div class="stat-label">Authenticated</div>
+                    </div>
+                </div>
+                
+                <div class="error-message" id="errorMessage"></div>
+                <div class="success-message" id="successMessage"></div>
+                
+                <div class="cta-buttons">
+                    <a href="#collection" class="btn-primary">Explore Collection</a>
+                    <a href="#how-it-works" class="btn-secondary">Learn About ERC-404</a>
+                </div>
+            </div>
+            
+            <div class="hero-image">
+                <div class="ceramic-showcase">
+                    <img src="/assets/images/relics/001-ming-vase/main.jpg" alt="Ming Dynasty Imperial Vase" loading="lazy">
+                    <div class="ceramic-info">
+                        <h3 class="ceramic-title">Imperial Dragon Vase</h3>
+                        <p class="ceramic-dynasty">Ming Dynasty • Xuande Period</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
-
-    <div class="auction-header" id="auctions">
-        <h2>Featured Lots</h2>
-        <div class="auction-stats">
-            <div class="stat-item">
-                <span class="stat-value" id="total-lots">0</span>
-                <span>Total Lots</span>
+    
+    <!-- Features Section -->
+    <section class="features">
+        <h2 class="section-title">Revolutionary Ownership Model</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🏺</div>
+                <h3>Museum-Quality Artifacts</h3>
+                <p>Every piece authenticated by leading experts with complete provenance documentation and conservation reports.</p>
             </div>
-            <div class="stat-item">
-                <span class="stat-value" id="total-bids">0</span>
-                <span>Active Bids</span>
+            <div class="feature-card">
+                <div class="feature-icon">💎</div>
+                <h3>ERC-404 Fractional Ownership</h3>
+                <p>Own portions of priceless artifacts through innovative token standards. 10,000 SHEN tokens equal one full NFT.</p>
             </div>
-            <div class="stat-item">
-                <span class="stat-value" id="total-value">0</span>
-                <span>Total Value (ETH)</span>
+            <div class="feature-card">
+                <div class="feature-icon">🎥</div>
+                <h3>360° HD Viewing</h3>
+                <p>Experience artifacts in unprecedented detail with high-definition 360-degree video showcases.</p>
             </div>
-        </div>
-    </div>
-
-    <div class="filter-bar">
-        <div class="dynasty-filters">
-            <button class="dynasty-filter active" onclick="filterByDynasty('all')">All Dynasties</button>
-            <button class="dynasty-filter" onclick="filterByDynasty('qing')">Qing Dynasty</button>
-            <button class="dynasty-filter" onclick="filterByDynasty('ming')">Ming Dynasty</button>
-            <button class="dynasty-filter" onclick="filterByDynasty('song')">Song Dynasty</button>
-            <button class="dynasty-filter" onclick="filterByDynasty('yuan')">Yuan Dynasty</button>
-        </div>
-        <div class="sort-controls">
-            <span>Sort by:</span>
-            <select class="sort-select" onchange="sortArtifacts(this.value)">
-                <option value="lot">Lot Number</option>
-                <option value="price-high">Price: High to Low</option>
-                <option value="price-low">Price: Low to High</option>
-                <option value="ending">Ending Soon</option>
-            </select>
-        </div>
-    </div>
-
-    <div class="artifacts-grid" id="artifacts-grid">
-        <!-- Artifact cards will be dynamically generated -->
-    </div>
-
-    <!-- Artifact Detail Modal -->
-    <div class="modal" id="artifact-modal">
-        <div class="modal-content">
-            <button class="close-modal" onclick="closeModal()">&times;</button>
-            <div class="modal-body">
-                <div class="modal-image-section">
-                    <img src="" alt="" class="modal-image" id="modal-image" onerror="this.style.opacity='0'">
-                    <div class="image-gallery-dots" id="gallery-dots"></div>
-                </div>
-                <div class="modal-info-section">
-                    <div class="modal-lot-number" id="modal-lot">LOT 000</div>
-                    <h2 class="modal-title" id="modal-title"></h2>
-                    <p class="modal-dynasty" id="modal-dynasty"></p>
-                    <p class="modal-description" id="modal-description"></p>
-                    
-                    <div class="detail-sections">
-                        <div class="detail-section">
-                            <h4>Provenance</h4>
-                            <p id="modal-provenance"></p>
-                        </div>
-                        <div class="detail-section">
-                            <h4>Condition</h4>
-                            <p id="modal-condition"></p>
-                        </div>
-                        <div class="detail-section">
-                            <h4>Dimensions</h4>
-                            <p id="modal-dimensions"></p>
-                        </div>
-                        <div class="detail-section">
-                            <h4>Literature</h4>
-                            <p id="modal-literature"></p>
-                        </div>
-                        <div class="detail-section" id="technical-notes-section" style="display: none;">
-                            <h4>Technical Notes</h4>
-                            <p id="modal-technical-notes"></p>
-                        </div>
-                        <div class="detail-section" id="cultural-significance-section" style="display: none;">
-                            <h4>Cultural Significance</h4>
-                            <p id="modal-cultural-significance"></p>
-                        </div>
-                    </div>
-                    
-                    <div class="bidding-section">
-                        <div class="current-bid-info">
-                            <div class="current-bid-label">Current Bid</div>
-                            <div class="current-bid-amount" id="modal-current-bid">0.00 ETH</div>
-                            <div class="bid-count" id="modal-bid-count">0 bids</div>
-                        </div>
-                        
-                        <div class="bid-options">
-                            <div class="bid-option">
-                                <h5>Place Bid for Full Ownership</h5>
-                                <p>Acquire complete ownership of this artifact as an NFT</p>
-                                <div class="bid-input-group">
-                                    <input type="number" class="bid-input" id="bid-amount" placeholder="Amount in ETH" step="0.1" min="0">
-                                    <button class="bid-button" onclick="placeBid()">Place Bid</button>
-                                </div>
-                                <p style="font-size: 0.75rem; margin-top: 0.5rem;">Minimum bid: <span id="min-bid">0.00</span> ETH</p>
-                            </div>
-                            
-                            <div class="bid-option">
-                                <h5>Buy Fractional Ownership (ERC-404)</h5>
-                                <p>Purchase SHEN tokens for partial ownership. 10,000 SHEN = 1 full NFT</p>
-                                <div class="bid-input-group">
-                                    <input type="number" class="bid-input" id="token-amount" placeholder="Number of SHEN tokens" step="100" min="100">
-                                    <button class="bid-button secondary" onclick="buyTokens()">Buy Tokens</button>
-                                </div>
-                                <div class="erc404-info">
-                                    <strong>Current Price:</strong> 0.0001 ETH per SHEN<br>
-                                    <strong>Available:</strong> <span id="available-tokens">8,500</span> SHEN for this artifact<br>
-                                    <strong>Your Holdings:</strong> <span id="user-artifact-tokens">0</span> SHEN
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔐</div>
+                <h3>Secure Smart Contracts</h3>
+                <p>Audited contracts ensure transparent, secure transactions with automated settlement and custody.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🌏</div>
+                <h3>Global Access</h3>
+                <p>Participate from anywhere in the world. Multi-language support in English and Chinese.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Liquidity & Trading</h3>
+                <p>Trade your fractional ownership tokens on secondary markets or convert to full NFT ownership.</p>
             </div>
         </div>
-    </div>
-
-    <!-- Toast Notification -->
-    <div class="toast" id="toast"></div>
-
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <div class="footer-logo">
-                    <div class="logo-text">
-                        <div class="logo-chinese">神堡</div>
-                        <div class="logo-english">Shenbury</div>
-                    </div>
-                    <p style="color: rgba(255, 255, 255, 0.7); font-size: 0.875rem; margin-top: 0.5rem;">The Art of Provenance</p>
-                </div>
-            </div>
-            <div class="footer-section">
-                <h4>Services</h4>
-                <a href="#">Auctions</a>
-                <a href="#">Private Sales</a>
-                <a href="#">Valuations</a>
-                <a href="#">ERC-404 Guide</a>
-            </div>
-            <div class="footer-section">
-                <h4>About</h4>
-                <a href="#">Our Specialists</a>
-                <a href="#">Press</a>
-                <a href="#">Careers</a>
-                <a href="#">Contact</a>
-            </div>
-            <div class="footer-section">
-                <h4>Technology</h4>
-                <a href="#">Smart Contracts</a>
-                <a href="#">IPFS Storage</a>
-                <a href="#">Token Economics</a>
-                <a href="#">Security Audits</a>
-            </div>
+    </section>
+    
+    <!-- Collection Preview -->
+    <section class="collection" id="collection">
+        <h2 class="section-title">Featured Artifacts</h2>
+        <div class="collection-grid" id="artifactsGrid">
+            <!-- Artifacts will be dynamically loaded here -->
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2024 Shenbury 神堡. All rights reserved. | The Art of Provenance | ERC-404 Powered by Ethereum</p>
-        </div>
-    </footer>
-
-    <script>
-        // Enhanced artifact data with FIXED paths and ESCAPED quotes
+    </section>
+    
+    <!-- Web3 Integration Script -->
+    <script src="https://cdn.ethers.io/lib/ethers-5.2.0.esm.min.js" type="module"></script>
+    <script type="module">
+        import { ethers } from 'https://cdn.ethers.io/lib/ethers-5.2.0.esm.min.js';
+        
+        // Configuration
+        const CONFIG = {
+            CHAIN_ID: '0x1', // Ethereum Mainnet
+            CONTRACT_ADDRESS: '0x...', // Add your contract address
+            INFURA_ID: 'your_infura_id',
+            SUPPORTED_WALLETS: ['MetaMask', 'WalletConnect']
+        };
+        
+        // Sample artifacts data
         const artifacts = [
             {
                 id: 1,
-                lotNumber: '001',
-                title: 'AN EXCEPTIONALLY RARE RU KILN SUNFLOWER-FORM WASHER',
-                chinese: '北宋 汝官窯天青釉葵花洗',
-                dynasty: 'song',
-                dynastyInfo: 'Northern Song Dynasty, 11th-12th Century',
-                imageOrientation: 'landscape',
-                images: [
-                    'https://raw.githubusercontent.com/jnodes/shenbury/main/public/assets/images/relics/001-song-ru-washer/main.jpg',
-                    'https://raw.githubusercontent.com/jnodes/shenbury/main/public/assets/images/relics/001-song-ru-washer/detail-1.jpg',
-                    'https://raw.githubusercontent.com/jnodes/shenbury/main/public/assets/images/relics/001-song-ru-washer/detail-2.jpg',
-                    'https://raw.githubusercontent.com/jnodes/shenbury/main/public/assets/images/relics/001-song-ru-washer/detail-3.jpg'
-                ],
-                thumbnail: 'https://raw.githubusercontent.com/jnodes/shenbury/main/public/assets/images/relics/001-song-ru-washer/main.jpg',
-                placeholder: 'https://raw.githubusercontent.com/jnodes/shenbury/main/public/assets/images/relics/001-song-ru-washer/main.jpg',
-                description: 'This extraordinarily rare washer represents the pinnacle of Song ceramic achievement. Ru ware was produced for a mere twenty years at the end of the Northern Song period, exclusively for imperial use. The distinctive sky-blue glaze with its subtle crackle pattern was considered the finest of all Chinese ceramics.',
-                estimate: { low: 5000, high: 8000 },
-                currentBid: 6000,
-                bidCount: 47,
-                endTime: Date.now() + 86400000 * 7,
-                provenance: 'Private Collection, Hong Kong\nFormed in the 1970s\nAcquired from J.J. Lally & Co., New York, 1985',
-                condition: 'Excellent condition with characteristic ice-crackle throughout the glaze. Minor expected wear to the foot ring consistent with age.',
-                dimensions: 'Diameter: 14.6 cm\nHeight: 3.65 cm\nWeight: 285g',
-                literature: 'Compare a similar example in the Palace Museum, Beijing, illustrated in \"Complete Collection of Treasures of the Palace Museum: Porcelain of the Song Dynasty (I)\", Hong Kong, 1996, pl. 5',
-                technicalNotes: 'The glaze exhibits the characteristic \"sky-blue\" color achieved through reduction firing. X-ray fluorescence analysis confirms the presence of agate powder in the glaze composition, a hallmark of authentic Ru ware.',
-                culturalSignificance: 'Ru kilns operated for only about 20 years (1086-1106) exclusively for the Northern Song court. Fewer than 100 genuine pieces are known to exist worldwide.',
-                fractionalAvailable: 1000,
-                tokenHolders: 125
+                title: "Imperial Dragon Vase",
+                dynasty: "Ming Dynasty",
+                period: "Xuande",
+                price: "2.5 ETH",
+                image: "/assets/images/relics/001-ming-vase/main.jpg"
             },
             {
                 id: 2,
-                lotNumber: '002',
-                title: 'AN IMPERIAL RU KILN "SKY BLUE" GOURD BOTTLE',
-                chinese: '北宋 汝窯天青釉葫蘆瓶',
-                dynasty: 'song',
-                dynastyInfo: 'Northern Song Dynasty, 11th-12th Century',
-                imageOrientation: 'portrait',
-                images: [
-                    'https://raw.githubusercontent.com/jnodes/shenbury/main/public/assets/images/relics/002-song-ru-bottle/main.jpg',
-                    'https://raw.githubusercontent.com/jnodes/shenbury/main/public/assets/images/relics/002-song-ru-bottle/detail-1.jpg',
-                    'https://raw.githubusercontent.com/jnodes/shenbury/main/public/assets/images/relics/002-song-ru-bottle/detail-2.jpg'
-                ],
-                thumbnail: 'https://raw.githubusercontent.com/jnodes/shenbury/main/public/assets/images/relics/002-song-ru-bottle/main.jpg',
-                placeholder: 'https://raw.githubusercontent.com/jnodes/shenbury/main/public/assets/images/relics/002-song-ru-bottle/main.jpg',
-                description: 'This magnificent gourd-form bottle exemplifies the restraint and elegance that characterizes the finest Ru ware. The form, derived from natural gourds used as water containers, was transformed by Song potters into an object of sublime beauty.',
-                estimate: { low: 6000, high: 10000 },
-                currentBid: 7500,
-                bidCount: 62,
-                endTime: Date.now() + 86400000 * 10,
-                provenance: 'Private Collection, Taiwan\nFormerly in the collection of Sakamoto Gorō (1923-2016)\nAcquired at Sotheby\'s Hong Kong, April 2005',
-                condition: 'Perfect condition. The glaze is of exceptional quality with the desirable \"ice crackle\" pattern throughout.',
-                dimensions: 'Height: 22.8 cm\nDiameter: 12.5 cm\nWeight: 680g',
-                literature: 'For a closely related example, see the gourd vase in the British Museum, London, published in Jessica Harrison-Hall, \"Catalogue of Late Yuan and Ming Ceramics in the British Museum\", London, 2001, no. 15:1',
-                technicalNotes: 'Thermoluminescence test certificate from Oxford Authentication Ltd. confirms dating to 900 ± 100 years.',
-                fractionalAvailable: 500,
-                tokenHolders: 198
+                title: "Celadon Bowl",
+                dynasty: "Song Dynasty",
+                period: "12th Century",
+                price: "1.8 ETH",
+                image: "/assets/images/relics/002-song-bowl/main.jpg"
             },
             {
                 id: 3,
-                lotNumber: '003',
-                title: 'A MAGNIFICENT MING XUANDE CLOISONNÉ TRIPOD CENSER',
-                chinese: '明宣德 掐絲琺瑯獸鈕蓮紋三足爐',
-                dynasty: 'ming',
-                dynastyInfo: 'Xuande Period (1426-1435)',
-                imageOrientation: 'square',
-                images: [
-                    'https://raw.githubusercontent.com/jnodes/shenbury/main/public/assets/images/relics/003-ming-cloisonne/main.jpg',
-                    'https://raw.githubusercontent.com/jnodes/shenbury/main/public/assets/images/relics/003-ming-cloisonne/detail-1.jpg',
-                    'https://raw.githubusercontent.com/jnodes/shenbury/main/public/assets/images/relics/003-ming-cloisonne/detail-2.jpg',
-                    'https://raw.githubusercontent.com/jnodes/shenbury/main/public/assets/images/relics/003-ming-cloisonne/mark.jpg'
-                ],
-                thumbnail: 'https://raw.githubusercontent.com/jnodes/shenbury/main/public/assets/images/relics/003-ming-cloisonne/main.jpg',
-                placeholder: 'https://raw.githubusercontent.com/jnodes/shenbury/main/public/assets/images/relics/003-ming-cloisonne/main.jpg',
-                description: 'This exceptional censer represents the golden age of Chinese cloisonné production during the Xuande period. The technique, introduced from Byzantium via the Silk Road, reached its artistic zenith under imperial patronage.',
-                estimate: { low: 120, high: 180 },
-                currentBid: 150,
-                bidCount: 38,
-                endTime: Date.now() + 86400000 * 6,
-                provenance: 'Private Collection, Hong Kong\nFormerly from the Qing Court Collection\nChristie\'s London, November 1989, lot 234',
-                condition: 'Excellent condition. Minor restoration to one cloud-scroll on the rim professionally executed.',
-                dimensions: 'Height: 28.5 cm\nWidth: 35.2 cm\nWeight: 4.2 kg',
-                literature: 'Illustrated in Harry Garner, \"Chinese and Japanese Cloisonné Enamels\", London, 1962, pl. 48A',
-                culturalSignificance: 'Xuande marked cloisonné pieces are among the rarest and most sought-after works of Chinese decorative arts. This example bears the imperial six-character mark.',
-                fractionalAvailable: 4000,
-                tokenHolders: 76
-            },
-            {
-                id: 4,
-                lotNumber: '004',
-                title: 'AN EXTRAORDINARILY RARE YUAN JILAN-GLAZED EWER',
-                chinese: '元 霽藍釉白龍紋梨形執壺',
-                dynasty: 'yuan',
-                dynastyInfo: 'Yuan Dynasty (1271-1368)',
-                imageOrientation: 'portrait',
-                images: [
-                    'https://raw.githubusercontent.com/jnodes/shenbury/main/public/assets/images/relics/004-yuan-jilan-ewer/main.jpg',
-                    'https://raw.githubusercontent.com/jnodes/shenbury/main/public/assets/images/relics/004-yuan-jilan-ewer/detail-1.jpg',
-                    'https://raw.githubusercontent.com/jnodes/shenbury/main/public/assets/images/relics/004-yuan-jilan-ewer/detail-2.jpg',
-                    'https://raw.githubusercontent.com/jnodes/shenbury/main/public/assets/images/relics/004-yuan-jilan-ewer/detail-3.jpg',
-                    'https://raw.githubusercontent.com/jnodes/shenbury/main/public/assets/images/relics/004-yuan-jilan-ewer/detail-4.jpg'
-                ],
-                thumbnail: 'https://raw.githubusercontent.com/jnodes/shenbury/main/public/assets/images/relics/004-yuan-jilan-ewer/main.jpg',
-                placeholder: 'https://raw.githubusercontent.com/jnodes/shenbury/main/public/assets/images/relics/004-yuan-jilan-ewer/main.jpg',
-                description: 'This spectacular ewer showcases the technical mastery achieved by Yuan potters in high-fired cobalt blue glazes. The dramatic contrast between the deep blue ground and white slip-painted dragon demonstrates the sophisticated decorative techniques of the period.',
-                estimate: { low: 250, high: 400 },
-                currentBid: 325,
-                bidCount: 41,
-                endTime: Date.now() + 86400000 * 8,
-                provenance: 'Private Japanese Collection, Kyoto\nFormerly in the Idemitsu Museum of Arts\nAcquired from Yamanaka & Co., Kyoto, 1955',
-                condition: 'Remarkable condition. Small chip to the spout professionally restored. The cobalt blue glaze of exceptional depth and brilliance.',
-                dimensions: 'Height: 31.3 cm\nWidth: 18.5 cm\nWeight: 1.45 kg',
-                literature: 'Published in \"Yuan Blue and White Porcelain\", National Palace Museum, Taipei, 1998, no. 47',
-                technicalNotes: 'The cobalt used in this piece has been identified through spectrographic analysis as imported Persian cobalt, confirming its imperial quality.',
-                culturalSignificance: 'Yuan dynasty blue and white represents a revolutionary moment in ceramic history, combining Chinese potting techniques with Islamic aesthetic preferences.',
-                fractionalAvailable: 3000,
-                tokenHolders: 92
-            },
-            {
-                id: 5,
-                lotNumber: '005',
-                title: 'A RARE IMPERIAL QING YANGCAI "BUTTERFLY" VASE',
-                chinese: '清乾隆 洋彩蝴蝶紋瓶',
-                dynasty: 'qing',
-                dynastyInfo: 'Qianlong Period (1736-1795)',
-                imageOrientation: 'portrait',
-                images: [
-                    'https://raw.githubusercontent.com/jnodes/shenbury/main/public/assets/images/relics/005-qing-butterfly-vase/main.jpg',
-                    'https://raw.githubusercontent.com/jnodes/shenbury/main/public/assets/images/relics/005-qing-butterfly-vase/detail-1.jpg',
-                    'https://raw.githubusercontent.com/jnodes/shenbury/main/public/assets/images/relics/005-qing-butterfly-vase/detail-2.jpg',
-                    'https://raw.githubusercontent.com/jnodes/shenbury/main/public/assets/images/relics/005-qing-butterfly-vase/mark.jpg'
-                ],
-                thumbnail: 'https://raw.githubusercontent.com/jnodes/shenbury/main/public/assets/images/relics/005-qing-butterfly-vase/main.jpg',
-                placeholder: 'https://raw.githubusercontent.com/jnodes/shenbury/main/public/assets/images/relics/005-qing-butterfly-vase/main.jpg',
-                description: 'The ovoid body rising from a spreading foot to a waisted neck with a flared rim, brilliantly enamelled with butterflies in flight amidst flowering branches. This piece exemplifies the technical perfection achieved at the imperial kilns during the Qianlong period.',
-                estimate: { low: 80, high: 120 },
-                currentBid: 95,
-                bidCount: 12,
-                endTime: Date.now() + 86400000 * 3,
-                provenance: 'Private European Collection, acquired 1960s\nFormerly in the collection of Baron von H., Switzerland',
-                condition: 'Excellent condition with minor wear to the gilding on the rim, consistent with age.',
-                dimensions: 'Height: 38.5 cm\nDiameter: 19.2 cm',
-                literature: 'Compare a similar example in the Palace Museum, Beijing, illustrated in \"The Complete Collection of Treasures of the Palace Museum: Porcelains with Cloisonné Enamel Decoration\", vol. 39, Hong Kong, 2009, pl. 165',
-                fractionalAvailable: 8500,
-                tokenHolders: 15
+                title: "Blue & White Plate",
+                dynasty: "Qing Dynasty",
+                period: "Kangxi",
+                price: "3.2 ETH",
+                image: "/assets/images/relics/003-qing-plate/main.jpg"
             }
         ];
         
-        // Web3 Configuration
-        let provider;
-        let signer;
-        let userAccount;
-        let auctionContract;
-        let erc404Contract;
+        // State management
+        let web3Provider = null;
+        let userAddress = null;
+        let shenburyContract = null;
         
-        // ERC-404 Contract ABI (simplified)
-        const ERC404_CONTRACT_ABI = [
-            {
-                "inputs": [],
-                "name": "name",
-                "outputs": [{"name": "", "type": "string"}],
-                "type": "function"
-            },
-            {
-                "inputs": [{"name": "owner", "type": "address"}],
-                "name": "balanceOf",
-                "outputs": [{"name": "", "type": "uint256"}],
-                "type": "function"
-            },
-            {
-                "inputs": [{"name": "to", "type": "address"}, {"name": "amount", "type": "uint256"}],
-                "name": "transfer",
-                "outputs": [{"name": "", "type": "bool"}],
-                "type": "function"
-            }
-        ];
-        
-        // Contract addresses (will be replaced after deployment)
-        const AUCTION_CONTRACT_ADDRESS = "0x1234567890123456789012345678901234567890"; // TODO: Replace after deployment
-        const ERC404_CONTRACT_ADDRESS = "0x0987654321098765432109876543210987654321"; // TODO: Replace after deployment
-
-        // State variables
-        let currentFilter = 'all';
-        let currentSort = 'lot';
-        let selectedArtifact = null;
-        let currentImageIndex = 0;
-        
-        // Check if running in demo mode
-        const DEMO_MODE = !window.ethereum || !AUCTION_CONTRACT_ADDRESS.startsWith('0x') || AUCTION_CONTRACT_ADDRESS === "0x1234567890123456789012345678901234567890";
-
-        // Initialize
-        async function init() {
-            hideLoading();
-            renderArtifacts();
-            updateStats();
-            startTimers();
-            
-            // Check if Web3 is available
-            if (typeof window.ethereum !== 'undefined') {
-                provider = new ethers.BrowserProvider(window.ethereum);
-                
-                // Check if already connected
-                try {
-                    const accounts = await provider.listAccounts();
-                    if (accounts.length > 0) {
-                        userAccount = accounts[0].address;
-                        signer = await provider.getSigner();
-                        await updateWalletUI();
-                        await checkNetwork();
-                    }
-                } catch (error) {
-                    console.log('No accounts connected');
-                }
-                
-                // Listen for account changes
-                window.ethereum.on('accountsChanged', handleAccountsChanged);
-                window.ethereum.on('chainChanged', () => window.location.reload());
-            }
-            
-            // Show demo mode notification
-            if (DEMO_MODE) {
-                setTimeout(() => {
-                    showToast('Running in Demo Mode - Connect wallet and deploy contracts for real transactions', 'info');
-                }, 2000);
-            }
-        }
-        
-        // Hide loading screen
-        function hideLoading() {
+        // Initialize app
+        document.addEventListener('DOMContentLoaded', async () => {
+            // Hide loading overlay
             setTimeout(() => {
-                document.getElementById('loading').classList.add('hidden');
-            }, 500);
-        }
-        
-        // Connect wallet
-        async function connectWallet() {
+                document.getElementById('loadingOverlay').style.opacity = '0';
+                setTimeout(() => {
+                    document.getElementById('loadingOverlay').style.display = 'none';
+                }, 500);
+            }, 1000);
+            
+            // Initialize Web3
             if (typeof window.ethereum !== 'undefined') {
-                try {
-                    // Request account access
-                    const accounts = await window.ethereum.request({ 
-                        method: 'eth_requestAccounts' 
-                    });
-                    userAccount = accounts[0];
-                    
-                    // Initialize ethers
-                    provider = new ethers.BrowserProvider(window.ethereum);
-                    signer = await provider.getSigner();
-                    
-                    // Check network
-                    const network = await provider.getNetwork();
-                    console.log('Connected to network:', network.chainId);
-                    
-                    // Initialize contracts with error handling
-                    try {
-                        erc404Contract = new ethers.Contract(
-                            ERC404_CONTRACT_ADDRESS,
-                            ERC404_CONTRACT_ABI,
-                            signer
-                        );
-                        console.log('Contracts initialized');
-                    } catch (contractError) {
-                        console.log('Contracts pending deployment');
-                        // Continue in demo mode
+                console.log('Web3 detected');
+                setupWalletListeners();
+            }
+            
+            // Load artifacts
+            loadArtifacts();
+            
+            // Setup event listeners
+            document.getElementById('walletBtn').addEventListener('click', connectWallet);
+            
+            // Smooth scroll
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                     }
-                    
-                    updateWalletUI();
-                    showToast('Wallet connected successfully!', 'success');
-                    
-                } catch (error) {
-                    console.error('Error connecting wallet:', error);
-                    if (error.code === 4001) {
-                        showToast('Connection cancelled', 'error');
-                    } else if (error.code === -32002) {
-                        showToast('Please unlock MetaMask', 'error');
-                    } else {
-                        showToast('Failed to connect wallet', 'error');
-                    }
-                }
-            } else {
-                showToast('Please install MetaMask to use this dApp', 'error');
-                window.open('https://metamask.io/download/', '_blank');
-            }
-        }
-        
-        // Check network
-        async function checkNetwork() {
-            if (!provider) return;
-            
-            const targetNetwork = 11155111n; // Sepolia testnet
-            const network = await provider.getNetwork();
-            
-            if (network.chainId !== targetNetwork && !DEMO_MODE) {
-                showToast('Please switch to Sepolia testnet', 'warning');
-                
-                try {
-                    await window.ethereum.request({
-                        method: 'wallet_switchEthereumChain',
-                        params: [{ chainId: '0x' + targetNetwork.toString(16) }],
-                    });
-                } catch (error) {
-                    if (error.code === 4902) {
-                        // Chain not added, add it
-                        await window.ethereum.request({
-                            method: 'wallet_addEthereumChain',
-                            params: [{
-                                chainId: '0x' + targetNetwork.toString(16),
-                                chainName: 'Sepolia Testnet',
-                                nativeCurrency: { name: 'ETH', symbol: 'ETH', decimals: 18 },
-                                rpcUrls: ['https://sepolia.infura.io/v3/'],
-                                blockExplorerUrls: ['https://sepolia.etherscan.io/']
-                            }]
-                        });
-                    }
-                }
-            }
-        }
-        
-        // Handle account changes
-        function handleAccountsChanged(accounts) {
-            if (accounts.length === 0) {
-                userAccount = null;
-                updateWalletUI();
-                showToast('Wallet disconnected', 'error');
-            } else if (accounts[0] !== userAccount) {
-                userAccount = accounts[0];
-                updateWalletUI();
-                showToast('Account changed', 'success');
-            }
-        }
-        
-        // Update wallet UI
-        async function updateWalletUI() {
-            const walletButton = document.querySelector('.connect-wallet');
-            const balanceDisplay = document.getElementById('token-balance');
-            
-            if (userAccount) {
-                walletButton.classList.add('connected');
-                document.getElementById('wallet-text').textContent = 
-                    `${userAccount.slice(0, 6)}...${userAccount.slice(-4)}`;
-                
-                balanceDisplay.style.display = 'block';
-                await updateTokenBalance();
-            } else {
-                walletButton.classList.remove('connected');
-                document.getElementById('wallet-text').textContent = 'Connect Wallet';
-                balanceDisplay.style.display = 'none';
-            }
-        }
-        
-        // Update token balance
-        async function updateTokenBalance() {
-            if (!userAccount || !erc404Contract) return;
-            
-            try {
-                // In production, this would call the contract
-                // const balance = await erc404Contract.balanceOf(userAccount);
-                const balance = Math.floor(Math.random() * 5000); // Demo value
-                document.getElementById('balance-amount').textContent = balance.toLocaleString();
-            } catch (error) {
-                console.error('Error fetching balance:', error);
-            }
-        }
-        
-        // Render artifacts
-        function renderArtifacts() {
-            const grid = document.getElementById('artifacts-grid');
-            let filteredArtifacts = artifacts;
-            
-            // Apply filter
-            if (currentFilter !== 'all') {
-                filteredArtifacts = artifacts.filter(a => a.dynasty === currentFilter);
-            }
-            
-            // Apply sort
-            filteredArtifacts.sort((a, b) => {
-                switch(currentSort) {
-                    case 'price-high':
-                        return b.currentBid - a.currentBid;
-                    case 'price-low':
-                        return a.currentBid - b.currentBid;
-                    case 'ending':
-                        return a.endTime - b.endTime;
-                    default:
-                        return a.lotNumber.localeCompare(b.lotNumber);
-                }
+                });
             });
             
-            grid.innerHTML = filteredArtifacts.map(artifact => {
-                const imageSrc = artifact.thumbnail || artifact.images[0] || '';
-                return `
-                    <div class="artifact-card" onclick="openArtifactModal(${artifact.id})">
-                        <div class="artifact-image-container ${artifact.imageOrientation || 'square'}">
-                            <img src="${imageSrc}" 
-                                 alt="${artifact.title}" 
-                                 class="artifact-image loading" 
-                                 loading="lazy"
-                                 onload="this.classList.remove('loading'); this.classList.add('loaded');"
-                                 onerror="this.style.opacity='0'">
+            // Header hide on scroll
+            let lastScrollTop = 0;
+            window.addEventListener('scroll', () => {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                const header = document.getElementById('header');
+                
+                if (scrollTop > lastScrollTop && scrollTop > 100) {
+                    header.style.transform = 'translateY(-100%)';
+                } else {
+                    header.style.transform = 'translateY(0)';
+                }
+                
+                lastScrollTop = scrollTop;
+            });
+        });
+        
+        // Load artifacts into grid
+        function loadArtifacts() {
+            const grid = document.getElementById('artifactsGrid');
+            
+            artifacts.forEach(artifact => {
+                const card = document.createElement('div');
+                card.className = 'artifact-card';
+                card.innerHTML = `
+                    <img src="${artifact.image}" alt="${artifact.title}" class="artifact-image" loading="lazy">
+                    <div class="artifact-details">
+                        <h3 class="artifact-title">${artifact.title}</h3>
+                        <div class="artifact-meta">
+                            <span class="dynasty-tag">${artifact.dynasty}</span>
+                            <span class="artifact-price">${artifact.price}</span>
                         </div>
-                        <div class="artifact-info">
-                            <div class="artifact-lot">LOT ${artifact.lotNumber}</div>
-                            <h3 class="artifact-title">${artifact.title}</h3>
-                            <p class="artifact-dynasty">${artifact.chinese}<br>${artifact.dynastyInfo}</p>
-                            <p class="artifact-estimate">Estimate: ${artifact.estimate.low}-${artifact.estimate.high} ETH</p>
-                            <p class="artifact-bid">${artifact.currentBid} ETH</p>
-                            <p class="artifact-estimate">${artifact.bidCount} bids • ${getTimeLeft(artifact.endTime)}</p>
-                            <div class="artifact-erc404">
-                                <strong>ERC-404:</strong> ${artifact.fractionalAvailable.toLocaleString()} SHEN available<br>
-                                ${artifact.tokenHolders} fractional owners
-                            </div>
+                        <div class="artifact-actions">
+                            <button class="action-btn" onclick="viewArtifact(${artifact.id})">View Details</button>
+                            <button class="action-btn" onclick="bidOnArtifact(${artifact.id})">Place Bid</button>
                         </div>
                     </div>
                 `;
-            }).join('');
-        }
-        
-        // Filter by dynasty
-        function filterByDynasty(dynasty) {
-            currentFilter = dynasty;
-            document.querySelectorAll('.dynasty-filter').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            event.target.classList.add('active');
-            renderArtifacts();
-        }
-        
-        // Sort artifacts
-        function sortArtifacts(sortBy) {
-            currentSort = sortBy;
-            renderArtifacts();
-        }
-        
-        // Open artifact modal
-        function openArtifactModal(id) {
-            selectedArtifact = artifacts.find(a => a.id === id);
-            if (!selectedArtifact) return;
-            
-            currentImageIndex = 0;
-            
-            // Update modal content
-            updateModalImage();
-            document.getElementById('modal-lot').textContent = `LOT ${selectedArtifact.lotNumber}`;
-            document.getElementById('modal-title').textContent = selectedArtifact.title;
-            document.getElementById('modal-dynasty').textContent = `${selectedArtifact.chinese} | ${selectedArtifact.dynastyInfo}`;
-            document.getElementById('modal-description').textContent = selectedArtifact.description;
-            document.getElementById('modal-provenance').textContent = selectedArtifact.provenance;
-            document.getElementById('modal-condition').textContent = selectedArtifact.condition;
-            document.getElementById('modal-dimensions').textContent = selectedArtifact.dimensions;
-            document.getElementById('modal-literature').textContent = selectedArtifact.literature;
-            document.getElementById('modal-current-bid').textContent = `${selectedArtifact.currentBid} ETH`;
-            document.getElementById('modal-bid-count').textContent = `${selectedArtifact.bidCount} bids`;
-            document.getElementById('min-bid').textContent = (selectedArtifact.currentBid + 5).toFixed(2);
-            document.getElementById('available-tokens').textContent = selectedArtifact.fractionalAvailable.toLocaleString();
-            
-            // Show technical notes and cultural significance if available
-            if (selectedArtifact.technicalNotes) {
-                document.getElementById('technical-notes-section').style.display = 'block';
-                document.getElementById('modal-technical-notes').textContent = selectedArtifact.technicalNotes;
-            } else {
-                document.getElementById('technical-notes-section').style.display = 'none';
-            }
-            
-            if (selectedArtifact.culturalSignificance) {
-                document.getElementById('cultural-significance-section').style.display = 'block';
-                document.getElementById('modal-cultural-significance').textContent = selectedArtifact.culturalSignificance;
-            } else {
-                document.getElementById('cultural-significance-section').style.display = 'none';
-            }
-            
-            // Create gallery dots if multiple images
-            createGalleryDots();
-            
-            // Clear input fields
-            document.getElementById('bid-amount').value = '';
-            document.getElementById('token-amount').value = '';
-            
-            // Show modal
-            document.getElementById('artifact-modal').style.display = 'block';
-            document.body.style.overflow = 'hidden';
-        }
-        
-        // Update modal image
-        function updateModalImage() {
-            if (!selectedArtifact || !selectedArtifact.images) return;
-            
-            const modalImage = document.getElementById('modal-image');
-            const imageSrc = selectedArtifact.images[currentImageIndex] || '';
-            
-            modalImage.style.opacity = '0';
-            setTimeout(() => {
-                modalImage.src = imageSrc;
-                modalImage.style.opacity = '1';
-                modalImage.onerror = function() {
-                    this.style.opacity = '0';
-                };
-            }, 200);
-        }
-        
-        // Create gallery dots
-        function createGalleryDots() {
-            const dotsContainer = document.getElementById('gallery-dots');
-            if (!selectedArtifact.images || selectedArtifact.images.length <= 1) {
-                dotsContainer.innerHTML = '';
-                return;
-            }
-            
-            dotsContainer.innerHTML = selectedArtifact.images.map((_, index) => 
-                `<span class="gallery-dot ${index === currentImageIndex ? 'active' : ''}" 
-                      onclick="changeImage(${index})"></span>`
-            ).join('');
-        }
-        
-        // Change image in gallery
-        function changeImage(index) {
-            currentImageIndex = index;
-            updateModalImage();
-            
-            // Update dots
-            document.querySelectorAll('.gallery-dot').forEach((dot, i) => {
-                dot.classList.toggle('active', i === index);
+                grid.appendChild(card);
             });
         }
         
-        // Close modal
-        function closeModal() {
-            document.getElementById('artifact-modal').style.display = 'none';
-            document.body.style.overflow = 'auto';
-            selectedArtifact = null;
-            currentImageIndex = 0;
-        }
-        
-        // Place bid
-        async function placeBid() {
-            if (!userAccount) {
-                showToast('Please connect your wallet first', 'error');
-                return;
-            }
-            
-            const bidInput = document.getElementById('bid-amount');
-            const bidAmount = parseFloat(bidInput.value);
-            const minBid = selectedArtifact.currentBid + 5;
-            
-            if (isNaN(bidAmount) || bidAmount < minBid) {
-                showToast(`Minimum bid is ${minBid} ETH`, 'error');
-                return;
-            }
-            
-            // Disable button during transaction
-            const bidButton = event.target;
-            bidButton.disabled = true;
-            bidButton.textContent = 'Processing...';
+        // Wallet connection
+        async function connectWallet() {
+            const btn = document.getElementById('walletBtn');
             
             try {
-                if (DEMO_MODE) {
-                    // Demo mode simulation
-                    await new Promise(resolve => setTimeout(resolve, 2000));
-                    
-                    selectedArtifact.currentBid = bidAmount;
-                    selectedArtifact.bidCount++;
-                    
-                    showToast(`Demo Mode: Bid of ${bidAmount} ETH placed successfully!`, 'success');
-                    
-                    // Update modal
-                    document.getElementById('modal-current-bid').textContent = `${bidAmount} ETH`;
-                    document.getElementById('modal-bid-count').textContent = `${selectedArtifact.bidCount} bids`;
-                    
-                    // Update grid after modal closes
-                    setTimeout(() => {
-                        renderArtifacts();
-                        updateStats();
-                    }, 500);
-                    
-                    bidInput.value = '';
-                    
-                } else {
-                    // Real contract interaction
-                    const valueInWei = ethers.parseEther(bidAmount.toString());
-                    const tx = await auctionContract.placeBid(selectedArtifact.id, {
-                        value: valueInWei
-                    });
-                    const receipt = await tx.wait();
-                    
-                    showToast(`Bid placed! Transaction: ${receipt.hash.slice(0, 10)}...`, 'success');
-                    
-                    // Update UI after blockchain confirmation
-                    selectedArtifact.currentBid = bidAmount;
-                    selectedArtifact.bidCount++;
-                    renderArtifacts();
-                    updateStats();
+                if (!window.ethereum) {
+                    showError('Please install MetaMask to use this feature');
+                    window.open('https://metamask.io/download/', '_blank');
+                    return;
                 }
                 
-            } catch (error) {
-                console.error('Error placing bid:', error);
-                showToast(error.message || 'Failed to place bid', 'error');
-            } finally {
-                bidButton.disabled = false;
-                bidButton.textContent = 'Place Bid';
-            }
-        }
-        
-        // Buy tokens
-        async function buyTokens() {
-            if (!userAccount) {
-                showToast('Please connect your wallet first', 'error');
-                return;
-            }
-            
-            const tokenInput = document.getElementById('token-amount');
-            const tokenAmount = parseInt(tokenInput.value);
-            
-            if (isNaN(tokenAmount) || tokenAmount <= 0) {
-                showToast('Please enter a valid token amount', 'error');
-                return;
-            }
-            
-            if (tokenAmount > selectedArtifact.fractionalAvailable) {
-                showToast('Not enough tokens available', 'error');
-                return;
-            }
-            
-            const totalCost = tokenAmount * 0.0001;
-            const buyButton = event.target;
-            buyButton.disabled = true;
-            buyButton.textContent = 'Processing...';
-            
-            try {
-                if (DEMO_MODE) {
-                    // Demo mode simulation
-                    await new Promise(resolve => setTimeout(resolve, 2000));
-                    
-                    selectedArtifact.fractionalAvailable -= tokenAmount;
-                    selectedArtifact.tokenHolders++;
-                    
-                    showToast(`Demo Mode: Purchased ${tokenAmount} SHEN tokens for ${totalCost} ETH!`, 'success');
-                    
-                    if (tokenAmount >= 10000) {
-                        showToast('Congratulations! You now own enough tokens for a full NFT!', 'success');
-                    }
-                    
-                    document.getElementById('available-tokens').textContent = 
-                        selectedArtifact.fractionalAvailable.toLocaleString();
-                    
-                    tokenInput.value = '';
-                    
-                } else {
-                    // Real contract interaction
-                    const valueInWei = ethers.parseEther(totalCost.toString());
-                    const tx = await erc404Contract.buyTokens(selectedArtifact.id, tokenAmount, {
-                        value: valueInWei
-                    });
-                    const receipt = await tx.wait();
-                    
-                    showToast(`Tokens purchased! Transaction: ${receipt.hash.slice(0, 10)}...`, 'success');
-                    
-                    selectedArtifact.fractionalAvailable -= tokenAmount;
-                    selectedArtifact.tokenHolders++;
-                    
-                    await updateTokenBalance();
-                }
+                btn.disabled = true;
+                btn.textContent = 'Connecting...';
                 
-                renderArtifacts();
-                
-            } catch (error) {
-                console.error('Error buying tokens:', error);
-                showToast(error.message || 'Failed to purchase tokens', 'error');
-            } finally {
-                buyButton.disabled = false;
-                buyButton.textContent = 'Buy Tokens';
-            }
-        }
-        
-        // Update statistics
-        function updateStats() {
-            document.getElementById('total-lots').textContent = artifacts.length;
-            const totalBids = artifacts.reduce((sum, a) => sum + a.bidCount, 0);
-            document.getElementById('total-bids').textContent = totalBids;
-            const totalValue = artifacts.reduce((sum, a) => sum + a.currentBid, 0);
-            document.getElementById('total-value').textContent = totalValue.toFixed(0);
-        }
-        
-        // Get time left for auction
-        function getTimeLeft(endTime) {
-            const now = Date.now();
-            const diff = endTime - now;
-            
-            if (diff <= 0) return 'Ended';
-            
-            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            
-            if (days > 0) return `${days}d ${hours}h`;
-            if (hours > 0) return `${hours}h ${minutes}m`;
-            return `${minutes}m`;
-        }
-        
-        // Start timers
-        function startTimers() {
-            setInterval(() => {
-                // Update time left in grid
-                const cards = document.querySelectorAll('.artifact-card');
-                cards.forEach((card, index) => {
-                    const artifact = artifacts[index];
-                    const timeElement = card.querySelector('.artifact-estimate:last-of-type');
-                    if (timeElement && artifact) {
-                        timeElement.textContent = `${artifact.bidCount} bids • ${getTimeLeft(artifact.endTime)}`;
-                    }
+                // Request account access
+                const accounts = await window.ethereum.request({ 
+                    method: 'eth_requestAccounts' 
                 });
-            }, 60000); // Update every minute
-        }
-        
-        // Show toast notification
-        function showToast(message, type = 'info') {
-            const toast = document.getElementById('toast');
-            toast.textContent = message;
-            toast.className = `toast ${type}`;
-            toast.classList.add('show');
-            
-            // Auto-hide after 4 seconds (longer for important messages)
-            setTimeout(() => {
-                toast.classList.remove('show');
-            }, type === 'error' ? 5000 : 4000);
-        }
-        
-        // Scroll functions
-        function scrollToTop() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-        
-        function scrollToAuctions() {
-            document.getElementById('auctions').scrollIntoView({ behavior: 'smooth' });
-        }
-        
-        // Toggle mobile menu
-        function toggleMobileMenu() {
-            showToast('Mobile menu coming soon', 'info');
-        }
-        
-        // Modal close on outside click
-        window.onclick = function(event) {
-            const modal = document.getElementById('artifact-modal');
-            if (event.target === modal) {
-                closeModal();
+                
+                if (accounts.length > 0) {
+                    userAddress = accounts[0];
+                    web3Provider = new ethers.providers.Web3Provider(window.ethereum);
+                    
+                    // Check network
+                    const network = await web3Provider.getNetwork();
+                    if (network.chainId !== 1) { // Not mainnet
+                        showError('Please switch to Ethereum Mainnet');
+                        await switchNetwork();
+                        return;
+                    }
+                    
+                    // Update UI
+                    btn.classList.add('connected');
+                    btn.innerHTML = `
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M8 12l2 2 4-4"/>
+                        </svg>
+                        ${userAddress.slice(0, 6)}...${userAddress.slice(-4)}
+                    `;
+                    
+                    showSuccess('Wallet connected successfully!');
+                    
+                    // Initialize contract
+                    await initializeContract();
+                }
+            } catch (error) {
+                console.error('Wallet connection error:', error);
+                showError('Failed to connect wallet. Please try again.');
+                btn.disabled = false;
+                btn.textContent = 'Connect Wallet';
             }
         }
         
-        // Keyboard shortcuts
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && selectedArtifact) {
-                closeModal();
-            }
-            
-            // Arrow keys for image gallery
-            if (selectedArtifact && selectedArtifact.images && selectedArtifact.images.length > 1) {
-                if (e.key === 'ArrowLeft' && currentImageIndex > 0) {
-                    changeImage(currentImageIndex - 1);
-                } else if (e.key === 'ArrowRight' && currentImageIndex < selectedArtifact.images.length - 1) {
-                    changeImage(currentImageIndex + 1);
+        // Switch network
+        async function switchNetwork() {
+            try {
+                await window.ethereum.request({
+                    method: 'wallet_switchEthereumChain',
+                    params: [{ chainId: CONFIG.CHAIN_ID }],
+                });
+            } catch (error) {
+                if (error.code === 4902) {
+                    showError('Please add Ethereum Mainnet to your wallet');
                 }
             }
-        });
+        }
         
-        // Handle resize events
-        let resizeTimer;
-        window.addEventListener('resize', () => {
-            clearTimeout(resizeTimer);
-            resizeTimer = setTimeout(() => {
-                renderArtifacts();
-            }, 250);
-        });
-        
-        // Unregister any existing service workers
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.getRegistrations().then(function(registrations) {
-                for(let registration of registrations) {
-                    registration.unregister();
+        // Setup wallet listeners
+        function setupWalletListeners() {
+            window.ethereum.on('accountsChanged', (accounts) => {
+                if (accounts.length === 0) {
+                    // User disconnected
+                    userAddress = null;
+                    const btn = document.getElementById('walletBtn');
+                    btn.classList.remove('connected');
+                    btn.textContent = 'Connect Wallet';
+                } else {
+                    // Account changed
+                    userAddress = accounts[0];
+                    connectWallet();
                 }
+            });
+            
+            window.ethereum.on('chainChanged', () => {
+                window.location.reload();
             });
         }
         
-        // Initialize on load
-        window.addEventListener('load', init);
-        
-        // Cleanup on unload
-        window.addEventListener('beforeunload', () => {
-            if (window.ethereum) {
-                window.ethereum.removeListener('accountsChanged', handleAccountsChanged);
+        // Initialize contract
+        async function initializeContract() {
+            if (!web3Provider || !CONFIG.CONTRACT_ADDRESS) return;
+            
+            const signer = web3Provider.getSigner();
+            
+            // Contract ABI (simplified)
+            const abi = [
+                "function balanceOf(address owner) view returns (uint256)",
+                "function tokenURI(uint256 tokenId) view returns (string)",
+                "function bid(uint256 artifactId) payable",
+                "function buyTokens(uint256 amount) payable"
+            ];
+            
+            try {
+                shenburyContract = new ethers.Contract(CONFIG.CONTRACT_ADDRESS, abi, signer);
+                console.log('Contract initialized');
+            } catch (error) {
+                console.error('Contract initialization error:', error);
             }
-        });
+        }
+        
+        // View artifact details
+        window.viewArtifact = function(id) {
+            // Implement artifact detail view
+            console.log('View artifact:', id);
+            // In production, this would open a modal or navigate to detail page
+        };
+        
+        // Bid on artifact
+        window.bidOnArtifact = async function(id) {
+            if (!userAddress) {
+                showError('Please connect your wallet first');
+                await connectWallet();
+                return;
+            }
+            
+            try {
+                // Implement bidding logic
+                console.log('Bid on artifact:', id);
+                showSuccess('Bidding feature coming soon!');
+            } catch (error) {
+                showError('Failed to place bid. Please try again.');
+            }
+        };
+        
+        // Show error message
+        function showError(message) {
+            const errorEl = document.getElementById('errorMessage');
+            errorEl.textContent = message;
+            errorEl.style.display = 'block';
+            setTimeout(() => {
+                errorEl.style.display = 'none';
+            }, 5000);
+        }
+        
+        // Show success message
+        function showSuccess(message) {
+            const successEl = document.getElementById('successMessage');
+            successEl.textContent = message;
+            successEl.style.display = 'block';
+            setTimeout(() => {
+                successEl.style.display = 'none';
+            }, 5000);
+        }
+        
+        // Service Worker Registration
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js')
+                .then(registration => console.log('SW registered:', registration))
+                .catch(error => console.log('SW registration failed:', error));
+        }
+    </script>
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Shenbury",
+        "alternateName": "神堡",
+        "url": "https://shenbury.vercel.app",
+        "description": "Web3-enabled auction platform for authenticated Chinese ceramics and artifacts",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://shenbury.vercel.app/search?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+        }
+    }
     </script>
 </body>
 </html>
