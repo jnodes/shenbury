@@ -1729,7 +1729,7 @@
             });
             
             grid.innerHTML = filteredArtifacts.map(artifact => {
-                const imageSrc = artifact.thumbnail || artifact.images[0] || 'https://via.placeholder.com/600x600/f8f8f8/666666?text=Image+Coming+Soon';
+                const imageSrc = artifact.thumbnail || artifact.images[0] || 'https://assets/images/placeholder.jpg/600x600/f8f8f8/666666?text=Image+Coming+Soon';
                 return `
                     <div class="artifact-card" onclick="openArtifactModal(${artifact.id})">
                         <div class="artifact-image-container ${artifact.imageOrientation || 'square'}">
@@ -1738,7 +1738,7 @@
                                  class="artifact-image loading" 
                                  loading="lazy"
                                  onload="this.classList.remove('loading'); this.classList.add('loaded');"
-                                 onerror="this.src='https://via.placeholder.com/600x600/f8f8f8/666666?text=Image+Coming+Soon'">
+                                 onerror="this.src='https://assets/images/placeholder.jpg/600x600/f8f8f8/666666?text=Image+Coming+Soon'">
                         </div>
                         <div class="artifact-info">
                             <div class="artifact-lot">LOT ${artifact.lotNumber}</div>
@@ -1827,7 +1827,7 @@
             if (!selectedArtifact || !selectedArtifact.images) return;
             
             const modalImage = document.getElementById('modal-image');
-            const imageSrc = selectedArtifact.images[currentImageIndex] || 'https://via.placeholder.com/800x600/f8f8f8/666666?text=Image+Coming+Soon';
+            const imageSrc = selectedArtifact.images[currentImageIndex] || 'https://assets/images/placeholder.jpg/800x600/f8f8f8/666666?text=Image+Coming+Soon';
             
             modalImage.style.opacity = '0';
             setTimeout(() => {
