@@ -1183,7 +1183,7 @@
             </div>
             <div class="stat-item">
                 <span class="stat-value" id="total-value">0</span>
-                <span>Total Value (ETH)</span>
+                <span>Total Value (USD)</span>
             </div>
         </div>
     </div>
@@ -1333,7 +1333,7 @@
     </footer>
 
     <script>
-        // FIXED artifact data with proper paths
+        // FIXED artifact data with USDT pricing
         const artifacts = [
             {
                 id: 1,
@@ -1352,8 +1352,9 @@
                 ],
                 thumbnail: '/assets/images/relics/001-song-ru-washer/main.jpg',
                 description: 'This extraordinarily rare washer represents the pinnacle of Song ceramic achievement. Ru ware was produced for a mere twenty years at the end of the Northern Song period, exclusively for imperial use. The distinctive sky-blue glaze with its subtle crackle pattern was considered the finest of all Chinese ceramics.',
-                estimate: { low: 5000, high: 8000 },
-                currentBid: 6000,
+                estimate: { low: 5000000, high: 8000000 }, // USDT
+                currentBid: 6000000, // USDT
+                minBidIncrement: 100000, // $100k minimum increment
                 bidCount: 47,
                 endTime: Date.now() + 86400000 * 7,
                 provenance: 'Private Collection, Hong Kong\nFormed in the 1970s\nAcquired from J.J. Lally & Co., New York, 1985',
@@ -1380,8 +1381,9 @@
                 ],
                 thumbnail: '/assets/images/relics/002-song-ru-bottle/main.jpg',
                 description: 'This magnificent gourd-form bottle exemplifies the restraint and elegance that characterizes the finest Ru ware. The form, derived from natural gourds used as water containers, was transformed by Song potters into an object of sublime beauty.',
-                estimate: { low: 6000, high: 10000 },
-                currentBid: 7500,
+                estimate: { low: 6000000, high: 10000000 }, // USDT
+                currentBid: 7500000, // USDT
+                minBidIncrement: 250000, // $250k minimum increment
                 bidCount: 62,
                 endTime: Date.now() + 86400000 * 10,
                 provenance: 'Private Collection, Taiwan\nFormerly in the collection of Sakamoto Gorō (1923-2016)\nAcquired at Sotheby\'s Hong Kong, April 2005',
@@ -1408,8 +1410,9 @@
                 ],
                 thumbnail: '/assets/images/relics/003-ming-cloisonne/main.jpg',
                 description: 'This exceptional censer represents the golden age of Chinese cloisonné production during the Xuande period. The technique, introduced from Byzantium via the Silk Road, reached its artistic zenith under imperial patronage.',
-                estimate: { low: 120, high: 180 },
-                currentBid: 150,
+                estimate: { low: 1200000, high: 1800000 }, // USDT
+                currentBid: 1500000, // USDT
+                minBidIncrement: 50000, // $50k minimum increment
                 bidCount: 38,
                 endTime: Date.now() + 86400000 * 6,
                 provenance: 'Private Collection, Hong Kong\nFormerly from the Qing Court Collection\nChristie\'s London, November 1989, lot 234',
@@ -1436,8 +1439,9 @@
                 ],
                 thumbnail: '/assets/images/relics/004-yuan-jilan-ewer/main.jpg',
                 description: 'This spectacular ewer showcases the technical mastery achieved by Yuan potters in high-fired cobalt blue glazes. The dramatic contrast between the deep blue ground and white slip-painted dragon demonstrates the sophisticated decorative techniques of the period.',
-                estimate: { low: 250, high: 400 },
-                currentBid: 325,
+                estimate: { low: 2500000, high: 4000000 }, // USDT
+                currentBid: 3250000, // USDT
+                minBidIncrement: 100000, // $100k minimum increment
                 bidCount: 41,
                 endTime: Date.now() + 86400000 * 8,
                 provenance: 'Private Japanese Collection, Kyoto\nFormerly in the Idemitsu Museum of Arts\nAcquired from Yamanaka & Co., Kyoto, 1955',
@@ -1465,8 +1469,9 @@
                 ],
                 thumbnail: '/assets/images/relics/005-qing-butterfly-vase/main.jpg',
                 description: 'The ovoid body rising from a spreading foot to a waisted neck with a flared rim, brilliantly enamelled with butterflies in flight amidst flowering branches. This piece exemplifies the technical perfection achieved at the imperial kilns during the Qianlong period.',
-                estimate: { low: 80, high: 120 },
-                currentBid: 95,
+                estimate: { low: 800000, high: 1200000 }, // USDT
+                currentBid: 950000, // USDT
+                minBidIncrement: 50000, // $50k minimum increment
                 bidCount: 12,
                 endTime: Date.now() + 86400000 * 3,
                 provenance: 'Private European Collection, acquired 1960s\nFormerly in the collection of Baron von H., Switzerland',
