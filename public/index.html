@@ -448,14 +448,13 @@
             border-color: var(--text-primary);
         }
         
-        /* Artifact Grid */
+        /* Artifact Grid - Masonry Layout */
         .artifacts-grid {
             max-width: 1400px;
             margin: 0 auto 4rem;
             padding: 0 2rem;
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-            gap: 3rem;
+            column-count: 4;
+            column-gap: 3rem;
         }
         
         .artifact-card {
@@ -463,6 +462,10 @@
             transition: all 0.3s ease;
             opacity: 0;
             animation: cardFadeIn 0.5s ease forwards;
+            break-inside: avoid;
+            display: inline-block;
+            width: 100%;
+            margin-bottom: 3rem;
         }
         
         .artifact-card:nth-child(1) { animation-delay: 0.1s; }
@@ -497,25 +500,18 @@
             justify-content: center;
         }
         
-        /* Dynamic aspect ratios */
-        .artifact-image-container.portrait {
-            padding-bottom: 133%; /* 3:4 ratio */
-        }
-        
-        .artifact-image-container.landscape {
-            padding-bottom: 75%; /* 4:3 ratio */
-        }
-        
+        /* Dynamic aspect ratios - Natural height for masonry */
+        .artifact-image-container.portrait,
+        .artifact-image-container.landscape,
         .artifact-image-container.square {
-            padding-bottom: 100%; /* 1:1 ratio */
+            padding-bottom: 0; /* Natural height */
         }
         
         .artifact-image {
-            position: absolute;
-            top: 0;
-            left: 0;
+            position: relative;
             width: 100%;
-            height: 100%;
+            height: auto;
+            display: block;
             object-fit: contain;
             background-color: #f8f8f8;
             transition: transform 0.5s ease;
@@ -1024,8 +1020,8 @@
             }
             
             .artifacts-grid {
-                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-                gap: 2rem;
+                column-count: 3;
+                column-gap: 2rem;
             }
         }
         
@@ -1055,7 +1051,7 @@
             }
             
             .artifacts-grid {
-                grid-template-columns: 1fr;
+                column-count: 1;
             }
             
             .footer-content {
