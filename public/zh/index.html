@@ -1,0 +1,2412 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>汝窯瓷器與中國帝王文物 | 神堡 Shenbury</title>
+    
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <!-- Enhanced SEO Meta Tags -->
+    <meta name="description" content="神堡 - 源流之藝。經認證的北宋汝窯瓷器、明景泰琺瑯、元霽藍釉瓷器。博物館級中國文物，具有ERC-404碎片化所有權。">
+    <meta name="keywords" content="神堡, Shenbury, 汝窯, 汝瓷, 宋代, 中國瓷器, 汝窯, 宋代瓷器, 明代, 景泰琺瑯, 景泰藍, 元代, 霽藍釉, 霽藍釉, 拍賣, ERC-404, NFT, 源流, 宋徽宗">
+    
+    <!-- Open Graph for Social -->
+    <meta property="og:title" content="神堡 | 3500萬美元以上中國帝王瓷器收藏">
+    <meta property="og:description" content="源流之藝。擁有宋、元、明朝博物館級汝窯瓷器和帝王中國文物的碎片化股份。">
+    <meta property="og:image" content="/assets/images/relics/001-song-ru-washer/main.jpg">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://shenbury.com">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="神堡 - 珍稀汝窯瓷器拍賣">
+    <meta name="twitter:description" content="絕世北宋汝瓷、明琺瑯、元瓷器。體驗中國瓷器藝術的巔峰成就。">
+    <meta name="twitter:image" content="/assets/images/relics/001-song-ru-washer/main.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="alternate icon" href="/favicon.ico">
+    
+    <!-- Enhanced Structured Data for Google -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ArtGallery",
+      "name": "神堡 Shenbury",
+      "description": "源流之藝 - Web3拍賣行，專營宋、元、明朝帝王中國瓷器",
+      "url": "https://shenbury.com",
+      "slogan": "源流之藝",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "帝王中國瓷器收藏",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "VisualArtwork",
+              "name": "北宋汝窯葵花洗",
+              "creator": "汝官窯",
+              "dateCreated": "1086-1106",
+              "material": "天青釉瓷器",
+              "description": "全世界已知存世汝瓷不到100件之一"
+            },
+            "price": "35000000",
+            "priceCurrency": "USD"
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "VisualArtwork",
+              "name": "帝制景泰琺瑯蓮紋蓋盒",
+              "creator": "明代帝制作坊",
+              "dateCreated": "1450-1457",
+              "material": "銅胎琺瑯"
+            },
+            "price": "1200000",
+            "priceCurrency": "USD"
+          }
+        ]
+      }
+    }
+    </script>
+    
+    <link rel="canonical" href="https://shenbury.com">
+    
+    <!-- External Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/ethers@6.11.1/dist/ethers.umd.min.js"></script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #000000;
+            --secondary: #ffffff;
+            --accent: #c9302c;
+            --gray-light: #f8f8f8;
+            --gray-medium: #e5e5e5;
+            --gray-dark: #666666;
+            --text-primary: #000000;
+            --text-secondary: #666666;
+            --hover: #c9302c;
+            --shadow: rgba(0, 0, 0, 0.08);
+            --font-primary: 'Cormorant Garamond', serif;
+            --font-secondary: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Microsoft JhengHei", "微軟正黑體", sans-serif;
+        }
+        
+        body {
+            font-family: var(--font-secondary);
+            background: var(--secondary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            font-weight: 300;
+        }
+        
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-primary);
+            font-weight: 300;
+            letter-spacing: -0.02em;
+        }
+        
+        /* Loading State */
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.3s ease;
+        }
+        
+        .loading.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        .loader {
+            width: 40px;
+            height: 40px;
+            border: 2px solid var(--gray-medium);
+            border-top-color: var(--accent);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Header */
+        header {
+            background: var(--secondary);
+            border-bottom: 1px solid var(--gray-medium);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 0 2rem;
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.95);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .logo {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            cursor: pointer;
+        }
+        
+        .logo-text {
+            display: flex;
+            align-items: baseline;
+            gap: 0.5rem;
+        }
+        
+        .logo-chinese {
+            font-family: var(--font-primary);
+            font-size: 1.25rem;
+            font-weight: 400;
+        }
+        
+        .logo-english {
+            font-family: var(--font-primary);
+            font-size: 1.75rem;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+        }
+        
+        .logo-tagline {
+            font-size: 0.625rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--text-secondary);
+            margin-top: 0.25rem;
+            font-family: var(--font-secondary);
+        }
+        
+        .nav-center {
+            display: flex;
+            gap: 3rem;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .nav-center a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-center a:hover {
+            color: var(--hover);
+        }
+        
+        .nav-center a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -29px;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: var(--accent);
+        }
+        
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+        
+        .wallet-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 0.875rem;
+            flex-shrink: 0;
+        }
+        
+        .erc404-balance {
+            background: var(--gray-light);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .connect-wallet {
+            background: var(--primary);
+            color: var(--secondary);
+            border: 1px solid var(--primary);
+            padding: 0.75rem 2rem;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 400;
+        }
+        
+        .connect-wallet:hover {
+            background: transparent;
+            color: var(--primary);
+        }
+        
+        .connect-wallet.connected {
+            background: transparent;
+            color: var(--primary);
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 500px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: url('/assets/images/hero-bg.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.6));
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+            max-width: 800px;
+            padding: 0 2rem;
+            animation: heroFadeIn 1s ease;
+        }
+        
+        @keyframes heroFadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+            font-family: var(--font-primary);
+        }
+        
+        .hero p {
+            font-size: 1.25rem;
+            font-weight: 300;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+            font-family: var(--font-secondary);
+        }
+        
+        .hero-cta {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 1rem 3rem;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .hero-cta:hover {
+            background: #a02622;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(201, 48, 44, 0.3);
+        }
+        
+        /* Auction Header */
+        .auction-header {
+            max-width: 1400px;
+            margin: 4rem auto 2rem;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+        
+        .auction-header h2 {
+            font-size: 2rem;
+            font-weight: 300;
+            font-family: var(--font-primary);
+        }
+        
+        .auction-stats {
+            display: flex;
+            gap: 3rem;
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            display: block;
+            font-weight: 400;
+        }
+        
+        /* Filter Bar */
+        .filter-bar {
+            max-width: 1400px;
+            margin: 0 auto 3rem;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid var(--gray-medium);
+            border-bottom: 1px solid var(--gray-medium);
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+        
+        .dynasty-filters {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .dynasty-filter {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            padding: 0.5rem 0;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .dynasty-filter:hover,
+        .dynasty-filter.active {
+            color: var(--text-primary);
+        }
+        
+        .dynasty-filter.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1rem;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: var(--accent);
+        }
+        
+        .sort-controls {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            font-size: 0.875rem;
+        }
+        
+        .sort-select {
+            border: 1px solid var(--gray-medium);
+            padding: 0.5rem 1rem;
+            background: white;
+            cursor: pointer;
+            outline: none;
+        }
+        
+        .sort-select:focus {
+            border-color: var(--text-primary);
+        }
+        
+        /* Artifact Grid - Masonry Layout */
+        .artifacts-grid {
+            max-width: 1400px;
+            margin: 0 auto 4rem;
+            padding: 0 2rem;
+            column-count: 4;
+            column-gap: 3rem;
+        }
+        
+        .artifact-card {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            opacity: 0;
+            animation: cardFadeIn 0.5s ease forwards;
+            break-inside: avoid;
+            display: inline-block;
+            width: 100%;
+            margin-bottom: 3rem;
+        }
+        
+        .artifact-card:nth-child(1) { animation-delay: 0.1s; }
+        .artifact-card:nth-child(2) { animation-delay: 0.2s; }
+        .artifact-card:nth-child(3) { animation-delay: 0.3s; }
+        .artifact-card:nth-child(4) { animation-delay: 0.4s; }
+        .artifact-card:nth-child(5) { animation-delay: 0.5s; }
+        
+        @keyframes cardFadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+        }
+        
+        .artifact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px var(--shadow);
+        }
+        
+        .artifact-image-container {
+            position: relative;
+            background: var(--gray-light);
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Dynamic aspect ratios - Natural height for masonry */
+        .artifact-image-container.portrait,
+        .artifact-image-container.landscape,
+        .artifact-image-container.square {
+            padding-bottom: 0; /* Natural height */
+        }
+        
+        .artifact-image {
+            position: relative;
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: contain;
+            background-color: #f8f8f8;
+            transition: transform 0.5s ease;
+        }
+        
+        /* Image loading states */
+        .artifact-image.loading {
+            opacity: 0;
+        }
+        
+        .artifact-image.loaded {
+            opacity: 1;
+            animation: imageReveal 0.5s ease;
+        }
+        
+        @keyframes imageReveal {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        
+        .artifact-card:hover .artifact-image {
+            transform: scale(1.05);
+        }
+        
+        .artifact-info {
+            padding: 0 0.5rem;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+        
+        .artifact-lot {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+        }
+        
+        .artifact-title {
+            font-size: 1.125rem;
+            margin-bottom: 0.5rem;
+            font-weight: 400;
+            line-height: 1.4;
+            font-family: var(--font-primary);
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+            hyphens: auto;
+        }
+        
+        .artifact-dynasty {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+        
+        .artifact-estimate {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.25rem;
+        }
+        
+        .artifact-bid {
+            font-size: 1.125rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+        }
+        
+        .artifact-erc404 {
+            background: var(--gray-light);
+            padding: 0.75rem;
+            margin-top: 1rem;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            border-radius: 4px;
+        }
+        
+        .artifact-erc404 strong {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+        
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            overflow-y: auto;
+            animation: modalFadeIn 0.3s ease;
+        }
+        
+        @keyframes modalFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .modal-content {
+            background: white;
+            max-width: 1200px;
+            margin: 2rem auto;
+            position: relative;
+            animation: modalSlideIn 0.3s ease;
+        }
+        
+        @keyframes modalSlideIn {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        .close-modal {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            background: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 2010;
+            border-radius: 50%;
+            box-shadow: 0 2px 10px var(--shadow);
+        }
+        
+        .close-modal:hover {
+            transform: rotate(90deg);
+            background: var(--gray-light);
+        }
+        
+        .modal-body {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 600px;
+        }
+        
+        .modal-image-section {
+            background: var(--gray-light);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 2rem;
+        }
+        
+        /* Image gallery dots */
+        .image-gallery-dots {
+            position: absolute;
+            bottom: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .gallery-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-dot.active {
+            background: var(--accent);
+            width: 24px;
+            border-radius: 4px;
+        }
+        
+        .modal-info-section {
+            padding: 3rem;
+            overflow-y: auto;
+            max-height: 90vh;
+        }
+        
+        .modal-lot-number {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+        
+        .modal-title {
+            font-size: 2rem;
+            font-weight: 300;
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+            font-family: var(--font-primary);
+        }
+        
+        .modal-dynasty {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+        
+        .modal-description {
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            color: var(--text-secondary);
+        }
+        
+        .detail-sections {
+            border-top: 1px solid var(--gray-medium);
+            padding-top: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .detail-section {
+            margin-bottom: 1.5rem;
+        }
+        
+        .detail-section h4 {
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+            font-weight: 400;
+        }
+        
+        .detail-section p {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            line-height: 1.6;
+        }
+        
+        .bidding-section {
+            border-top: 1px solid var(--gray-medium);
+            padding-top: 2rem;
+        }
+        
+        .current-bid-info {
+            margin-bottom: 2rem;
+        }
+        
+        .current-bid-label {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        
+        .current-bid-amount {
+            font-size: 2rem;
+            font-weight: 400;
+            margin: 0.5rem 0;
+            font-family: var(--font-primary);
+        }
+        
+        .bid-count {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+        
+        .bid-options {
+            display: grid;
+            gap: 2rem;
+        }
+        
+        .bid-option {
+            border: 1px solid var(--gray-medium);
+            padding: 1.5rem;
+            border-radius: 4px;
+            transition: border-color 0.3s ease;
+        }
+        
+        .bid-option:hover {
+            border-color: var(--text-primary);
+        }
+        
+        .bid-option h5 {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            font-weight: 400;
+        }
+        
+        .bid-option p {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+        
+        .bid-input-group {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .bid-input {
+            flex: 1;
+            border: 1px solid var(--gray-medium);
+            padding: 0.75rem 1rem;
+            font-size: 1rem;
+            border-radius: 4px;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+        
+        .bid-input:focus {
+            border-color: var(--text-primary);
+        }
+        
+        .bid-button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.75rem 2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.875rem;
+            border-radius: 4px;
+        }
+        
+        .bid-button:hover {
+            background: var(--hover);
+            transform: translateY(-1px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .bid-button:disabled {
+            background: var(--gray-medium);
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .bid-button.secondary {
+            background: white;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+        }
+        
+        .bid-button.secondary:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .erc404-info {
+            background: var(--gray-light);
+            padding: 1rem;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            border-radius: 4px;
+            line-height: 1.6;
+        }
+        
+        /* Toast Notifications */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--primary);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 4px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 3000;
+            max-width: 400px;
+        }
+        
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .toast.success {
+            background: #28a745;
+        }
+        
+        .toast.error {
+            background: #dc3545;
+        }
+        
+        .toast.info {
+            background: #17a2b8;
+        }
+        
+        .toast.warning {
+            background: #ffc107;
+            color: #212529;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 3rem 2rem;
+            margin-top: 6rem;
+        }
+        
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 3rem;
+        }
+        
+        .footer-section h4 {
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+            font-weight: 400;
+            font-family: var(--font-secondary);
+        }
+        
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 0.875rem;
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-section a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .footer-logo {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-logo .logo-text {
+            display: flex;
+            align-items: baseline;
+            gap: 0.5rem;
+        }
+        
+        .footer-logo .logo-chinese {
+            font-family: var(--font-primary);
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .footer-logo .logo-english {
+            font-family: var(--font-primary);
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: white;
+        }
+        
+        /* Mobile Menu */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+        
+        .mobile-menu-toggle span {
+            display: block;
+            width: 25px;
+            height: 2px;
+            background: var(--primary);
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+        
+        /* Responsive - Tablet */
+        @media (max-width: 1024px) {
+            header {
+                padding: 0 1.5rem;
+            }
+            
+            nav {
+                height: 70px;
+            }
+            
+            .nav-center {
+                display: none;
+            }
+            
+            .mobile-menu-toggle {
+                display: block;
+            }
+            
+            .modal-body {
+                grid-template-columns: 1fr;
+            }
+            
+            .modal-image-section {
+                height: 400px;
+            }
+            
+            .artifacts-grid {
+                column-count: 3;
+                column-gap: 2rem;
+            }
+            
+            .auction-stats {
+                gap: 2rem;
+            }
+            
+            .connect-wallet {
+                padding: 0.6rem 1.5rem;
+                font-size: 0.8125rem;
+            }
+        }
+        
+        /* Responsive - Mobile */
+        @media (max-width: 768px) {
+            header {
+                padding: 0 1rem;
+            }
+            
+            nav {
+                height: 60px;
+                gap: 1rem;
+            }
+            
+            .logo {
+                flex-shrink: 0;
+            }
+            
+            .logo-text {
+                gap: 0.25rem;
+                flex-wrap: nowrap;
+            }
+            
+            .logo-chinese {
+                font-size: 0.875rem;
+            }
+            
+            .logo-english {
+                font-size: 1.125rem;
+            }
+            
+            .logo-tagline {
+                display: none;
+            }
+            
+            .nav-right {
+                gap: 0.75rem;
+                flex-shrink: 0;
+            }
+            
+            .wallet-info {
+                gap: 0.5rem;
+            }
+            
+            .erc404-balance {
+                padding: 0.4rem 0.75rem;
+                font-size: 0.75rem;
+            }
+            
+            .connect-wallet {
+                padding: 0.5rem 1rem;
+                font-size: 0.75rem;
+                letter-spacing: 0.05em;
+                white-space: nowrap;
+            }
+            
+            .mobile-menu-toggle {
+                padding: 0.25rem;
+            }
+            
+            .mobile-menu-toggle span {
+                width: 20px;
+                height: 1.5px;
+                margin: 4px 0;
+            }
+            
+            .hero {
+                height: 400px;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+                margin-bottom: 0.75rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .hero-cta {
+                padding: 0.875rem 2rem;
+                font-size: 0.8125rem;
+            }
+            
+            .artifacts-grid {
+                column-count: 1;
+                padding: 0 1rem;
+            }
+            
+            .artifact-card {
+                margin-bottom: 2rem;
+            }
+            
+            .auction-header {
+                flex-direction: column;
+                gap: 1.5rem;
+                text-align: center;
+                padding: 0 1rem;
+                margin: 3rem auto 1.5rem;
+            }
+            
+            .auction-header h2 {
+                font-size: 1.75rem;
+            }
+            
+            .auction-stats {
+                gap: 2rem;
+                width: 100%;
+                justify-content: space-around;
+            }
+            
+            .stat-value {
+                font-size: 1.25rem;
+            }
+            
+            .stat-item {
+                font-size: 0.75rem;
+            }
+            
+            .filter-bar {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+                margin-bottom: 2rem;
+            }
+            
+            .dynasty-filters {
+                overflow-x: auto;
+                width: 100%;
+                justify-content: flex-start;
+                padding-bottom: 0.5rem;
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: thin;
+            }
+            
+            .dynasty-filter {
+                font-size: 0.75rem;
+                padding: 0.375rem 0;
+                white-space: nowrap;
+            }
+            
+            .sort-controls {
+                width: 100%;
+                justify-content: space-between;
+                font-size: 0.8125rem;
+            }
+            
+            .sort-select {
+                flex: 1;
+                max-width: 200px;
+                font-size: 0.8125rem;
+                padding: 0.4rem 0.75rem;
+            }
+            
+            .modal-info-section {
+                padding: 1.5rem;
+            }
+            
+            .modal-title {
+                font-size: 1.5rem;
+            }
+            
+            .modal-dynasty {
+                font-size: 1rem;
+            }
+            
+            .modal-description {
+                font-size: 0.9375rem;
+            }
+            
+            .detail-section h4 {
+                font-size: 0.8125rem;
+            }
+            
+            .detail-section p {
+                font-size: 0.8125rem;
+            }
+            
+            .current-bid-amount {
+                font-size: 1.75rem;
+            }
+            
+            .bid-option {
+                padding: 1.25rem;
+            }
+            
+            .bid-option h5 {
+                font-size: 0.9375rem;
+            }
+            
+            .bid-option p {
+                font-size: 0.8125rem;
+            }
+            
+            .bid-input-group {
+                flex-direction: column;
+            }
+            
+            .bid-input {
+                font-size: 0.9375rem;
+                padding: 0.625rem 0.875rem;
+            }
+            
+            .bid-button {
+                font-size: 0.8125rem;
+                padding: 0.625rem 1.5rem;
+                width: 100%;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+                padding: 0 1rem;
+            }
+            
+            .footer-logo {
+                align-items: center;
+            }
+            
+            .toast {
+                left: 1rem;
+                right: 1rem;
+                bottom: 1rem;
+                font-size: 0.875rem;
+                padding: 0.875rem 1.5rem;
+            }
+            
+            .modal-content {
+                margin: 3rem 0.5rem 1rem;
+                max-height: calc(100vh - 4rem);
+                overflow-y: auto;
+            }
+            
+            .modal-body {
+                grid-template-columns: 1fr;
+                min-height: auto;
+            }
+            
+            .modal-image-section {
+                height: 300px;
+            }
+        }
+        
+        /* Responsive - Small Mobile */
+        @media (max-width: 375px) {
+            header {
+                padding: 0 0.75rem;
+            }
+            
+            nav {
+                height: 56px;
+            }
+            
+            .logo-chinese {
+                font-size: 0.75rem;
+            }
+            
+            .logo-english {
+                font-size: 1rem;
+            }
+            
+            .nav-right {
+                gap: 0.5rem;
+            }
+            
+            .erc404-balance {
+                display: none !important; /* Hide balance on very small screens */
+            }
+            
+            .connect-wallet {
+                padding: 0.4rem 0.75rem;
+                font-size: 0.7rem;
+            }
+            
+            .hero h1 {
+                font-size: 1.75rem;
+            }
+            
+            .hero p {
+                font-size: 0.9375rem;
+            }
+            
+            .auction-header h2 {
+                font-size: 1.5rem;
+            }
+            
+            .stat-value {
+                font-size: 1.125rem;
+            }
+            
+            .modal-title {
+                font-size: 1.25rem;
+            }
+            
+            .current-bid-amount {
+                font-size: 1.5rem;
+            }
+        }
+        
+        /* Responsive - Landscape Mobile */
+        @media (max-width: 812px) and (orientation: landscape) {
+            nav {
+                height: 50px;
+            }
+            
+            .hero {
+                height: 300px;
+            }
+            
+            .hero h1 {
+                font-size: 1.75rem;
+            }
+            
+            .modal-content {
+                margin: 1rem auto;
+            }
+            
+            .modal-image-section {
+                height: 250px;
+            }
+        }
+        
+        /* Progressive Image Loading */
+        .progressive-image {
+            position: relative;
+            overflow: hidden;
+            background: var(--gray-light);
+        }
+        
+        .progressive-image img {
+            display: block;
+            width: 100%;
+            height: auto;
+            transition: opacity 0.3s ease;
+        }
+        
+        .progressive-image .placeholder {
+            filter: blur(20px);
+            transform: scale(1.1);
+        }
+        
+        .progressive-image .full-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+        }
+        
+        .progressive-image .full-image.loaded {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading" id="loading">
+        <div class="loader"></div>
+    </div>
+
+    <header>
+        <nav>
+            <div class="logo" onclick="scrollToTop()">
+                <div class="logo-text">
+                    <div class="logo-chinese">神堡</div>
+                    <div class="logo-english">Shenbury</div>
+                </div>
+                <div class="logo-tagline">源流之藝</div>
+            </div>
+            <div class="nav-center">
+                <a href="#auctions" class="active">拍賣</a>
+                <a href="#private">私人洽購</a>
+                <a href="#exhibitions">展覽</a>
+                <a href="#about">關於我們</a>
+            </div>
+            <div class="nav-right">
+                <div class="wallet-info">
+                    <div class="erc404-balance" id="token-balance">
+                        <span id="balance-amount">0</span> SHEN
+                    </div>
+                    <button class="connect-wallet" onclick="connectWallet()">
+                        <span id="wallet-text">連接錢包</span>
+                    </button>
+                </div>
+                <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>典雅中國藝術</h1>
+            <p>宋、元、明朝傳世珍品</p>
+            <button class="hero-cta" onclick="scrollToAuctions()">瀏覽現場拍賣</button>
+        </div>
+    </section>
+
+    <div class="auction-header" id="auctions">
+        <h2>精選拍品</h2>
+        <div class="auction-stats">
+            <div class="stat-item">
+                <span class="stat-value" id="total-lots">0</span>
+                <span>總拍品數</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-value" id="total-bids">0</span>
+                <span>競投中</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-value" id="total-value">0</span>
+                <span>總估值 (美元)</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="filter-bar">
+        <div class="dynasty-filters">
+            <button class="dynasty-filter active" onclick="filterByDynasty('all')">所有朝代</button>
+            <button class="dynasty-filter" onclick="filterByDynasty('song')">宋代</button>
+            <button class="dynasty-filter" onclick="filterByDynasty('yuan')">元代</button>
+            <button class="dynasty-filter" onclick="filterByDynasty('ming')">明代</button>
+        </div>
+        <div class="sort-controls">
+            <span>排序：</span>
+            <select class="sort-select" onchange="sortArtifacts(this.value)">
+                <option value="lot">拍品編號</option>
+                <option value="price-high">價格：高至低</option>
+                <option value="price-low">價格：低至高</option>
+                <option value="ending">即將結束</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="artifacts-grid" id="artifacts-grid">
+        <!-- Artifact cards will be dynamically generated -->
+    </div>
+
+    <!-- Artifact Detail Modal -->
+    <div class="modal" id="artifact-modal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal()">&times;</button>
+            <div class="modal-body">
+                <div class="modal-image-section">
+                    <img src="" alt="" class="modal-image" id="modal-image">
+                    <div class="image-gallery-dots" id="gallery-dots"></div>
+                </div>
+                <div class="modal-info-section">
+                    <div class="modal-lot-number" id="modal-lot">拍品 000</div>
+                    <h2 class="modal-title" id="modal-title"></h2>
+                    <p class="modal-dynasty" id="modal-dynasty"></p>
+                    <p class="modal-description" id="modal-description"></p>
+                    
+                    <div class="detail-sections">
+                        <div class="detail-section">
+                            <h4>來源</h4>
+                            <p id="modal-provenance"></p>
+                        </div>
+                        <div class="detail-section">
+                            <h4>品相</h4>
+                            <p id="modal-condition"></p>
+                        </div>
+                        <div class="detail-section">
+                            <h4>尺寸</h4>
+                            <p id="modal-dimensions"></p>
+                        </div>
+                        <div class="detail-section">
+                            <h4>著錄</h4>
+                            <p id="modal-literature"></p>
+                        </div>
+                        <div class="detail-section" id="technical-notes-section" style="display: none;">
+                            <h4>技術備註</h4>
+                            <p id="modal-technical-notes"></p>
+                        </div>
+                        <div class="detail-section" id="cultural-significance-section" style="display: none;">
+                            <h4>文化意義</h4>
+                            <p id="modal-cultural-significance"></p>
+                        </div>
+                    </div>
+                    
+                    <div class="bidding-section">
+                        <div class="current-bid-info">
+                            <div class="current-bid-label">當前出價</div>
+                            <div class="current-bid-amount" id="modal-current-bid">$0</div>
+                            <div class="bid-count" id="modal-bid-count">0 次出價</div>
+                        </div>
+                        
+                        <div class="bid-options">
+                            <div class="bid-option">
+                                <h5>完整擁有權競投</h5>
+                                <p>以NFT形式獲得此文物的完整擁有權</p>
+                                <div class="bid-input-group">
+                                    <input type="number" class="bid-input" id="bid-amount" placeholder="競投金額 (美元)" step="100000" min="0">
+                                    <button class="bid-button" onclick="placeBid()">出價</button>
+                                </div>
+                                <p style="font-size: 0.75rem; margin-top: 0.5rem;">最低出價：$<span id="min-bid">0</span></p>
+                            </div>
+                            
+                            <div class="bid-option">
+                                <h5>購買碎片化擁有權 (ERC-404)</h5>
+                                <p>購買SHEN代幣以獲得部分擁有權。10,000 SHEN = 1個完整NFT</p>
+                                <div class="bid-input-group">
+                                    <input type="number" class="bid-input" id="token-amount" placeholder="SHEN代幣數量" step="100" min="100">
+                                    <button class="bid-button secondary" onclick="buyTokens()">購買代幣</button>
+                                </div>
+                                <div class="erc404-info">
+                                    <strong>當前價格：</strong> 每個SHEN $100<br>
+                                    <strong>可購買：</strong> 此文物還有 <span id="available-tokens">0</span> 個SHEN<br>
+                                    <strong>您的持有：</strong> <span id="user-artifact-tokens">0</span> 個SHEN
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast"></div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="footer-logo">
+                    <div class="logo-text">
+                        <div class="logo-chinese">神堡</div>
+                        <div class="logo-english">Shenbury</div>
+                    </div>
+                    <p style="color: rgba(255, 255, 255, 0.7); font-size: 0.875rem; margin-top: 0.5rem;">源流之藝</p>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>服務</h4>
+                <a href="#">拍賣</a>
+                <a href="#">私人洽購</a>
+                <a href="#">估價</a>
+                <a href="#">ERC-404指南</a>
+            </div>
+            <div class="footer-section">
+                <h4>關於</h4>
+                <a href="#">專家團隊</a>
+                <a href="#">新聞</a>
+                <a href="#">職業</a>
+                <a href="#">聯絡</a>
+            </div>
+            <div class="footer-section">
+                <h4>技術</h4>
+                <a href="#">智能合約</a>
+                <a href="#">IPFS存儲</a>
+                <a href="#">代幣經濟</a>
+                <a href="#">安全審計</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 神堡 Shenbury. 版權所有。 | 源流之藝 | ERC-404 由以太坊驅動</p>
+        </div>
+    </footer>
+
+    <script>
+        // Enhanced artifact data with Traditional Chinese descriptions
+        const artifacts = [
+            {
+                id: 1,
+                lotNumber: '001',
+                title: '北宋汝官窯極罕天青釉葵花式洗',
+                chinese: '北宋 汝官窯天青釉葵花洗',
+                dynasty: 'song',
+                dynastyInfo: '北宋 (1086-1106)',
+                imageOrientation: 'landscape',
+                images: [
+                    '/assets/images/relics/001-song-ru-washer/main.jpg',
+                    '/assets/images/relics/001-song-ru-washer/detail-1.jpg',
+                    '/assets/images/relics/001-song-ru-washer/detail-2.jpg',
+                    '/assets/images/relics/001-song-ru-washer/detail-3.jpg',
+                    '/assets/images/relics/001-song-ru-washer/detail-4.jpg'
+                ],
+                thumbnail: '/assets/images/relics/001-song-ru-washer/main.jpg',
+                description: '此極罕見洗器代表宋代瓷器成就之巔峰。器形作六瓣花口，底部有三個細小芝麻釘痕。特有的天青釉及其細緻冰裂紋，被視為中國瓷器之最。天青釉色尤為珍貴，其純淨度及精細的冰裂網絡，乃汝瓷之標誌特徵。',
+                estimate: { low: 37000000, high: 55000000 },
+                currentBid: 31000000,
+                minBidIncrement: 100000,
+                bidCount: 47,
+                endTime: Date.now() + 86400000 * 7,
+                provenance: '中國私人收藏\n1970年代形成\n1985年從親屬處獲得，北京',
+                condition: '品相極佳，通體呈現特有冰裂紋。外壁斜刀刻劃柳絲冰裂，內壁亦滿佈冰裂。足圈處有與年代相符之輕微磨損。',
+                dimensions: '直徑：14.6 厘米\n底徑：9.6 厘米\n高：3.65 厘米\n重量：285克',
+                literature: '參見北京故宮博物院藏類似例子，載於《故宮博物院藏品大系：宋代瓷器(一)》，香港，1996年，圖版5。類似作品於2017年10月蘇富比香港以港幣2.94億成交。',
+                technicalNotes: '釉面呈現特有「天青」色彩，乃通過還原燒成。冰裂釉效果，稱為「開片」，極受推崇，增添視覺與觸覺之美感。X射線螢光分析可確認釉中瑪瑙粉之存在，乃真正汝瓷之標誌。',
+                culturalSignificance: '汝窯僅燒製約20年(1086-1106)，專為北宋宮廷所製。全世界已知真品不到100件，其中台北故宮21件，北京故宮17件。俗語云：「縱有家財萬貫，不抵汝瓷一件」。',
+                fractionalAvailable: 1000,
+                tokenHolders: 125
+            },
+            {
+                id: 2,
+                lotNumber: '002',
+                title: '北宋汝窯天青釉瓶',
+                chinese: '北宋 汝窯天青釉瓶',
+                dynasty: 'song',
+                dynastyInfo: '北宋 (1086-1106)',
+                imageOrientation: 'portrait',
+                images: [
+                    '/assets/images/relics/002-song-ru-bottle/main.jpg',
+                    '/assets/images/relics/002-song-ru-bottle/detail-1.jpg',
+                    '/assets/images/relics/002-song-ru-bottle/detail-2.jpg'
+                ],
+                thumbnail: '/assets/images/relics/002-song-ru-bottle/main.jpg',
+                description: '此宏偉瓶器體現汝瓷之典雅克制風格。傳說宋徽宗夢見雨後神秘天青色調，作詩云：「雨過天青雲破處，這般顏色做將來」。瓶身具有汝窯獨特「蟹爪紋」開片，每一不規則裂紋皆獨一無二。',
+                estimate: { low: 40000000, high: 75000000 },
+                currentBid: 12500000,
+                minBidIncrement: 250000,
+                bidCount: 62,
+                endTime: Date.now() + 86400000 * 10,
+                provenance: '中國私人收藏\n1970年代形成\n1985年從親屬處獲得，北京',
+                condition: '品相完美。釉質極佳，通體呈現理想「冰裂」紋。具有汝瓷特有「魚子紋」氣泡，現代工藝無法複製。',
+                dimensions: '高：22.8 厘米\n直徑：12.5 厘米\n重量：680克',
+                literature: '參見大英博物館倫敦藏類似例子，載於Jessica Harrison-Hall《大英博物館藏元明瓷器目錄》，倫敦，2001年，編號15:1。乾隆皇帝收藏汝瓷11件，現藏台北故宮。',
+                technicalNotes: '牛津認證公司熱釋光測試證書確認年代為900±100年。釉面常比作美玉，光滑潤澤，增其美感。',
+                culturalSignificance: '此瓶代表宋徽宗時期(1082-1135)中國瓷器黃金時代。徽宗作為傑出畫家書法家，大力推進宮廷藝術，提升汝窯地位。周杰倫名句「天青色等煙雨」即指此瓷。',
+                fractionalAvailable: 500,
+                tokenHolders: 198
+            },
+            {
+                id: 3,
+                lotNumber: '003',
+                title: '明宣德掐絲琺瑯獸鈕蓮紋三足爐',
+                chinese: '明宣德 掐絲琺瑯獸鈕蓮紋三足爐',
+                dynasty: 'ming',
+                dynastyInfo: '宣德時期 (1426-1435)',
+                imageOrientation: 'square',
+                images: [
+                    '/assets/images/relics/003-ming-cloisonne/main.jpg',
+                    '/assets/images/relics/003-ming-cloisonne/detail-1.jpg',
+                    '/assets/images/relics/003-ming-cloisonne/detail-2.jpg',
+                    '/assets/images/relics/003-ming-cloisonne/mark.jpg'
+                ],
+                thumbnail: '/assets/images/relics/003-ming-cloisonne/main.jpg',
+                description: '此精美香爐代表宣德時期中國掐絲琺瑯工藝黃金時代。爐身以優質銅製，唇口外撇，圓腹，雙耳對稱優雅。爐蓋飾三獸鈕，均勻分佈，威嚴端莊。器身以天青琺瑯釉為地，精工嵌入紅、黃、藍等絢麗色彩，構成纏枝蓮紋。',
+                estimate: { low: 12000000, high: 27000000 },
+                currentBid: 15000000,
+                minBidIncrement: 50000,
+                bidCount: 38,
+                endTime: Date.now() + 86400000 * 6,
+                provenance: '中國私人收藏\n1970年代形成\n1985年從親屬處獲得，北京',
+                condition: '品相極佳。口沿一處雲紋經專業修復。琺瑯色彩豐富飽滿。',
+                dimensions: '高：28.5 厘米\n寬：35.2 厘米\n重量：4.2 公斤',
+                literature: '參見Harry Garner《中日掐絲琺瑯》，倫敦，1962年，圖版48A',
+                technicalNotes: '工藝精湛，掐絲精準，線條流暢，色彩和諧。此技術由絲路從拜占庭傳入，在帝制贊助下達藝術高峰。',
+                culturalSignificance: '宣德款掐絲琺瑯是中國裝飾藝術中最珍罕之作。此例有帝制六字款。蓮紋象徵連綿好運與繁榮。',
+                fractionalAvailable: 4000,
+                tokenHolders: 76
+            },
+            {
+                id: 4,
+                lotNumber: '004',
+                title: '元代極罕霽藍釉白龍紋梨形執壺',
+                chinese: '元 霽藍釉白龍紋梨形執壺',
+                dynasty: 'yuan',
+                dynastyInfo: '元代 (1271-1368)',
+                imageOrientation: 'portrait',
+                images: [
+                    '/assets/images/relics/004-yuan-jilan-ewer/main.jpg',
+                    '/assets/images/relics/004-yuan-jilan-ewer/detail-1.jpg',
+                    '/assets/images/relics/004-yuan-jilan-ewer/detail-2.jpg',
+                    '/assets/images/relics/004-yuan-jilan-ewer/detail-3.jpg'
+                ],
+                thumbnail: '/assets/images/relics/004-yuan-jilan-ewer/main.jpg',
+                description: '此壯觀執壺展現元代陶工高溫燒製鈷藍釉之技術精湛。元瓷多以大器聞名，此小壺尤為珍罕。霽藍釉被視為元代瓷器頂級品種，比著名元青花更為珍貴。白龍昂首吐舌，若奔騰於海。',
+                estimate: { low: 12500000, high: 28000000 },
+                currentBid: 3250000,
+                minBidIncrement: 100000,
+                bidCount: 41,
+                endTime: Date.now() + 86400000 * 8,
+                provenance: '中國私人收藏\n1970年代形成\n1985年從親屬處獲得，北京',
+                condition: '狀況極佳。壺嘴小磕經專業修復。鈷藍釉深邃燦爛，為優雅白龍提供絕佳背景。',
+                dimensions: '總高(含蓋)：31.3 厘米\n寬(柄至嘴)：18.5 厘米\n重量：1.45 公斤',
+                literature: '刊載於《元青花瓷》，台北故宮博物院，1998年，編號47',
+                technicalNotes: '此器所用鈷料經光譜分析確認為進口波斯鈷，證實其帝制品質。釉色深邃天青，展現精湛燒製技術。',
+                culturalSignificance: '元青花釉瓷代表陶瓷史革命時刻，結合中國制陶技術與伊斯蘭美學。龍紋增添動感活力，體現帝王威嚴。',
+                fractionalAvailable: 3000,
+                tokenHolders: 92
+            },
+            {
+                id: 5,
+                lotNumber: '005',
+                title: '明景泰掐絲琺瑯蓮紋蓋盒',
+                chinese: '明景泰 掐絲琺瑯蓮紋蓋盒',
+                dynasty: 'ming',
+                dynastyInfo: '景泰時期 (1450-1457)',
+                imageOrientation: 'square',
+                images: [
+                    '/assets/images/relics/005-ming-jingtai-casket/main.jpg',
+                    '/assets/images/relics/005-ming-jingtai-casket/detail-1.jpg',
+                    '/assets/images/relics/005-ming-jingtai-casket/detail-2.jpg',
+                    '/assets/images/relics/005-ming-jingtai-casket/mark.jpg'
+                ],
+                thumbnail: '/assets/images/relics/005-ming-jingtai-casket/main.jpg',
+                description: '此中國裝飾藝術傑作體現景泰時期掐絲琺瑯工藝巔峰。盒身渾圓，蓋合嚴密，底座圓整，體現對稱平衡。器身飾鎏金蓮瓣紋，藍色琺瑯釉為地，填入各色琺瑯，構成纏枝蓮紋。',
+                estimate: { low: 8000000, high: 12000000 },
+                currentBid: 950000,
+                minBidIncrement: 50000,
+                bidCount: 28,
+                endTime: Date.now() + 86400000 * 5,
+                provenance: '中國私人收藏\n1970年代形成\n1985年從親屬處獲得，北京',
+                condition: '品相極佳，釉彩明亮飽滿。歲月包漿增添魅力，古雅端莊。原鎏金完好。',
+                dimensions: '直徑：22.5 厘米\n高：12.8 厘米\n重量：2.1 公斤',
+                literature: '參見倫敦維多利亞阿爾伯特博物館類似例子，載於《中國掐絲琺瑯：Pierre Uldry收藏》，1989年，編號42',
+                technicalNotes: '精工細作，色彩豐富，體現高度藝術造詣與技術水準。設計令人「由衷讚嘆」工匠非凡技藝與匠心。',
+                culturalSignificance: '景泰時期以掐絲琺瑯技術進步聞名。此盒體現琺瑯特有奢華高貴品格，展現對美感與功能並重之追求。',
+                fractionalAvailable: 5000,
+                tokenHolders: 45
+            }
+        ];
+        
+        // Web3 Configuration - same as original
+        let provider;
+        let signer;
+        let userAccount;
+        let auctionContract;
+        let erc404Contract;
+        
+        // ERC-404 Contract ABI (simplified) - same as original
+        const ERC404_CONTRACT_ABI = [
+            {
+                "inputs": [],
+                "name": "name",
+                "outputs": [{"name": "", "type": "string"}],
+                "type": "function"
+            },
+            {
+                "inputs": [{"name": "owner", "type": "address"}],
+                "name": "balanceOf",
+                "outputs": [{"name": "", "type": "uint256"}],
+                "type": "function"
+            },
+            {
+                "inputs": [{"name": "to", "type": "address"}, {"name": "amount", "type": "uint256"}],
+                "name": "transfer",
+                "outputs": [{"name": "", "type": "bool"}],
+                "type": "function"
+            }
+        ];
+        
+        // Contract addresses (will be replaced after deployment)
+        const AUCTION_CONTRACT_ADDRESS = "0x1234567890123456789012345678901234567890";
+        const ERC404_CONTRACT_ADDRESS = "0x0987654321098765432109876543210987654321";
+
+        // State variables
+        let currentFilter = 'all';
+        let currentSort = 'lot';
+        let selectedArtifact = null;
+        let currentImageIndex = 0;
+        
+        // Check if running in demo mode
+        const DEMO_MODE = !window.ethereum || !AUCTION_CONTRACT_ADDRESS.startsWith('0x') || AUCTION_CONTRACT_ADDRESS === "0x1234567890123456789012345678901234567890";
+
+        // Initialize
+        async function init() {
+            hideLoading();
+            renderArtifacts();
+            updateStats();
+            startTimers();
+            
+            // Check if Web3 is available
+            if (typeof window.ethereum !== 'undefined') {
+                provider = new ethers.BrowserProvider(window.ethereum);
+                
+                // Check if already connected
+                try {
+                    const accounts = await provider.listAccounts();
+                    if (accounts.length > 0) {
+                        userAccount = accounts[0].address;
+                        signer = await provider.getSigner();
+                        await updateWalletUI();
+                        await checkNetwork();
+                    }
+                } catch (error) {
+                    console.log('沒有已連接的帳戶');
+                }
+                
+                // Listen for account changes
+                window.ethereum.on('accountsChanged', handleAccountsChanged);
+                window.ethereum.on('chainChanged', () => window.location.reload());
+            }
+            
+            // Show demo mode notification
+            if (DEMO_MODE) {
+                setTimeout(() => {
+                    showToast('運行於演示模式 - 連接錢包並部署合約以進行真實交易', 'info');
+                }, 2000);
+            }
+        }
+        
+        // Hide loading screen
+        function hideLoading() {
+            setTimeout(() => {
+                document.getElementById('loading').classList.add('hidden');
+            }, 500);
+        }
+        
+        // Connect wallet
+        async function connectWallet() {
+            if (typeof window.ethereum !== 'undefined') {
+                try {
+                    // Request account access
+                    const accounts = await window.ethereum.request({ 
+                        method: 'eth_requestAccounts' 
+                    });
+                    userAccount = accounts[0];
+                    
+                    // Initialize ethers
+                    provider = new ethers.BrowserProvider(window.ethereum);
+                    signer = await provider.getSigner();
+                    
+                    // Check network
+                    const network = await provider.getNetwork();
+                    console.log('已連接到網絡:', network.chainId);
+                    
+                    // Initialize contracts with error handling
+                    try {
+                        erc404Contract = new ethers.Contract(
+                            ERC404_CONTRACT_ADDRESS,
+                            ERC404_CONTRACT_ABI,
+                            signer
+                        );
+                        console.log('合約已初始化');
+                    } catch (contractError) {
+                        console.log('合約待部署');
+                        // Continue in demo mode
+                    }
+                    
+                    updateWalletUI();
+                    showToast('錢包連接成功！', 'success');
+                    
+                } catch (error) {
+                    console.error('連接錢包錯誤:', error);
+                    if (error.code === 4001) {
+                        showToast('連接已取消', 'error');
+                    } else if (error.code === -32002) {
+                        showToast('請解鎖MetaMask', 'error');
+                    } else {
+                        showToast('連接錢包失敗', 'error');
+                    }
+                }
+            } else {
+                showToast('請安裝MetaMask以使用此dApp', 'error');
+                window.open('https://metamask.io/download/', '_blank');
+            }
+        }
+        
+        // Check network
+        async function checkNetwork() {
+            if (!provider) return;
+            
+            const targetNetwork = 11155111n; // Sepolia testnet
+            const network = await provider.getNetwork();
+            
+            if (network.chainId !== targetNetwork && !DEMO_MODE) {
+                showToast('請切換至Sepolia測試網', 'warning');
+                
+                try {
+                    await window.ethereum.request({
+                        method: 'wallet_switchEthereumChain',
+                        params: [{ chainId: '0x' + targetNetwork.toString(16) }],
+                    });
+                } catch (error) {
+                    if (error.code === 4902) {
+                        // Chain not added, add it
+                        await window.ethereum.request({
+                            method: 'wallet_addEthereumChain',
+                            params: [{
+                                chainId: '0x' + targetNetwork.toString(16),
+                                chainName: 'Sepolia測試網',
+                                nativeCurrency: { name: 'ETH', symbol: 'ETH', decimals: 18 },
+                                rpcUrls: ['https://sepolia.infura.io/v3/'],
+                                blockExplorerUrls: ['https://sepolia.etherscan.io/']
+                            }]
+                        });
+                    }
+                }
+            }
+        }
+        
+        // Handle account changes
+        function handleAccountsChanged(accounts) {
+            if (accounts.length === 0) {
+                userAccount = null;
+                updateWalletUI();
+                showToast('錢包已斷開', 'error');
+            } else if (accounts[0] !== userAccount) {
+                userAccount = accounts[0];
+                updateWalletUI();
+                showToast('帳戶已更改', 'success');
+            }
+        }
+        
+        // Update wallet UI
+        async function updateWalletUI() {
+            const walletButton = document.querySelector('.connect-wallet');
+            const balanceDisplay = document.getElementById('token-balance');
+            
+            if (userAccount) {
+                walletButton.classList.add('connected');
+                document.getElementById('wallet-text').textContent = 
+                    `${userAccount.slice(0, 6)}...${userAccount.slice(-4)}`;
+                
+                balanceDisplay.style.display = 'block';
+                await updateTokenBalance();
+            } else {
+                walletButton.classList.remove('connected');
+                document.getElementById('wallet-text').textContent = '連接錢包';
+                balanceDisplay.style.display = 'none';
+            }
+        }
+        
+        // Update token balance
+        async function updateTokenBalance() {
+            if (!userAccount || !erc404Contract) return;
+            
+            try {
+                // In production, this would call the contract
+                // const balance = await erc404Contract.balanceOf(userAccount);
+                const balance = Math.floor(Math.random() * 5000); // Demo value
+                document.getElementById('balance-amount').textContent = balance.toLocaleString();
+            } catch (error) {
+                console.error('獲取餘額錯誤:', error);
+            }
+        }
+        
+        // Render artifacts
+        function renderArtifacts() {
+            const grid = document.getElementById('artifacts-grid');
+            let filteredArtifacts = artifacts;
+            
+            // Apply filter
+            if (currentFilter !== 'all') {
+                filteredArtifacts = artifacts.filter(a => a.dynasty === currentFilter);
+            }
+            
+            // Apply sort
+            filteredArtifacts.sort((a, b) => {
+                switch(currentSort) {
+                    case 'price-high':
+                        return b.currentBid - a.currentBid;
+                    case 'price-low':
+                        return a.currentBid - b.currentBid;
+                    case 'ending':
+                        return a.endTime - b.endTime;
+                    default:
+                        return a.lotNumber.localeCompare(b.lotNumber);
+                }
+            });
+            
+            grid.innerHTML = filteredArtifacts.map(artifact => {
+                const imageSrc = artifact.thumbnail || artifact.images[0] || '/assets/images/placeholder.jpg';
+                return `
+                    <div class="artifact-card" onclick="openArtifactModal(${artifact.id})">
+                        <div class="artifact-image-container ${artifact.imageOrientation || 'square'}">
+                            <img src="${imageSrc}" 
+                                 alt="${artifact.title}" 
+                                 class="artifact-image loading" 
+                                 loading="lazy"
+                                 onload="this.classList.remove('loading'); this.classList.add('loaded');"
+                                 onerror="this.src='/assets/images/placeholder.jpg'">
+                        </div>
+                        <div class="artifact-info">
+                            <div class="artifact-lot">拍品 ${artifact.lotNumber}</div>
+                            <h3 class="artifact-title">${artifact.title}</h3>
+                            <p class="artifact-dynasty">${artifact.chinese}<br>${artifact.dynastyInfo}</p>
+                            <p class="artifact-estimate">估價：$${(artifact.estimate.low / 1000000).toFixed(1)}M - $${(artifact.estimate.high / 1000000).toFixed(1)}M</p>
+                            <p class="artifact-bid">$${(artifact.currentBid / 1000000).toFixed(1)}M</p>
+                            <p class="artifact-estimate">${artifact.bidCount} 次出價 • ${getTimeLeft(artifact.endTime)}</p>
+                            <div class="artifact-erc404">
+                                <strong>ERC-404：</strong> ${artifact.fractionalAvailable.toLocaleString()} 個SHEN可購買<br>
+                                ${artifact.tokenHolders} 位碎片化擁有者
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+        
+        // Filter by dynasty
+        function filterByDynasty(dynasty) {
+            currentFilter = dynasty;
+            document.querySelectorAll('.dynasty-filter').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            renderArtifacts();
+        }
+        
+        // Sort artifacts
+        function sortArtifacts(sortBy) {
+            currentSort = sortBy;
+            renderArtifacts();
+        }
+        
+        // Open artifact modal
+        function openArtifactModal(id) {
+            selectedArtifact = artifacts.find(a => a.id === id);
+            if (!selectedArtifact) return;
+            
+            currentImageIndex = 0;
+            
+            // Update modal content
+            updateModalImage();
+            document.getElementById('modal-lot').textContent = `拍品 ${selectedArtifact.lotNumber}`;
+            document.getElementById('modal-title').textContent = selectedArtifact.title;
+            document.getElementById('modal-dynasty').textContent = `${selectedArtifact.chinese} | ${selectedArtifact.dynastyInfo}`;
+            document.getElementById('modal-description').textContent = selectedArtifact.description;
+            document.getElementById('modal-provenance').textContent = selectedArtifact.provenance;
+            document.getElementById('modal-condition').textContent = selectedArtifact.condition;
+            document.getElementById('modal-dimensions').textContent = selectedArtifact.dimensions;
+            document.getElementById('modal-literature').textContent = selectedArtifact.literature;
+            document.getElementById('modal-current-bid').textContent = `$${(selectedArtifact.currentBid / 1000000).toFixed(2)}M`;
+            document.getElementById('modal-bid-count').textContent = `${selectedArtifact.bidCount} 次出價`;
+            document.getElementById('min-bid').textContent = (selectedArtifact.currentBid + selectedArtifact.minBidIncrement).toLocaleString();
+            document.getElementById('available-tokens').textContent = selectedArtifact.fractionalAvailable.toLocaleString();
+            
+            // Show technical notes and cultural significance if available
+            if (selectedArtifact.technicalNotes) {
+                document.getElementById('technical-notes-section').style.display = 'block';
+                document.getElementById('modal-technical-notes').textContent = selectedArtifact.technicalNotes;
+            } else {
+                document.getElementById('technical-notes-section').style.display = 'none';
+            }
+            
+            if (selectedArtifact.culturalSignificance) {
+                document.getElementById('cultural-significance-section').style.display = 'block';
+                document.getElementById('modal-cultural-significance').textContent = selectedArtifact.culturalSignificance;
+            } else {
+                document.getElementById('cultural-significance-section').style.display = 'none';
+            }
+            
+            // Create gallery dots if multiple images
+            createGalleryDots();
+            
+            // Clear input fields
+            document.getElementById('bid-amount').value = '';
+            document.getElementById('token-amount').value = '';
+            
+            // Show modal
+            document.getElementById('artifact-modal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+        
+        // Update modal image
+        function updateModalImage() {
+            if (!selectedArtifact || !selectedArtifact.images) return;
+            
+            const modalImage = document.getElementById('modal-image');
+            const imageSrc = selectedArtifact.images[currentImageIndex] || '/assets/images/placeholder.jpg';
+            
+            modalImage.style.opacity = '0';
+            setTimeout(() => {
+                modalImage.src = imageSrc;
+                modalImage.style.opacity = '1';
+            }, 200);
+        }
+        
+        // Create gallery dots
+        function createGalleryDots() {
+            const dotsContainer = document.getElementById('gallery-dots');
+            if (!selectedArtifact.images || selectedArtifact.images.length <= 1) {
+                dotsContainer.innerHTML = '';
+                return;
+            }
+            
+            dotsContainer.innerHTML = selectedArtifact.images.map((_, index) => 
+                `<span class="gallery-dot ${index === currentImageIndex ? 'active' : ''}" 
+                      onclick="changeImage(${index})"></span>`
+            ).join('');
+        }
+        
+        // Change image in gallery
+        function changeImage(index) {
+            currentImageIndex = index;
+            updateModalImage();
+            
+            // Update dots
+            document.querySelectorAll('.gallery-dot').forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
+        }
+        
+        // Close modal
+        function closeModal() {
+            document.getElementById('artifact-modal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+            selectedArtifact = null;
+            currentImageIndex = 0;
+        }
+        
+        // Place bid
+        async function placeBid() {
+            if (!userAccount) {
+                showToast('請先連接您的錢包', 'error');
+                return;
+            }
+            
+            const bidInput = document.getElementById('bid-amount');
+            const bidAmount = parseFloat(bidInput.value);
+            const minBid = selectedArtifact.currentBid + selectedArtifact.minBidIncrement;
+            
+            if (isNaN(bidAmount) || bidAmount < minBid) {
+                showToast(`最低出價為 $${minBid.toLocaleString()}`, 'error');
+                return;
+            }
+            
+            // Disable button during transaction
+            const bidButton = event.target;
+            bidButton.disabled = true;
+            bidButton.textContent = '處理中...';
+            
+            try {
+                if (DEMO_MODE) {
+                    // Demo mode simulation
+                    await new Promise(resolve => setTimeout(resolve, 2000));
+                    
+                    selectedArtifact.currentBid = bidAmount;
+                    selectedArtifact.bidCount++;
+                    
+                    showToast(`演示模式：出價 $${bidAmount.toLocaleString()} 成功！`, 'success');
+                    
+                    // Update modal
+                    document.getElementById('modal-current-bid').textContent = `$${(bidAmount / 1000000).toFixed(2)}M`;
+                    document.getElementById('modal-bid-count').textContent = `${selectedArtifact.bidCount} 次出價`;
+                    
+                    // Update grid after modal closes
+                    setTimeout(() => {
+                        renderArtifacts();
+                        updateStats();
+                    }, 500);
+                    
+                    bidInput.value = '';
+                    
+                } else {
+                    // Real contract interaction would go here
+                    const tx = await auctionContract.placeBid(selectedArtifact.id, {
+                        value: ethers.parseUnits(bidAmount.toString(), 6) // USDT has 6 decimals
+                    });
+                    const receipt = await tx.wait();
+                    
+                    showToast(`出價成功！交易：${receipt.hash.slice(0, 10)}...`, 'success');
+                    
+                    // Update UI after blockchain confirmation
+                    selectedArtifact.currentBid = bidAmount;
+                    selectedArtifact.bidCount++;
+                    renderArtifacts();
+                    updateStats();
+                }
+                
+            } catch (error) {
+                console.error('出價錯誤:', error);
+                showToast(error.message || '出價失敗', 'error');
+            } finally {
+                bidButton.disabled = false;
+                bidButton.textContent = '出價';
+            }
+        }
+        
+        // Buy tokens
+        async function buyTokens() {
+            if (!userAccount) {
+                showToast('請先連接您的錢包', 'error');
+                return;
+            }
+            
+            const tokenInput = document.getElementById('token-amount');
+            const tokenAmount = parseInt(tokenInput.value);
+            
+            if (isNaN(tokenAmount) || tokenAmount <= 0) {
+                showToast('請輸入有效的代幣數量', 'error');
+                return;
+            }
+            
+            if (tokenAmount > selectedArtifact.fractionalAvailable) {
+                showToast('可購買代幣數量不足', 'error');
+                return;
+            }
+            
+            const totalCost = tokenAmount * 100; // $100 per SHEN
+            const buyButton = event.target;
+            buyButton.disabled = true;
+            buyButton.textContent = '處理中...';
+            
+            try {
+                if (DEMO_MODE) {
+                    // Demo mode simulation
+                    await new Promise(resolve => setTimeout(resolve, 2000));
+                    
+                    selectedArtifact.fractionalAvailable -= tokenAmount;
+                    selectedArtifact.tokenHolders++;
+                    
+                    showToast(`演示模式：購買 ${tokenAmount} 個SHEN代幣，共 $${totalCost.toLocaleString()}！`, 'success');
+                    
+                    if (tokenAmount >= 10000) {
+                        showToast('恭喜！您現在擁有足夠代幣獲得完整NFT！', 'success');
+                    }
+                    
+                    document.getElementById('available-tokens').textContent = 
+                        selectedArtifact.fractionalAvailable.toLocaleString();
+                    
+                    tokenInput.value = '';
+                    
+                } else {
+                    // Real contract interaction would go here
+                    const tx = await erc404Contract.buyTokens(selectedArtifact.id, tokenAmount, {
+                        value: ethers.parseUnits(totalCost.toString(), 6) // USDT
+                    });
+                    const receipt = await tx.wait();
+                    
+                    showToast(`代幣購買成功！交易：${receipt.hash.slice(0, 10)}...`, 'success');
+                    
+                    selectedArtifact.fractionalAvailable -= tokenAmount;
+                    selectedArtifact.tokenHolders++;
+                    
+                    await updateTokenBalance();
+                }
+                
+                renderArtifacts();
+                
+            } catch (error) {
+                console.error('購買代幣錯誤:', error);
+                showToast(error.message || '購買代幣失敗', 'error');
+            } finally {
+                buyButton.disabled = false;
+                buyButton.textContent = '購買代幣';
+            }
+        }
+        
+        // Update statistics
+        function updateStats() {
+            document.getElementById('total-lots').textContent = artifacts.length;
+            const totalBids = artifacts.reduce((sum, a) => sum + a.bidCount, 0);
+            document.getElementById('total-bids').textContent = totalBids;
+            const totalValue = artifacts.reduce((sum, a) => sum + a.currentBid, 0);
+            document.getElementById('total-value').textContent = `$${(totalValue / 1000000).toFixed(1)}M`;
+        }
+        
+        // Get time left for auction
+        function getTimeLeft(endTime) {
+            const now = Date.now();
+            const diff = endTime - now;
+            
+            if (diff <= 0) return '已結束';
+            
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            
+            if (days > 0) return `${days}天 ${hours}時`;
+            if (hours > 0) return `${hours}時 ${minutes}分`;
+            return `${minutes}分`;
+        }
+        
+        // Start timers
+        function startTimers() {
+            setInterval(() => {
+                // Update time left in grid
+                const cards = document.querySelectorAll('.artifact-card');
+                cards.forEach((card, index) => {
+                    const artifact = artifacts[index];
+                    const timeElement = card.querySelector('.artifact-estimate:last-of-type');
+                    if (timeElement && artifact) {
+                        timeElement.textContent = `${artifact.bidCount} 次出價 • ${getTimeLeft(artifact.endTime)}`;
+                    }
+                });
+            }, 60000); // Update every minute
+        }
+        
+        // Show toast notification
+        function showToast(message, type = 'info') {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.className = `toast ${type}`;
+            toast.classList.add('show');
+            
+            // Auto-hide after 4 seconds (longer for important messages)
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, type === 'error' ? 5000 : 4000);
+        }
+        
+        // Scroll functions
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        function scrollToAuctions() {
+            document.getElementById('auctions').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        // Toggle mobile menu
+        function toggleMobileMenu() {
+            showToast('手機選單即將推出', 'info');
+        }
+        
+        // Modal close on outside click
+        window.onclick = function(event) {
+            const modal = document.getElementById('artifact-modal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+        
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && selectedArtifact) {
+                closeModal();
+            }
+            
+            // Arrow keys for image gallery
+            if (selectedArtifact && selectedArtifact.images && selectedArtifact.images.length > 1) {
+                if (e.key === 'ArrowLeft' && currentImageIndex > 0) {
+                    changeImage(currentImageIndex - 1);
+                } else if (e.key === 'ArrowRight' && currentImageIndex < selectedArtifact.images.length - 1) {
+                    changeImage(currentImageIndex + 1);
+                }
+            }
+        });
+        
+        // Handle resize events
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => {
+                renderArtifacts();
+            }, 250);
+        });
+        
+        // Initialize on load
+        window.addEventListener('load', init);
+        
+        // Cleanup on unload
+        window.addEventListener('beforeunload', () => {
+            if (window.ethereum) {
+                window.ethereum.removeListener('accountsChanged', handleAccountsChanged);
+            }
+        });
+    </script>
+</body>
+</html>
