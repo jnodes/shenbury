@@ -54,3 +54,12 @@ coverage/
 .cache/
 dist/
 build/
+
+# Rust build artifacts
+target/
+Cargo.lock
+
+# Large binaries
+*.wasm
+cored
+cored-*
