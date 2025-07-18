@@ -63,3 +63,12 @@ Cargo.lock
 *.wasm
 cored
 cored-*
+
+# Rust build artifacts
+target/
+**/target/
+contracts/**/target/
+
+# Database files
+*.db
+*.sqlite
