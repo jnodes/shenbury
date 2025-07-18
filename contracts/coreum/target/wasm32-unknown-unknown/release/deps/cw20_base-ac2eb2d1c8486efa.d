@@ -1,0 +1,15 @@
+/home/ryana/shenbury-updated/contracts/coreum/target/wasm32-unknown-unknown/release/deps/cw20_base-ac2eb2d1c8486efa.d: /home/ryana/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cw20-base-1.1.2/src/lib.rs /home/ryana/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cw20-base-1.1.2/src/allowances.rs /home/ryana/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cw20-base-1.1.2/src/contract.rs /home/ryana/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cw20-base-1.1.2/src/enumerable.rs /home/ryana/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cw20-base-1.1.2/src/error.rs /home/ryana/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cw20-base-1.1.2/src/msg.rs /home/ryana/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cw20-base-1.1.2/src/state.rs
+
+/home/ryana/shenbury-updated/contracts/coreum/target/wasm32-unknown-unknown/release/deps/cw20_base-ac2eb2d1c8486efa.wasm: /home/ryana/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cw20-base-1.1.2/src/lib.rs /home/ryana/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cw20-base-1.1.2/src/allowances.rs /home/ryana/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cw20-base-1.1.2/src/contract.rs /home/ryana/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cw20-base-1.1.2/src/enumerable.rs /home/ryana/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cw20-base-1.1.2/src/error.rs /home/ryana/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cw20-base-1.1.2/src/msg.rs /home/ryana/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cw20-base-1.1.2/src/state.rs
+
+/home/ryana/shenbury-updated/contracts/coreum/target/wasm32-unknown-unknown/release/deps/libcw20_base-ac2eb2d1c8486efa.rlib: /home/ryana/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cw20-base-1.1.2/src/lib.rs /home/ryana/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cw20-base-1.1.2/src/allowances.rs /home/ryana/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cw20-base-1.1.2/src/contract.rs /home/ryana/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cw20-base-1.1.2/src/enumerable.rs /home/ryana/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cw20-base-1.1.2/src/error.rs /home/ryana/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cw20-base-1.1.2/src/msg.rs /home/ryana/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cw20-base-1.1.2/src/state.rs
+
+/home/ryana/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cw20-base-1.1.2/src/lib.rs:
+/home/ryana/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cw20-base-1.1.2/src/allowances.rs:
+/home/ryana/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cw20-base-1.1.2/src/contract.rs:
+/home/ryana/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cw20-base-1.1.2/src/enumerable.rs:
+/home/ryana/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cw20-base-1.1.2/src/error.rs:
+/home/ryana/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cw20-base-1.1.2/src/msg.rs:
+/home/ryana/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/cw20-base-1.1.2/src/state.rs:
+
+# env-dep:CARGO_PKG_VERSION=1.1.2
