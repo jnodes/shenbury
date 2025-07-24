@@ -72,3 +72,4 @@ contracts/**/target/
 # Database files
 *.db
 *.sqlite
+shenbury-contracts/
