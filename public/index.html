@@ -1415,7 +1415,67 @@
         .progressive-image .full-image.loaded {
             opacity: 1;
         }
-    </style>
+
+.presale-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(201, 48, 44, 0.9);
+    color: white;
+    padding: 0.5rem 1.5rem;
+    border-radius: 100px;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+    backdrop-filter: blur(10px);
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+}
+
+.hero-cta.primary {
+    background: var(--accent);
+    border: 2px solid var(--accent);
+}
+
+.hero-cta.secondary {
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+}
+
+.tron-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    opacity: 0.9;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.25rem 0.75rem;
+    border-radius: 100px;
+    backdrop-filter: blur(10px);
+}
+
+.tron-badge svg {
+    width: 14px;
+    height: 14px;
+    animation: tronSpin 8s linear infinite;
+}
+
+@keyframes tronSpin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+</style>
+
 </head>
 <body>
     <!-- Loading Screen -->
@@ -1456,13 +1516,215 @@
         </nav>
     </header>
 
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Exceptional Chinese Art</h1>
-            <p>Song, Yuan & Ming Dynasty Masterpieces</p>
-            <button class="hero-cta" onclick="scrollToAuctions()">View Current Auctions</button>
+<!-- Subtle Enhanced Hero Section - Replace the existing hero section with this -->
+
+<style>
+    /* Add these styles to your existing CSS */
+    .hero {
+        height: 550px;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-image: url('/assets/images/hero-bg.jpg');
+        background-size: cover;
+        background-position: center;
+    }
+    
+    .hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.6));
+        z-index: 1;
+    }
+    
+    .hero-content {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        color: white;
+        max-width: 800px;
+        padding: 0 2rem;
+        animation: heroFadeIn 1s ease;
+    }
+    
+    .presale-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: rgba(201, 48, 44, 0.9);
+        color: white;
+        padding: 0.5rem 1.5rem;
+        border-radius: 100px;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        margin-bottom: 1.5rem;
+        font-weight: 500;
+        backdrop-filter: blur(10px);
+    }
+    
+    .presale-badge .badge-icon {
+        font-size: 1rem;
+    }
+    
+    .hero h1 {
+        font-size: 3.5rem;
+        font-weight: 300;
+        margin-bottom: 1rem;
+        letter-spacing: -0.02em;
+        font-family: var(--font-primary);
+    }
+    
+    .hero p {
+        font-size: 1.25rem;
+        font-weight: 300;
+        opacity: 0.9;
+        margin-bottom: 2rem;
+        font-family: var(--font-secondary);
+    }
+    
+    .hero-buttons {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        margin-bottom: 1.5rem;
+    }
+    
+    .hero-cta {
+        background: var(--accent);
+        color: white;
+        border: none;
+        padding: 1rem 2.5rem;
+        font-size: 0.875rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-weight: 400;
+    }
+    
+    .hero-cta.primary {
+        background: var(--accent);
+        border: 2px solid var(--accent);
+    }
+    
+    .hero-cta.primary:hover {
+        background: #a02622;
+        border-color: #a02622;
+        transform: translateY(-2px);
+        box-shadow: 0 10px 30px rgba(201, 48, 44, 0.3);
+    }
+    
+    .hero-cta.secondary {
+        background: transparent;
+        color: white;
+        border: 2px solid white;
+    }
+    
+    .hero-cta.secondary:hover {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: var(--accent);
+        color: white;
+        box-shadow: 0 0 20px rgba(201, 48, 44, 0.3);
+    }
+    
+    .hero-detail {
+        font-size: 0.875rem;
+        opacity: 0.8;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+    
+    .tron-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.75rem;
+        opacity: 0.9;
+        background: rgba(255, 255, 255, 0.1);
+        padding: 0.25rem 0.75rem;
+        border-radius: 100px;
+        backdrop-filter: blur(10px);
+    }
+    
+    .tron-badge svg {
+        width: 14px;
+        height: 14px;
+        animation: tronSpin 8s linear infinite;
+    }
+    
+    @keyframes tronSpin {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+    }
+    
+    .tron-badge:hover {
+        background: rgba(255, 255, 255, 0.15);
+        transform: scale(1.05);
+        transition: all 0.3s ease;
+    }
+    
+    .tron-badge:hover svg {
+        animation-duration: 2s;
+    }
+    
+    /* Mobile responsive */
+    @media (max-width: 768px) {
+        .hero { height: 500px; }
+        .hero h1 { font-size: 2.5rem; }
+        .hero p { font-size: 1.125rem; }
+        .hero-buttons { 
+            flex-direction: column; 
+            gap: 0.75rem;
+        }
+        .hero-cta { 
+            padding: 0.875rem 2rem;
+            font-size: 0.8125rem;
+        }
+    }
+</style>
+
+<section class="hero">
+    <div class="hero-content">
+        <div class="presale-badge">
+            <span class="badge-icon">●</span>
+            <span>SHEN TOKEN PRESALE LIVE</span>
         </div>
-    </section>
+        
+        <h1>Exceptional Chinese Art</h1>
+        <p>Song, Yuan & Ming Dynasty Masterpieces</p>
+        
+        <div class="hero-buttons">
+            <button class="hero-cta primary" onclick="window.location.href='presale.html'">
+                Join Presale - From $0.10
+            </button>
+            <button class="hero-cta secondary" onclick="scrollToAuctions()">
+                View Collection
+            </button>
+        </div>
+        
+        <div class="hero-detail">
+            <span class="tron-badge">
+                <svg viewBox="0 0 64 64" fill="currentColor">
+                    <path d="M61.55 19.28c-3-2.77-7.15-7-10.53-10.53l-2.3-2.39a7.75 7.75 0 00-11.34.36L3.86 43.16a4.69 4.69 0 00.69 7l11.5 9c.21.15.33.24.42.24s.18-.06.33-.21l42.41-37.11a5.4 5.4 0 001.34-2.8z"/>
+                </svg>
+                <span>TRON Network</span>
+            </span>
+            <span>•</span>
+            <span>Fractional ownership starting at $1,400</span>
+        </div>
+    </div>
+</section>
 
     <div class="auction-header" id="auctions">
         <h2>Featured Lots</h2>
