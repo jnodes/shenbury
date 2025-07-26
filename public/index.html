@@ -3,1479 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ru Kiln Ceramics & Chinese Imperial Artifacts | Shenbury 神堡</title>
+    <title>Shenbury 神堡 | Chinese Imperial Ceramics - SHEN Token Presale Live</title>
     
-    <!-- Preconnect to external domains -->
+    <!-- Same head content as before -->
     <link rel="preconnect" href="https://cdn.jsdelivr.net">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    
-    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&display=swap" rel="stylesheet">
     
-    <!-- Enhanced SEO Meta Tags -->
-    <meta name="description" content="Shenbury 神堡 - The Art of Provenance. Authenticated Ru kiln ceramics from Northern Song Dynasty, Ming Jingtai cloisonné, and Yuan blue-glazed porcelain. Museum-quality Chinese artifacts with ERC-404 fractional ownership.">
-    <meta name="keywords" content="Shenbury, 神堡, Ru kiln, Ru ware, Song Dynasty, Chinese ceramics, 汝窯, 宋代瓷器, Ming Dynasty, Jingtai cloisonné, 景泰藍, Yuan Dynasty, Jilan glaze, 霽藍釉, auction, ERC-404, NFT, provenance, Emperor Huizong">
+    <!-- TronWeb -->
+    <script src="https://cdn.jsdelivr.net/npm/tronweb@5.3.2/dist/TronWeb.js"></script>
     
-    <!-- Open Graph for Social -->
-    <meta property="og:title" content="Shenbury 神堡 | $35M+ Chinese Imperial Ceramics Collection">
-    <meta property="og:description" content="The Art of Provenance. Own fractional shares of museum-quality Ru kiln ceramics and imperial Chinese artifacts from Song, Yuan, and Ming dynasties.">
-    <meta property="og:image" content="/assets/images/relics/001-song-ru-washer/main.jpg">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://shenbury.com">
-    
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Shenbury 神堡 - Rare Ru Kiln Ceramics at Auction">
-    <meta name="twitter:description" content="Exceptional Northern Song Ru ware, Ming cloisonné, and Yuan porcelain. Experience the pinnacle of Chinese ceramic achievement.">
-    <meta name="twitter:image" content="/assets/images/relics/001-song-ru-washer/main.jpg">
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-    <link rel="alternate icon" href="/favicon.ico">
-    
-    <!-- Enhanced Structured Data for Google -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "ArtGallery",
-      "name": "Shenbury 神堡",
-      "description": "The Art of Provenance - Web3 auction house specializing in imperial Chinese ceramics from Song, Yuan, and Ming dynasties",
-      "url": "https://shenbury.com",
-      "slogan": "The Art of Provenance",
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "Imperial Chinese Ceramics Collection",
-        "itemListElement": [
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "VisualArtwork",
-              "name": "Northern Song Ru Kiln Sunflower Washer",
-              "creator": "Ru Guan Kiln",
-              "dateCreated": "1086-1106",
-              "material": "Ceramic with azure glaze",
-              "description": "One of fewer than 100 Ru ware pieces known to exist"
-            },
-            "price": "35000000",
-            "priceCurrency": "USD"
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "VisualArtwork",
-              "name": "Imperial Jingtai Cloisonné Lotus Pattern Lidded Casket",
-              "creator": "Ming Dynasty Imperial Workshop",
-              "dateCreated": "1450-1457",
-              "material": "Copper with cloisonné enamel"
-            },
-            "price": "1200000",
-            "priceCurrency": "USD"
-          }
-        ]
-      }
-    }
-    </script>
-    
-    <link rel="canonical" href="https://shenbury.com">
-    
-    <!-- External Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/ethers@6.11.1/dist/ethers.umd.min.js"></script>
+    <!-- Data Service -->
+    <script src="/js/data-service.js"></script>
     
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        /* Previous styles remain the same, adding these updates */
         
-        :root {
-            --primary: #000000;
-            --secondary: #ffffff;
-            --accent: #c9302c;
-            --gray-light: #f8f8f8;
-            --gray-medium: #e5e5e5;
-            --gray-dark: #666666;
-            --text-primary: #000000;
-            --text-secondary: #666666;
-            --hover: #c9302c;
-            --shadow: rgba(0, 0, 0, 0.08);
-            --font-primary: 'Cormorant Garamond', serif;
-            --font-secondary: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-        }
-        
-        body {
-            font-family: var(--font-secondary);
-            background: var(--secondary);
-            color: var(--text-primary);
-            line-height: 1.6;
-            font-weight: 300;
-        }
-        
-        /* Typography */
-        h1, h2, h3, h4, h5, h6 {
-            font-family: var(--font-primary);
-            font-weight: 300;
-            letter-spacing: -0.02em;
-        }
-        
-        /* Loading State */
-        .loading {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 9999;
-            transition: opacity 0.3s ease;
-        }
-        
-        .loading.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-        
-        .loader {
-            width: 40px;
-            height: 40px;
-            border: 2px solid var(--gray-medium);
-            border-top-color: var(--accent);
-            border-radius: 50%;
-            animation: spin 0.8s linear infinite;
-        }
-        
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-        
-        /* Header */
-        header {
-            background: var(--secondary);
-            border-bottom: 1px solid var(--gray-medium);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            padding: 0 2rem;
-            backdrop-filter: blur(10px);
-            background: rgba(255, 255, 255, 0.95);
-        }
-        
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 80px;
-            max-width: 1400px;
-            margin: 0 auto;
-            position: relative;
-        }
-        
-        .logo {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            cursor: pointer;
-        }
-        
-        .logo-text {
-            display: flex;
-            align-items: baseline;
-            gap: 0.5rem;
-        }
-        
-        .logo-chinese {
-            font-family: var(--font-primary);
-            font-size: 1.25rem;
-            font-weight: 400;
-        }
-        
-        .logo-english {
-            font-family: var(--font-primary);
-            font-size: 1.75rem;
-            font-weight: 400;
-            letter-spacing: 0.05em;
-        }
-        
-        .logo-tagline {
-            font-size: 0.625rem;
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
-            color: var(--text-secondary);
-            margin-top: 0.25rem;
-            font-family: var(--font-secondary);
-        }
-        
-        .nav-center {
-            display: flex;
-            gap: 3rem;
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        
-        .nav-center a {
-            color: var(--text-primary);
-            text-decoration: none;
-            font-size: 0.875rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            transition: color 0.3s ease;
-            position: relative;
-        }
-        
-        .nav-center a:hover {
-            color: var(--hover);
-        }
-        
-        .nav-center a.active::after {
-            content: '';
-            position: absolute;
-            bottom: -29px;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: var(--accent);
-        }
-        
-        .nav-right {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-        }
-        
-        .wallet-info {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            font-size: 0.875rem;
-            flex-shrink: 0;
-        }
-        
-        .erc404-balance {
-            background: var(--gray-light);
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            display: none;
-            animation: fadeIn 0.3s ease;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .connect-wallet {
-            background: var(--primary);
-            color: var(--secondary);
-            border: 1px solid var(--primary);
-            padding: 0.75rem 2rem;
-            font-size: 0.875rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 400;
-        }
-        
-        .connect-wallet:hover {
-            background: transparent;
-            color: var(--primary);
-        }
-        
-        .connect-wallet.connected {
-            background: transparent;
-            color: var(--primary);
-        }
-        
-        /* Hero Section */
-        .hero {
-            height: 500px;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-image: url('/assets/images/hero-bg.jpg');
-            background-size: cover;
-            background-position: center;
-        }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.6));
-            z-index: 1;
-        }
-        
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            text-align: center;
+        .presale-notice {
+            background: linear-gradient(135deg, #c9302c 0%, #a02622 100%);
             color: white;
-            max-width: 800px;
-            padding: 0 2rem;
-            animation: heroFadeIn 1s ease;
-        }
-        
-        @keyframes heroFadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 300;
-            margin-bottom: 1rem;
-            letter-spacing: -0.02em;
-            font-family: var(--font-primary);
-        }
-        
-        .hero p {
-            font-size: 1.25rem;
-            font-weight: 300;
-            opacity: 0.9;
-            margin-bottom: 2rem;
-            font-family: var(--font-secondary);
-        }
-        
-        .hero-cta {
-            background: var(--accent);
-            color: white;
-            border: none;
-            padding: 1rem 3rem;
-            font-size: 0.875rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .hero-cta:hover {
-            background: #a02622;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(201, 48, 44, 0.3);
-        }
-        
-        /* Auction Header */
-        .auction-header {
-            max-width: 1400px;
-            margin: 4rem auto 2rem;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-        }
-        
-        .auction-header h2 {
-            font-size: 2rem;
-            font-weight: 300;
-            font-family: var(--font-primary);
-        }
-        
-        .auction-stats {
-            display: flex;
-            gap: 3rem;
-            font-size: 0.875rem;
-            color: var(--text-secondary);
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        
-        .stat-item {
-            text-align: center;
-        }
-        
-        .stat-value {
-            font-size: 1.5rem;
-            color: var(--text-primary);
-            display: block;
-            font-weight: 400;
-        }
-        
-        /* Filter Bar */
-        .filter-bar {
-            max-width: 1400px;
-            margin: 0 auto 3rem;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-top: 1px solid var(--gray-medium);
-            border-bottom: 1px solid var(--gray-medium);
-            padding-top: 1rem;
-            padding-bottom: 1rem;
-        }
-        
-        .dynasty-filters {
-            display: flex;
-            gap: 2rem;
-        }
-        
-        .dynasty-filter {
-            background: none;
-            border: none;
-            color: var(--text-secondary);
-            cursor: pointer;
-            font-size: 0.875rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            padding: 0.5rem 0;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-        
-        .dynasty-filter:hover,
-        .dynasty-filter.active {
-            color: var(--text-primary);
-        }
-        
-        .dynasty-filter.active::after {
-            content: '';
-            position: absolute;
-            bottom: -1rem;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: var(--accent);
-        }
-        
-        .sort-controls {
-            display: flex;
-            gap: 1rem;
-            align-items: center;
-            font-size: 0.875rem;
-        }
-        
-        .sort-select {
-            border: 1px solid var(--gray-medium);
-            padding: 0.5rem 1rem;
-            background: white;
-            cursor: pointer;
-            outline: none;
-        }
-        
-        .sort-select:focus {
-            border-color: var(--text-primary);
-        }
-        
-        /* Artifact Grid - Masonry Layout */
-        .artifacts-grid {
-            max-width: 1400px;
-            margin: 0 auto 4rem;
-            padding: 0 2rem;
-            column-count: 4;
-            column-gap: 3rem;
-        }
-        
-        .artifact-card {
-            cursor: pointer;
-            transition: all 0.3s ease;
-            opacity: 0;
-            animation: cardFadeIn 0.5s ease forwards;
-            break-inside: avoid;
-            display: inline-block;
-            width: 100%;
-            margin-bottom: 3rem;
-        }
-        
-        .artifact-card:nth-child(1) { animation-delay: 0.1s; }
-        .artifact-card:nth-child(2) { animation-delay: 0.2s; }
-        .artifact-card:nth-child(3) { animation-delay: 0.3s; }
-        .artifact-card:nth-child(4) { animation-delay: 0.4s; }
-        .artifact-card:nth-child(5) { animation-delay: 0.5s; }
-        
-        @keyframes cardFadeIn {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-        }
-        
-        .artifact-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px var(--shadow);
-        }
-        
-        .artifact-image-container {
-            position: relative;
-            background: var(--gray-light);
-            overflow: hidden;
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        /* Dynamic aspect ratios - Natural height for masonry */
-        .artifact-image-container.portrait,
-        .artifact-image-container.landscape,
-        .artifact-image-container.square {
-            padding-bottom: 0; /* Natural height */
-        }
-        
-        .artifact-image {
-            position: relative;
-            width: 100%;
-            height: auto;
-            display: block;
-            object-fit: contain;
-            background-color: #f8f8f8;
-            transition: transform 0.5s ease;
-        }
-        
-        /* Image loading states */
-        .artifact-image.loading {
-            opacity: 0;
-        }
-        
-        .artifact-image.loaded {
-            opacity: 1;
-            animation: imageReveal 0.5s ease;
-        }
-        
-        @keyframes imageReveal {
-            from { opacity: 0; transform: scale(0.95); }
-            to { opacity: 1; transform: scale(1); }
-        }
-        
-        .artifact-card:hover .artifact-image {
-            transform: scale(1.05);
-        }
-        
-        .artifact-info {
-            padding: 0 0.5rem;
-            word-wrap: break-word;
-            overflow-wrap: break-word;
-        }
-        
-        .artifact-lot {
-            font-size: 0.75rem;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 0.5rem;
-        }
-        
-        .artifact-title {
-            font-size: 1.125rem;
-            margin-bottom: 0.5rem;
-            font-weight: 400;
-            line-height: 1.4;
-            font-family: var(--font-primary);
-            overflow-wrap: break-word;
-            word-wrap: break-word;
-            hyphens: auto;
-        }
-        
-        .artifact-dynasty {
-            font-size: 0.875rem;
-            color: var(--text-secondary);
-            margin-bottom: 1rem;
-        }
-        
-        .artifact-estimate {
-            font-size: 0.875rem;
-            color: var(--text-secondary);
-            margin-bottom: 0.25rem;
-        }
-        
-        .artifact-bid {
-            font-size: 1.125rem;
-            font-weight: 400;
-            margin-bottom: 0.5rem;
-        }
-        
-        .artifact-erc404 {
-            background: var(--gray-light);
-            padding: 0.75rem;
-            margin-top: 1rem;
-            font-size: 0.75rem;
-            color: var(--text-secondary);
-            border-radius: 4px;
-        }
-        
-        .artifact-erc404 strong {
-            color: var(--text-primary);
-            font-weight: 500;
-        }
-        
-        /* Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            z-index: 2000;
-            overflow-y: auto;
-            animation: modalFadeIn 0.3s ease;
-        }
-        
-        @keyframes modalFadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        .modal-content {
-            background: white;
-            max-width: 1200px;
-            margin: 2rem auto;
-            position: relative;
-            animation: modalSlideIn 0.3s ease;
-        }
-        
-        @keyframes modalSlideIn {
-            from { transform: translateY(50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-        
-        .close-modal {
-            position: fixed;
-            top: 1rem;
-            right: 1rem;
-            background: white;
-            border: none;
-            width: 40px;
-            height: 40px;
-            cursor: pointer;
-            font-size: 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            z-index: 2010;
-            border-radius: 50%;
-            box-shadow: 0 2px 10px var(--shadow);
-        }
-        
-        .close-modal:hover {
-            transform: rotate(90deg);
-            background: var(--gray-light);
-        }
-        
-        .modal-body {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            min-height: 600px;
-        }
-        
-        .modal-image-section {
-            background: var(--gray-light);
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .modal-image {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            padding: 2rem;
-        }
-        
-        /* Image gallery dots */
-        .image-gallery-dots {
-            position: absolute;
-            bottom: 1rem;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 0.5rem;
-        }
-        
-        .gallery-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: rgba(0, 0, 0, 0.3);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .gallery-dot.active {
-            background: var(--accent);
-            width: 24px;
-            border-radius: 4px;
-        }
-        
-        .modal-info-section {
-            padding: 3rem;
-            overflow-y: auto;
-            max-height: 90vh;
-        }
-        
-        .modal-lot-number {
-            font-size: 0.875rem;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 1rem;
-        }
-        
-        .modal-title {
-            font-size: 2rem;
-            font-weight: 300;
-            margin-bottom: 0.5rem;
-            line-height: 1.3;
-            font-family: var(--font-primary);
-        }
-        
-        .modal-dynasty {
-            font-size: 1.125rem;
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-        }
-        
-        .modal-description {
-            font-size: 1rem;
-            line-height: 1.8;
-            margin-bottom: 2rem;
-            color: var(--text-secondary);
-        }
-        
-        .detail-sections {
-            border-top: 1px solid var(--gray-medium);
-            padding-top: 2rem;
-            margin-bottom: 2rem;
-        }
-        
-        .detail-section {
-            margin-bottom: 1.5rem;
-        }
-        
-        .detail-section h4 {
-            font-size: 0.875rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 0.5rem;
-            font-weight: 400;
-        }
-        
-        .detail-section p {
-            color: var(--text-secondary);
-            font-size: 0.875rem;
-            line-height: 1.6;
-        }
-        
-        .bidding-section {
-            border-top: 1px solid var(--gray-medium);
-            padding-top: 2rem;
-        }
-        
-        .current-bid-info {
-            margin-bottom: 2rem;
-        }
-        
-        .current-bid-label {
-            font-size: 0.875rem;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-        }
-        
-        .current-bid-amount {
-            font-size: 2rem;
-            font-weight: 400;
-            margin: 0.5rem 0;
-            font-family: var(--font-primary);
-        }
-        
-        .bid-count {
-            font-size: 0.875rem;
-            color: var(--text-secondary);
-        }
-        
-        .bid-options {
-            display: grid;
-            gap: 2rem;
-        }
-        
-        .bid-option {
-            border: 1px solid var(--gray-medium);
-            padding: 1.5rem;
-            border-radius: 4px;
-            transition: border-color 0.3s ease;
-        }
-        
-        .bid-option:hover {
-            border-color: var(--text-primary);
-        }
-        
-        .bid-option h5 {
-            font-size: 1rem;
-            margin-bottom: 0.5rem;
-            font-weight: 400;
-        }
-        
-        .bid-option p {
-            font-size: 0.875rem;
-            color: var(--text-secondary);
-            margin-bottom: 1rem;
-        }
-        
-        .bid-input-group {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-        
-        .bid-input {
-            flex: 1;
-            border: 1px solid var(--gray-medium);
-            padding: 0.75rem 1rem;
-            font-size: 1rem;
-            border-radius: 4px;
-            outline: none;
-            transition: border-color 0.3s ease;
-        }
-        
-        .bid-input:focus {
-            border-color: var(--text-primary);
-        }
-        
-        .bid-button {
-            background: var(--primary);
-            color: white;
-            border: none;
-            padding: 0.75rem 2rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 0.875rem;
-            border-radius: 4px;
-        }
-        
-        .bid-button:hover {
-            background: var(--hover);
-            transform: translateY(-1px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-        
-        .bid-button:disabled {
-            background: var(--gray-medium);
-            cursor: not-allowed;
-            transform: none;
-        }
-        
-        .bid-button.secondary {
-            background: white;
-            color: var(--primary);
-            border: 1px solid var(--primary);
-        }
-        
-        .bid-button.secondary:hover {
-            background: var(--primary);
-            color: white;
-        }
-        
-        .erc404-info {
-            background: var(--gray-light);
             padding: 1rem;
-            font-size: 0.75rem;
-            color: var(--text-secondary);
-            border-radius: 4px;
-            line-height: 1.6;
-        }
-        
-        /* Toast Notifications */
-        .toast {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            background: var(--primary);
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 4px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            transform: translateY(100px);
-            opacity: 0;
-            transition: all 0.3s ease;
-            z-index: 3000;
-            max-width: 400px;
-        }
-        
-        .toast.show {
-            transform: translateY(0);
-            opacity: 1;
-        }
-        
-        .toast.success {
-            background: #28a745;
-        }
-        
-        .toast.error {
-            background: #dc3545;
-        }
-        
-        .toast.info {
-            background: #17a2b8;
-        }
-        
-        .toast.warning {
-            background: #ffc107;
-            color: #212529;
-        }
-        
-        /* Footer */
-        footer {
-            background: var(--primary);
-            color: white;
-            padding: 3rem 2rem;
-            margin-top: 6rem;
-        }
-        
-        .footer-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 3rem;
-        }
-        
-        .footer-section h4 {
+            text-align: center;
             font-size: 0.875rem;
+            position: sticky;
+            top: 80px;
+            z-index: 999;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .presale-notice a {
+            color: white;
+            font-weight: 500;
+            text-decoration: underline;
+            margin-left: 1rem;
+        }
+        
+        .artifact-status {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 0.1em;
-            margin-bottom: 1rem;
-            font-weight: 400;
-            font-family: var(--font-secondary);
-        }
-        
-        .footer-section a {
-            color: rgba(255, 255, 255, 0.7);
-            text-decoration: none;
-            font-size: 0.875rem;
-            display: block;
+            border-radius: 100px;
             margin-bottom: 0.5rem;
-            transition: color 0.3s ease;
         }
         
-        .footer-section a:hover {
+        .artifact-status.upcoming {
+            background: #f0f0f0;
+            color: #666;
+        }
+        
+        .artifact-status.live {
+            background: #28a745;
             color: white;
         }
         
-        .footer-bottom {
-            text-align: center;
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 0.875rem;
-            color: rgba(255, 255, 255, 0.5);
+        .reserve-price {
+            font-size: 1rem;
+            color: #c9302c;
+            font-weight: 500;
+            margin: 0.5rem 0;
         }
         
-        .footer-logo {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
+        .auction-date {
+            font-size: 0.875rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+        
+        .fractional-notice {
+            background: #f8f8f8;
+            padding: 0.5rem;
+            font-size: 0.75rem;
+            text-align: center;
+            border-radius: 4px;
+            margin-top: 0.5rem;
+        }
+        
+        .hero-presale {
+            background: rgba(201, 48, 44, 0.1);
+            padding: 1rem 2rem;
+            border-radius: 100px;
+            display: inline-block;
             margin-bottom: 1rem;
         }
         
-        .footer-logo .logo-text {
-            display: flex;
-            align-items: baseline;
-            gap: 0.5rem;
-        }
-        
-        .footer-logo .logo-chinese {
-            font-family: var(--font-primary);
-            font-size: 1rem;
-            color: rgba(255, 255, 255, 0.9);
-        }
-        
-        .footer-logo .logo-english {
-            font-family: var(--font-primary);
-            font-size: 1.5rem;
-            font-weight: 400;
-            color: white;
-        }
-        
-        /* Mobile Menu */
-        .mobile-menu-toggle {
+        /* Remove bidding UI elements */
+        .bid-options,
+        .current-bid-info {
             display: none;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 0.5rem;
         }
         
-        .mobile-menu-toggle span {
-            display: block;
-            width: 25px;
-            height: 2px;
-            background: var(--primary);
-            margin: 5px 0;
-            transition: all 0.3s ease;
+        /* Loading skeleton */
+        .skeleton {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
         }
         
-        /* Responsive - Tablet */
-        @media (max-width: 1024px) {
-            header {
-                padding: 0 1.5rem;
-            }
-            
-            nav {
-                height: 70px;
-            }
-            
-            .nav-center {
-                display: none;
-            }
-            
-            .mobile-menu-toggle {
-                display: block;
-            }
-            
-            .modal-body {
-                grid-template-columns: 1fr;
-            }
-            
-            .modal-image-section {
-                height: 400px;
-            }
-            
-            .artifacts-grid {
-                column-count: 3;
-                column-gap: 2rem;
-            }
-            
-            .auction-stats {
-                gap: 2rem;
-            }
-            
-            .connect-wallet {
-                padding: 0.6rem 1.5rem;
-                font-size: 0.8125rem;
-            }
+        @keyframes loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
         }
-        
-        /* Responsive - Mobile */
-        @media (max-width: 768px) {
-            header {
-                padding: 0 1rem;
-            }
-            
-            nav {
-                height: 60px;
-                gap: 1rem;
-            }
-            
-            .logo {
-                flex-shrink: 0;
-            }
-            
-            .logo-text {
-                gap: 0.25rem;
-                flex-wrap: nowrap;
-            }
-            
-            .logo-chinese {
-                font-size: 0.875rem;
-            }
-            
-            .logo-english {
-                font-size: 1.125rem;
-            }
-            
-            .logo-tagline {
-                display: none;
-            }
-            
-            .nav-right {
-                gap: 0.75rem;
-                flex-shrink: 0;
-            }
-            
-            .wallet-info {
-                gap: 0.5rem;
-            }
-            
-            .erc404-balance {
-                padding: 0.4rem 0.75rem;
-                font-size: 0.75rem;
-            }
-            
-            .connect-wallet {
-                padding: 0.5rem 1rem;
-                font-size: 0.75rem;
-                letter-spacing: 0.05em;
-                white-space: nowrap;
-            }
-            
-            .mobile-menu-toggle {
-                padding: 0.25rem;
-            }
-            
-            .mobile-menu-toggle span {
-                width: 20px;
-                height: 1.5px;
-                margin: 4px 0;
-            }
-            
-            .hero {
-                height: 400px;
-            }
-            
-            .hero h1 {
-                font-size: 2rem;
-                margin-bottom: 0.75rem;
-            }
-            
-            .hero p {
-                font-size: 1rem;
-                margin-bottom: 1.5rem;
-            }
-            
-            .hero-cta {
-                padding: 0.875rem 2rem;
-                font-size: 0.8125rem;
-            }
-            
-            .artifacts-grid {
-                column-count: 1;
-                padding: 0 1rem;
-            }
-            
-            .artifact-card {
-                margin-bottom: 2rem;
-            }
-            
-            .auction-header {
-                flex-direction: column;
-                gap: 1.5rem;
-                text-align: center;
-                padding: 0 1rem;
-                margin: 3rem auto 1.5rem;
-            }
-            
-            .auction-header h2 {
-                font-size: 1.75rem;
-            }
-            
-            .auction-stats {
-                gap: 2rem;
-                width: 100%;
-                justify-content: space-around;
-            }
-            
-            .stat-value {
-                font-size: 1.25rem;
-            }
-            
-            .stat-item {
-                font-size: 0.75rem;
-            }
-            
-            .filter-bar {
-                flex-direction: column;
-                gap: 1rem;
-                padding: 1rem;
-                margin-bottom: 2rem;
-            }
-            
-            .dynasty-filters {
-                overflow-x: auto;
-                width: 100%;
-                justify-content: flex-start;
-                padding-bottom: 0.5rem;
-                -webkit-overflow-scrolling: touch;
-                scrollbar-width: thin;
-            }
-            
-            .dynasty-filter {
-                font-size: 0.75rem;
-                padding: 0.375rem 0;
-                white-space: nowrap;
-            }
-            
-            .sort-controls {
-                width: 100%;
-                justify-content: space-between;
-                font-size: 0.8125rem;
-            }
-            
-            .sort-select {
-                flex: 1;
-                max-width: 200px;
-                font-size: 0.8125rem;
-                padding: 0.4rem 0.75rem;
-            }
-            
-            .modal-info-section {
-                padding: 1.5rem;
-            }
-            
-            .modal-title {
-                font-size: 1.5rem;
-            }
-            
-            .modal-dynasty {
-                font-size: 1rem;
-            }
-            
-            .modal-description {
-                font-size: 0.9375rem;
-            }
-            
-            .detail-section h4 {
-                font-size: 0.8125rem;
-            }
-            
-            .detail-section p {
-                font-size: 0.8125rem;
-            }
-            
-            .current-bid-amount {
-                font-size: 1.75rem;
-            }
-            
-            .bid-option {
-                padding: 1.25rem;
-            }
-            
-            .bid-option h5 {
-                font-size: 0.9375rem;
-            }
-            
-            .bid-option p {
-                font-size: 0.8125rem;
-            }
-            
-            .bid-input-group {
-                flex-direction: column;
-            }
-            
-            .bid-input {
-                font-size: 0.9375rem;
-                padding: 0.625rem 0.875rem;
-            }
-            
-            .bid-button {
-                font-size: 0.8125rem;
-                padding: 0.625rem 1.5rem;
-                width: 100%;
-            }
-            
-            .footer-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-                gap: 2rem;
-                padding: 0 1rem;
-            }
-            
-            .footer-logo {
-                align-items: center;
-            }
-            
-            .toast {
-                left: 1rem;
-                right: 1rem;
-                bottom: 1rem;
-                font-size: 0.875rem;
-                padding: 0.875rem 1.5rem;
-            }
-            
-            .modal-content {
-                margin: 3rem 0.5rem 1rem;
-                max-height: calc(100vh - 4rem);
-                overflow-y: auto;
-            }
-            
-            .modal-body {
-                grid-template-columns: 1fr;
-                min-height: auto;
-            }
-            
-            .modal-image-section {
-                height: 300px;
-            }
-        }
-        
-        /* Responsive - Small Mobile */
-        @media (max-width: 375px) {
-            header {
-                padding: 0 0.75rem;
-            }
-            
-            nav {
-                height: 56px;
-            }
-            
-            .logo-chinese {
-                font-size: 0.75rem;
-            }
-            
-            .logo-english {
-                font-size: 1rem;
-            }
-            
-            .nav-right {
-                gap: 0.5rem;
-            }
-            
-            .erc404-balance {
-                display: none !important; /* Hide balance on very small screens */
-            }
-            
-            .connect-wallet {
-                padding: 0.4rem 0.75rem;
-                font-size: 0.7rem;
-            }
-            
-            .hero h1 {
-                font-size: 1.75rem;
-            }
-            
-            .hero p {
-                font-size: 0.9375rem;
-            }
-            
-            .auction-header h2 {
-                font-size: 1.5rem;
-            }
-            
-            .stat-value {
-                font-size: 1.125rem;
-            }
-            
-            .modal-title {
-                font-size: 1.25rem;
-            }
-            
-            .current-bid-amount {
-                font-size: 1.5rem;
-            }
-        }
-        
-        /* Responsive - Landscape Mobile */
-        @media (max-width: 812px) and (orientation: landscape) {
-            nav {
-                height: 50px;
-            }
-            
-            .hero {
-                height: 300px;
-            }
-            
-            .hero h1 {
-                font-size: 1.75rem;
-            }
-            
-            .modal-content {
-                margin: 1rem auto;
-            }
-            
-            .modal-image-section {
-                height: 250px;
-            }
-        }
-        
-        /* Progressive Image Loading */
-        .progressive-image {
-            position: relative;
-            overflow: hidden;
-            background: var(--gray-light);
-        }
-        
-        .progressive-image img {
-            display: block;
-            width: 100%;
-            height: auto;
-            transition: opacity 0.3s ease;
-        }
-        
-        .progressive-image .placeholder {
-            filter: blur(20px);
-            transform: scale(1.1);
-        }
-        
-        .progressive-image .full-image {
-            position: absolute;
-            top: 0;
-            left: 0;
-            opacity: 0;
-        }
-        
-        .progressive-image .full-image.loaded {
-            opacity: 1;
-        }
-
-.presale-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: rgba(201, 48, 44, 0.9);
-    color: white;
-    padding: 0.5rem 1.5rem;
-    border-radius: 100px;
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    margin-bottom: 1.5rem;
-    font-weight: 500;
-    backdrop-filter: blur(10px);
-}
-
-.hero-buttons {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    margin-bottom: 1.5rem;
-}
-
-.hero-cta.primary {
-    background: var(--accent);
-    border: 2px solid var(--accent);
-}
-
-.hero-cta.secondary {
-    background: transparent;
-    color: white;
-    border: 2px solid white;
-}
-
-.tron-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 0.75rem;
-    opacity: 0.9;
-    background: rgba(255, 255, 255, 0.1);
-    padding: 0.25rem 0.75rem;
-    border-radius: 100px;
-    backdrop-filter: blur(10px);
-}
-
-.tron-badge svg {
-    width: 14px;
-    height: 14px;
-    animation: tronSpin 8s linear infinite;
-}
-
-@keyframes tronSpin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
-</style>
-
+    </style>
 </head>
 <body>
     <!-- Loading Screen -->
@@ -1483,9 +114,10 @@
         <div class="loader"></div>
     </div>
 
+    <!-- Header remains the same -->
     <header>
         <nav>
-            <div class="logo" onclick="scrollToTop()">
+            <div class="logo" onclick="window.location.href='/'">
                 <div class="logo-text">
                     <div class="logo-chinese">神堡</div>
                     <div class="logo-english">Shenbury</div>
@@ -1493,257 +125,69 @@
                 <div class="logo-tagline">The Art of Provenance</div>
             </div>
             <div class="nav-center">
-                <a href="#auctions" class="active">Auctions</a>
-                <a href="#private">Private Sales</a>
-                <a href="#exhibitions">Exhibitions</a>
+                <a href="/" class="active">Collection</a>
+                <a href="/presale.html">Presale</a>
                 <a href="#about">About</a>
+                <a href="#contact">Contact</a>
             </div>
             <div class="nav-right">
                 <div class="wallet-info">
-                    <div class="erc404-balance" id="token-balance">
-                        <span id="balance-amount">0</span> SHEN
+                    <div class="wallet-balance" id="wallet-balance" style="display: none;">
+                        <span id="shen-balance">0</span> SHEN
                     </div>
                     <button class="connect-wallet" onclick="connectWallet()">
-                        <span id="wallet-text">Connect Wallet</span>
+                        <span id="wallet-text">Connect TronLink</span>
                     </button>
                 </div>
-                <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
             </div>
         </nav>
     </header>
 
-<!-- Subtle Enhanced Hero Section - Replace the existing hero section with this -->
-
-<style>
-    /* Add these styles to your existing CSS */
-    .hero {
-        height: 550px;
-        position: relative;
-        overflow: hidden;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-image: url('/assets/images/hero-bg.jpg');
-        background-size: cover;
-        background-position: center;
-    }
-    
-    .hero::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.6));
-        z-index: 1;
-    }
-    
-    .hero-content {
-        position: relative;
-        z-index: 2;
-        text-align: center;
-        color: white;
-        max-width: 800px;
-        padding: 0 2rem;
-        animation: heroFadeIn 1s ease;
-    }
-    
-    .presale-badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        background: rgba(201, 48, 44, 0.9);
-        color: white;
-        padding: 0.5rem 1.5rem;
-        border-radius: 100px;
-        font-size: 0.75rem;
-        text-transform: uppercase;
-        letter-spacing: 0.15em;
-        margin-bottom: 1.5rem;
-        font-weight: 500;
-        backdrop-filter: blur(10px);
-    }
-    
-    .presale-badge .badge-icon {
-        font-size: 1rem;
-    }
-    
-    .hero h1 {
-        font-size: 3.5rem;
-        font-weight: 300;
-        margin-bottom: 1rem;
-        letter-spacing: -0.02em;
-        font-family: var(--font-primary);
-    }
-    
-    .hero p {
-        font-size: 1.25rem;
-        font-weight: 300;
-        opacity: 0.9;
-        margin-bottom: 2rem;
-        font-family: var(--font-secondary);
-    }
-    
-    .hero-buttons {
-        display: flex;
-        gap: 1rem;
-        justify-content: center;
-        align-items: center;
-        flex-wrap: wrap;
-        margin-bottom: 1.5rem;
-    }
-    
-    .hero-cta {
-        background: var(--accent);
-        color: white;
-        border: none;
-        padding: 1rem 2.5rem;
-        font-size: 0.875rem;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        font-weight: 400;
-    }
-    
-    .hero-cta.primary {
-        background: var(--accent);
-        border: 2px solid var(--accent);
-    }
-    
-    .hero-cta.primary:hover {
-        background: #a02622;
-        border-color: #a02622;
-        transform: translateY(-2px);
-        box-shadow: 0 10px 30px rgba(201, 48, 44, 0.3);
-    }
-    
-    .hero-cta.secondary {
-        background: transparent;
-        color: white;
-        border: 2px solid white;
-    }
-    
-    .hero-cta.secondary:hover {
-        background: rgba(255, 255, 255, 0.1);
-        border-color: var(--accent);
-        color: white;
-        box-shadow: 0 0 20px rgba(201, 48, 44, 0.3);
-    }
-    
-    .hero-detail {
-        font-size: 0.875rem;
-        opacity: 0.8;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.5rem;
-    }
-    
-    .tron-badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        font-size: 0.75rem;
-        opacity: 0.9;
-        background: rgba(255, 255, 255, 0.1);
-        padding: 0.25rem 0.75rem;
-        border-radius: 100px;
-        backdrop-filter: blur(10px);
-    }
-    
-    .tron-badge svg {
-        width: 14px;
-        height: 14px;
-        animation: tronSpin 8s linear infinite;
-    }
-    
-    @keyframes tronSpin {
-        from { transform: rotate(0deg); }
-        to { transform: rotate(360deg); }
-    }
-    
-    .tron-badge:hover {
-        background: rgba(255, 255, 255, 0.15);
-        transform: scale(1.05);
-        transition: all 0.3s ease;
-    }
-    
-    .tron-badge:hover svg {
-        animation-duration: 2s;
-    }
-    
-    /* Mobile responsive */
-    @media (max-width: 768px) {
-        .hero { height: 500px; }
-        .hero h1 { font-size: 2.5rem; }
-        .hero p { font-size: 1.125rem; }
-        .hero-buttons { 
-            flex-direction: column; 
-            gap: 0.75rem;
-        }
-        .hero-cta { 
-            padding: 0.875rem 2rem;
-            font-size: 0.8125rem;
-        }
-    }
-</style>
-
-<section class="hero">
-    <div class="hero-content">
-        <div class="presale-badge">
-            <span class="badge-icon">●</span>
-            <span>SHEN TOKEN PRESALE LIVE</span>
-        </div>
-        
-        <h1>Exceptional Chinese Art</h1>
-        <p>Song, Yuan & Ming Dynasty Masterpieces</p>
-        
-        <div class="hero-buttons">
-            <button class="hero-cta primary" onclick="window.location.href='presale.html'">
-                Join Presale - From $0.10
-            </button>
-            <button class="hero-cta secondary" onclick="scrollToAuctions()">
-                View Collection
-            </button>
-        </div>
-        
-        <div class="hero-detail">
-            <span class="tron-badge">
-                <svg viewBox="0 0 64 64" fill="currentColor">
-                    <path d="M61.55 19.28c-3-2.77-7.15-7-10.53-10.53l-2.3-2.39a7.75 7.75 0 00-11.34.36L3.86 43.16a4.69 4.69 0 00.69 7l11.5 9c.21.15.33.24.42.24s.18-.06.33-.21l42.41-37.11a5.4 5.4 0 001.34-2.8z"/>
-                </svg>
-                <span>TRON Network</span>
-            </span>
-            <span>•</span>
-            <span>Fractional ownership starting at $1,400</span>
-        </div>
+    <!-- Presale Notice Bar -->
+    <div class="presale-notice">
+        🔥 SHEN Token Presale is LIVE! Get up to 30% bonus on early purchases.
+        <a href="/presale.html">Join Presale →</a>
     </div>
-</section>
 
-    <div class="auction-header" id="auctions">
-        <h2>Featured Lots</h2>
+    <!-- Hero Section Updated -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-presale">
+                <span style="font-weight: 500;">SHEN Token Presale Live</span>
+            </div>
+            <h1>Exceptional Chinese Art</h1>
+            <p>Museum-Quality Ceramics from Song, Yuan & Ming Dynasties</p>
+            <div class="hero-buttons">
+                <button class="hero-cta primary" onclick="window.location.href='/presale.html'">
+                    Join Presale
+                </button>
+                <button class="hero-cta secondary" onclick="scrollToCollection()">
+                    View Collection
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Collection Header -->
+    <div class="auction-header" id="collection">
+        <h2>Upcoming Collection</h2>
         <div class="auction-stats">
             <div class="stat-item">
-                <span class="stat-value" id="total-lots">0</span>
-                <span>Total Lots</span>
+                <span class="stat-value" id="total-pieces">5</span>
+                <span>Museum Pieces</span>
             </div>
             <div class="stat-item">
-                <span class="stat-value" id="total-bids">0</span>
-                <span>Active Bids</span>
+                <span class="stat-value" id="total-value">$147.5M</span>
+                <span>Total Reserve Value</span>
             </div>
             <div class="stat-item">
-                <span class="stat-value" id="total-value">0</span>
-                <span>Total Value (USD)</span>
+                <span class="stat-value">Q1 2025</span>
+                <span>First Auction</span>
             </div>
         </div>
     </div>
 
+    <!-- Filter Bar -->
     <div class="filter-bar">
         <div class="dynasty-filters">
             <button class="dynasty-filter active" onclick="filterByDynasty('all')">All Dynasties</button>
@@ -1755,25 +199,24 @@
             <span>Sort by:</span>
             <select class="sort-select" onchange="sortArtifacts(this.value)">
                 <option value="lot">Lot Number</option>
-                <option value="price-high">Price: High to Low</option>
-                <option value="price-low">Price: Low to High</option>
-                <option value="ending">Ending Soon</option>
+                <option value="value">Reserve Value</option>
+                <option value="date">Auction Date</option>
             </select>
         </div>
     </div>
 
+    <!-- Artifacts Grid -->
     <div class="artifacts-grid" id="artifacts-grid">
-        <!-- Artifact cards will be dynamically generated -->
+        <!-- Dynamically populated -->
     </div>
 
-    <!-- Artifact Detail Modal -->
+    <!-- Artifact Detail Modal (Simplified) -->
     <div class="modal" id="artifact-modal">
         <div class="modal-content">
             <button class="close-modal" onclick="closeModal()">&times;</button>
             <div class="modal-body">
                 <div class="modal-image-section">
                     <img src="" alt="" class="modal-image" id="modal-image">
-                    <div class="image-gallery-dots" id="gallery-dots"></div>
                 </div>
                 <div class="modal-info-section">
                     <div class="modal-lot-number" id="modal-lot">LOT 000</div>
@@ -1783,62 +226,17 @@
                     
                     <div class="detail-sections">
                         <div class="detail-section">
-                            <h4>Provenance</h4>
-                            <p id="modal-provenance"></p>
+                            <h4>Reserve Price</h4>
+                            <p class="reserve-price" id="modal-reserve"></p>
                         </div>
                         <div class="detail-section">
-                            <h4>Condition</h4>
-                            <p id="modal-condition"></p>
+                            <h4>Auction Date</h4>
+                            <p id="modal-auction-date"></p>
                         </div>
                         <div class="detail-section">
-                            <h4>Dimensions</h4>
-                            <p id="modal-dimensions"></p>
-                        </div>
-                        <div class="detail-section">
-                            <h4>Literature</h4>
-                            <p id="modal-literature"></p>
-                        </div>
-                        <div class="detail-section" id="technical-notes-section" style="display: none;">
-                            <h4>Technical Notes</h4>
-                            <p id="modal-technical-notes"></p>
-                        </div>
-                        <div class="detail-section" id="cultural-significance-section" style="display: none;">
-                            <h4>Cultural Significance</h4>
-                            <p id="modal-cultural-significance"></p>
-                        </div>
-                    </div>
-                    
-                    <div class="bidding-section">
-                        <div class="current-bid-info">
-                            <div class="current-bid-label">Current Bid</div>
-                            <div class="current-bid-amount" id="modal-current-bid">$0</div>
-                            <div class="bid-count" id="modal-bid-count">0 bids</div>
-                        </div>
-                        
-                        <div class="bid-options">
-                            <div class="bid-option">
-                                <h5>Place Bid for Full Ownership</h5>
-                                <p>Acquire complete ownership of this artifact as an NFT</p>
-                                <div class="bid-input-group">
-                                    <input type="number" class="bid-input" id="bid-amount" placeholder="Amount in USD" step="100000" min="0">
-                                    <button class="bid-button" onclick="placeBid()">Place Bid</button>
-                                </div>
-                                <p style="font-size: 0.75rem; margin-top: 0.5rem;">Minimum bid: $<span id="min-bid">0</span></p>
-                            </div>
-                            
-                            <div class="bid-option">
-                                <h5>Buy Fractional Ownership (ERC-404)</h5>
-                                <p>Purchase SHEN tokens for partial ownership. 10,000 SHEN = 1 full NFT</p>
-                                <div class="bid-input-group">
-                                    <input type="number" class="bid-input" id="token-amount" placeholder="Number of SHEN tokens" step="100" min="100">
-                                    <button class="bid-button secondary" onclick="buyTokens()">Buy Tokens</button>
-                                </div>
-                                <div class="erc404-info">
-                                    <strong>Current Price:</strong> $100 per SHEN<br>
-                                    <strong>Available:</strong> <span id="available-tokens">0</span> SHEN for this artifact<br>
-                                    <strong>Your Holdings:</strong> <span id="user-artifact-tokens">0</span> SHEN
-                                </div>
-                            </div>
+                            <h4>Fractional Ownership</h4>
+                            <p>This artifact will be available for fractional ownership through SHEN tokens after the auction.</p>
+                            <a href="/presale.html" class="btn-link">Learn more about SHEN tokens →</a>
                         </div>
                     </div>
                 </div>
@@ -1849,6 +247,7 @@
     <!-- Toast Notification -->
     <div class="toast" id="toast"></div>
 
+    <!-- Footer remains the same -->
     <footer>
         <div class="footer-content">
             <div class="footer-section">
@@ -1861,264 +260,58 @@
                 </div>
             </div>
             <div class="footer-section">
-                <h4>Services</h4>
-                <a href="#">Auctions</a>
-                <a href="#">Private Sales</a>
-                <a href="#">Valuations</a>
-                <a href="#">ERC-404 Guide</a>
+                <h4>Quick Links</h4>
+                <a href="/presale.html">SHEN Presale</a>
+                <a href="#collection">Collection</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
             </div>
             <div class="footer-section">
-                <h4>About</h4>
-                <a href="#">Our Specialists</a>
-                <a href="#">Press</a>
-                <a href="#">Careers</a>
-                <a href="#">Contact</a>
-            </div>
-            <div class="footer-section">
-                <h4>Technology</h4>
-                <a href="#">Smart Contracts</a>
-                <a href="#">IPFS Storage</a>
+                <h4>Resources</h4>
+                <a href="#">Whitepaper</a>
                 <a href="#">Token Economics</a>
-                <a href="#">Security Audits</a>
+                <a href="#">Smart Contract</a>
+                <a href="#">FAQ</a>
+            </div>
+            <div class="footer-section">
+                <h4>Connect</h4>
+                <a href="#">Telegram</a>
+                <a href="#">Twitter</a>
+                <a href="#">Discord</a>
+                <a href="#">Medium</a>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2024 Shenbury 神堡. All rights reserved. | The Art of Provenance | ERC-404 Powered by Ethereum</p>
+            <p>&copy; 2024 Shenbury 神堡. All rights reserved. | TRC-404 Powered by TRON</p>
         </div>
     </footer>
 
     <script>
-        // Enhanced artifact data with PDF descriptions
-        const artifacts = [
-            {
-                id: 1,
-                lotNumber: '001',
-                title: 'AN EXCEPTIONALLY RARE RU KILN SUNFLOWER-FORM WASHER',
-                chinese: '北宋 汝官窯天青釉葵花洗',
-                dynasty: 'song',
-                dynastyInfo: 'Northern Song Dynasty, 1086-1106',
-                imageOrientation: 'landscape',
-                images: [
-                    '/assets/images/relics/001-song-ru-washer/main.jpg',
-                    '/assets/images/relics/001-song-ru-washer/detail-1.jpg',
-                    '/assets/images/relics/001-song-ru-washer/detail-2.jpg',
-                    '/assets/images/relics/001-song-ru-washer/detail-3.jpg',
-                    '/assets/images/relics/001-song-ru-washer/detail-4.jpg'
-                ],
-                thumbnail: '/assets/images/relics/001-song-ru-washer/main.jpg',
-                description: 'This extraordinarily rare washer represents the pinnacle of Song ceramic achievement. The vessel is shaped like a six-part flower mouth with three tiny sesame nail marks on the bottom. The distinctive sky-blue glaze with its subtle crackle pattern was considered the finest of all Chinese ceramics. The azure glaze is particularly notable for its purity and the intricate network of ice cracks, which are a hallmark of Ru ware.',
-                estimate: { low: 37000000, high: 55000000 }, // USDT
-                currentBid: 31000000, // USDT
-                minBidIncrement: 100000, // $100k minimum increment
-                bidCount: 47,
-                endTime: Date.now() + 86400000 * 7,
-                provenance: 'Private Collection, China\nFormed in the 1970s\nAcquired from relative., Bejing, 1985',
-                condition: 'Excellent condition with characteristic ice-crackle throughout the glaze. The outer wall features diagonal cuts with willow silk and ice cracks, while the inside is also adorned with ice cracks. Minor expected wear to the foot ring consistent with age.',
-                dimensions: 'Diameter: 14.6 cm\nBottom diameter: 9.6 cm\nHeight: 3.65 cm\nWeight: 285g',
-                literature: 'Compare a similar example in the Palace Museum, Beijing, illustrated in "Complete Collection of Treasures of the Palace Museum: Porcelain of the Song Dynasty (I)", Hong Kong, 1996, pl. 5. A similar piece was sold for HK$294 million at Sotheby\'s Hong Kong in October 2017.',
-                technicalNotes: 'The glaze exhibits the characteristic "sky-blue" color achieved through reduction firing. The crackled glaze effect, known as "crazing," was highly prized and added to the visual and tactile appeal of the piece. X-ray fluorescence analysis could confirm the presence of agate powder in the glaze composition, a hallmark of authentic Ru ware.',
-                culturalSignificance: 'Ru kilns operated for only about 20 years (1086-1106) exclusively for the Northern Song court. Fewer than 100 genuine pieces are known to exist worldwide, with the Taipei National Palace Museum holding 21 pieces and the Beijing Palace Museum having 17 pieces. A common saying goes: "Even with a fortune, a single piece of Ru porcelain is priceless" (纵有家财万贯，不抵汝瓷一件).',
-                fractionalAvailable: 1000,
-                tokenHolders: 125
-            },
-            {
-                id: 2,
-                lotNumber: '002',
-                title: 'AN IMPERIAL RU KILN "SKY BLUE" BOTTLE',
-                chinese: '北宋 汝窯天青釉瓶',
-                dynasty: 'song',
-                dynastyInfo: 'Northern Song Dynasty, 1086-1106',
-                imageOrientation: 'portrait',
-                images: [
-                    '/assets/images/relics/002-song-ru-bottle/main.jpg',
-                    '/assets/images/relics/002-song-ru-bottle/detail-1.jpg',
-                    '/assets/images/relics/002-song-ru-bottle/detail-2.jpg'
-                ],
-                thumbnail: '/assets/images/relics/002-song-ru-bottle/main.jpg',
-                description: 'This magnificent bottle exemplifies the restraint and elegance that characterizes the finest Ru ware. Legend says Emperor Huizong once dreamt of a mysterious sky blue hue after rain, penning the verse "After the rain, the sky clears, and this color shall be created" (雨过天青云破处，这般颜色做将来). The bottle features the distinctive "crab claw" crackle pattern (蟹爪纹) unique to Ru kiln pieces, with each irregular crackle being unique.',
-                estimate: { low: 40000000, high: 75000000 }, // USDT
-                currentBid: 12500000, // USDT
-                minBidIncrement: 250000, // $250k minimum increment
-                bidCount: 62,
-                endTime: Date.now() + 86400000 * 10,
-                provenance: 'Private Collection, China\nFormed in the 1970s\nAcquired from relative., Bejing, 1985',
-                condition: 'Perfect condition. The glaze is of exceptional quality with the desirable "ice crackle" pattern throughout. Features the distinctive "fishtail" bubbles (鱼鳞纹) that cannot be replicated by modern methods.',
-                dimensions: 'Height: 22.8 cm\nDiameter: 12.5 cm\nWeight: 680g',
-                literature: 'For a closely related example, see the bottle in the British Museum, London, published in Jessica Harrison-Hall, "Catalogue of Late Yuan and Ming Ceramics in the British Museum", London, 2001, no. 15:1. Emperor Qianlong collected 11 Ru pieces, now in the Taipei National Palace Museum.',
-                technicalNotes: 'Thermoluminescence test certificate from Oxford Authentication Ltd. confirms dating to 900 ± 100 years. The glaze is often compared to jade, with a smooth, lustrous finish that enhances its beauty.',
-                culturalSignificance: 'This bottle represents the golden age of Chinese ceramics during Emperor Huizong\'s reign (1082-1135). An outstanding painter and calligrapher, Huizong significantly advanced court arts and elevated Ru kiln\'s status. Jay Chou\'s famous phrase "sky blue rain" (天青色烟雨) refers to this very porcelain.',
-                fractionalAvailable: 500,
-                tokenHolders: 198
-            },
-            {
-                id: 3,
-                lotNumber: '003',
-                title: 'A MAGNIFICENT MING XUANDE CLOISONNÉ TRIPOD CENSER',
-                chinese: '明宣德 掐絲琺瑯獸鈕蓮紋三足爐',
-                dynasty: 'ming',
-                dynastyInfo: 'Xuande Period (1426-1435)',
-                imageOrientation: 'square',
-                images: [
-                    '/assets/images/relics/003-ming-cloisonne/main.jpg',
-                    '/assets/images/relics/003-ming-cloisonne/detail-1.jpg',
-                    '/assets/images/relics/003-ming-cloisonne/detail-2.jpg',
-                    '/assets/images/relics/003-ming-cloisonne/mark.jpg'
-                ],
-                thumbnail: '/assets/images/relics/003-ming-cloisonne/main.jpg',
-                description: 'This exceptional censer represents the golden age of Chinese cloisonné production during the Xuande period. Expertly crafted from high-quality copper, it features a flared rim, rounded body, and elegantly arched symmetrical handles. The lid is adorned with three evenly spaced gilt beast knobs, exuding regal presence. The body is covered with sky-blue enamel glaze, with red, yellow, blue, and other vibrant colors meticulously inlaid to create interwoven lotus scrolls.',
-                estimate: { low: 12000000, high: 2700000 }, // USDT
-                currentBid: 15000000, // USDT
-                minBidIncrement: 50000, // $50k minimum increment
-                bidCount: 38,
-                endTime: Date.now() + 86400000 * 6,
-                provenance: 'Private Collection, China\nFormed in the 1970s\nAcquired from relative., Bejing, 1985',
-                condition: 'Excellent condition. Minor restoration to one cloud-scroll on the rim professionally executed. The vibrant enamel colors remain rich and full.',
-                dimensions: 'Height: 28.5 cm\nWidth: 35.2 cm\nWeight: 4.2 kg',
-                literature: 'Illustrated in Harry Garner, "Chinese and Japanese Cloisonné Enamels", London, 1962, pl. 48A',
-                technicalNotes: 'The craftsmanship is highlighted by precise cloisonné wires, flowing lines, and a harmonious color scheme. The technique was introduced from Byzantium via the Silk Road and reached its artistic zenith under imperial patronage.',
-                culturalSignificance: 'Xuande marked cloisonné pieces are among the rarest and most sought-after works of Chinese decorative arts. This example bears the imperial six-character mark. The lotus scrolls symbolize continuous good fortune and prosperity.',
-                fractionalAvailable: 4000,
-                tokenHolders: 76
-            },
-            {
-                id: 4,
-                lotNumber: '004',
-                title: 'AN EXTRAORDINARILY RARE YUAN JILAN-GLAZED EWER',
-                chinese: '元 霽藍釉白龍紋梨形執壺',
-                dynasty: 'yuan',
-                dynastyInfo: 'Yuan Dynasty (1271-1368)',
-                imageOrientation: 'portrait',
-                images: [
-                    '/assets/images/relics/004-yuan-jilan-ewer/main.jpg',
-                    '/assets/images/relics/004-yuan-jilan-ewer/detail-1.jpg',
-                    '/assets/images/relics/004-yuan-jilan-ewer/detail-2.jpg',
-                    '/assets/images/relics/004-yuan-jilan-ewer/detail-3.jpg'
-                ],
-                thumbnail: '/assets/images/relics/004-yuan-jilan-ewer/main.jpg',
-                description: 'This spectacular ewer showcases the technical mastery achieved by Yuan potters in high-fired cobalt blue glazes. Most Yuan Dynasty porcelains are known for their large size, making this small ewer particularly rare. The Jilan glaze is considered the top variety of porcelain from the Yuan Dynasty, even more precious than the famed Yuan blue and white. The white dragon, depicted with its head raised and tongue extended, appears to be galloping through the sea.',
-                estimate: { low: 12500000, high: 28000000 }, // USDT
-                currentBid: 3250000, // USDT
-                minBidIncrement: 100000, // $100k minimum increment
-                bidCount: 41,
-                endTime: Date.now() + 86400000 * 8,
-                provenance: 'Private Collection, China\nFormed in the 1970s\nAcquired from relative., Bejing, 1985',
-                condition: 'Remarkable condition. Small chip to the spout professionally restored. The cobalt blue glaze of exceptional depth and brilliance provides a striking backdrop for the elegant white dragon.',
-                dimensions: 'Total Height (with lid): 31.3 cm\nWidth (handle to spout): 18.5 cm\nWeight: 1.45 kg',
-                literature: 'Published in "Yuan Blue and White Porcelain", National Palace Museum, Taipei, 1998, no. 47',
-                technicalNotes: 'The cobalt used in this piece has been identified through spectrographic analysis as imported Persian cobalt, confirming its imperial quality. The glaze\'s rich, sky-blue hue demonstrates exceptional firing technique.',
-                culturalSignificance: 'Yuan dynasty blue glazed porcelain represents a revolutionary moment in ceramic history, combining Chinese potting techniques with Islamic aesthetic preferences. The dragon motif adds movement and vitality, embodying imperial power.',
-                fractionalAvailable: 3000,
-                tokenHolders: 92
-            },
-            {
-                id: 5,
-                lotNumber: '005',
-                title: 'IMPERIAL JINGTAI CLOISONNÉ LOTUS PATTERN LIDDED CASKET',
-                chinese: '明景泰 掐絲琺瑯蓮紋蓋盒',
-                dynasty: 'ming',
-                dynastyInfo: 'Jingtai Period (1450-1457)',
-                imageOrientation: 'square',
-                images: [
-                    '/assets/images/relics/005-ming-jingtai-casket/main.jpg',
-                    '/assets/images/relics/005-ming-jingtai-casket/detail-1.jpg',
-                    '/assets/images/relics/005-ming-jingtai-casket/detail-2.jpg',
-                    '/assets/images/relics/005-ming-jingtai-casket/mark.jpg'
-                ],
-                thumbnail: '/assets/images/relics/005-ming-jingtai-casket/main.jpg',
-                description: 'This masterpiece of Chinese decorative arts epitomizes the pinnacle of cloisonné craftsmanship from the Jingtai period. The casket features a perfectly round shape with a fitted lid and circular base, embodying symmetry and balance. The body is adorned with gilded lotus petal patterns, with blue enamel glaze serving as the background, filled with various colors of enamel to create intricate, entwined lotus patterns.',
-                estimate: { low: 8000000, high: 12000000 }, // USDT
-                currentBid: 950000, // USDT
-                minBidIncrement: 50000, // $50k minimum increment
-                bidCount: 28,
-                endTime: Date.now() + 86400000 * 5,
-                provenance: 'Private Collection, China\nFormed in the 1970s\nAcquired from relative., Bejing, 1985',
-                condition: 'Excellent condition with bright, full glaze. The patina that has developed over time adds to its allure, giving it an ancient yet elegant appearance. All original gilding intact.',
-                dimensions: 'Diameter: 22.5 cm\nHeight: 12.8 cm\nWeight: 2.1 kg',
-                literature: 'Compare with a similar example in the Victoria and Albert Museum, London, illustrated in "Chinese Cloisonné: The Pierre Uldry Collection", 1989, no. 42',
-                technicalNotes: 'The meticulous detailing and vibrant hues reflect the high level of artistry and technical prowess required. The design evokes "由衷赞叹" (heartfelt admiration) for the craftsmen\'s extraordinary skill and ingenuity.',
-                culturalSignificance: 'The Jingtai period is renowned for its advancements in cloisonné enamel techniques. This casket exemplifies the luxurious and noble characteristics unique to cloisonné enamel, demonstrating the dedication to creating objects of both beauty and function.',
-                fractionalAvailable: 5000,
-                tokenHolders: 45
-            }
-        ];
-        
-        // Web3 Configuration
-        let provider;
-        let signer;
-        let userAccount;
-        let auctionContract;
-        let erc404Contract;
-        
-        // ERC-404 Contract ABI (simplified)
-        const ERC404_CONTRACT_ABI = [
-            {
-                "inputs": [],
-                "name": "name",
-                "outputs": [{"name": "", "type": "string"}],
-                "type": "function"
-            },
-            {
-                "inputs": [{"name": "owner", "type": "address"}],
-                "name": "balanceOf",
-                "outputs": [{"name": "", "type": "uint256"}],
-                "type": "function"
-            },
-            {
-                "inputs": [{"name": "to", "type": "address"}, {"name": "amount", "type": "uint256"}],
-                "name": "transfer",
-                "outputs": [{"name": "", "type": "bool"}],
-                "type": "function"
-            }
-        ];
-        
-        // Contract addresses (will be replaced after deployment)
-        const AUCTION_CONTRACT_ADDRESS = "0x1234567890123456789012345678901234567890";
-        const ERC404_CONTRACT_ADDRESS = "0x0987654321098765432109876543210987654321";
-
-        // State variables
+        // Global variables
+        let tronWeb = null;
+        let userAddress = null;
+        let artifacts = [];
         let currentFilter = 'all';
         let currentSort = 'lot';
         let selectedArtifact = null;
-        let currentImageIndex = 0;
         
-        // Check if running in demo mode
-        const DEMO_MODE = !window.ethereum || !AUCTION_CONTRACT_ADDRESS.startsWith('0x') || AUCTION_CONTRACT_ADDRESS === "0x1234567890123456789012345678901234567890";
-
         // Initialize
         async function init() {
-            hideLoading();
+            // Initialize data service
+            await window.shenburyData.initialize();
+            
+            // Load artifacts
+            artifacts = await window.shenburyData.getArtifactData();
+            
+            // Render UI
             renderArtifacts();
             updateStats();
-            startTimers();
             
-            // Check if Web3 is available
-            if (typeof window.ethereum !== 'undefined') {
-                provider = new ethers.BrowserProvider(window.ethereum);
-                
-                // Check if already connected
-                try {
-                    const accounts = await provider.listAccounts();
-                    if (accounts.length > 0) {
-                        userAccount = accounts[0].address;
-                        signer = await provider.getSigner();
-                        await updateWalletUI();
-                        await checkNetwork();
-                    }
-                } catch (error) {
-                    console.log('No accounts connected');
-                }
-                
-                // Listen for account changes
-                window.ethereum.on('accountsChanged', handleAccountsChanged);
-                window.ethereum.on('chainChanged', () => window.location.reload());
-            }
+            // Check wallet connection
+            checkWalletConnection();
             
-            // Show demo mode notification
-            if (DEMO_MODE) {
-                setTimeout(() => {
-                    showToast('Running in Demo Mode - Connect wallet and deploy contracts for real transactions', 'info');
-                }, 2000);
-            }
+            // Hide loading
+            hideLoading();
         }
         
         // Hide loading screen
@@ -2128,132 +321,52 @@
             }, 500);
         }
         
+        // Check if wallet is already connected
+        async function checkWalletConnection() {
+            if (window.tronWeb && window.tronWeb.ready) {
+                tronWeb = window.tronWeb;
+                userAddress = tronWeb.defaultAddress.base58;
+                updateWalletUI();
+            }
+        }
+        
         // Connect wallet
         async function connectWallet() {
-            if (typeof window.ethereum !== 'undefined') {
-                try {
-                    // Request account access
-                    const accounts = await window.ethereum.request({ 
-                        method: 'eth_requestAccounts' 
-                    });
-                    userAccount = accounts[0];
-                    
-                    // Initialize ethers
-                    provider = new ethers.BrowserProvider(window.ethereum);
-                    signer = await provider.getSigner();
-                    
-                    // Check network
-                    const network = await provider.getNetwork();
-                    console.log('Connected to network:', network.chainId);
-                    
-                    // Initialize contracts with error handling
-                    try {
-                        erc404Contract = new ethers.Contract(
-                            ERC404_CONTRACT_ADDRESS,
-                            ERC404_CONTRACT_ABI,
-                            signer
-                        );
-                        console.log('Contracts initialized');
-                    } catch (contractError) {
-                        console.log('Contracts pending deployment');
-                        // Continue in demo mode
-                    }
-                    
-                    updateWalletUI();
-                    showToast('Wallet connected successfully!', 'success');
-                    
-                } catch (error) {
-                    console.error('Error connecting wallet:', error);
-                    if (error.code === 4001) {
-                        showToast('Connection cancelled', 'error');
-                    } else if (error.code === -32002) {
-                        showToast('Please unlock MetaMask', 'error');
-                    } else {
-                        showToast('Failed to connect wallet', 'error');
-                    }
-                }
-            } else {
-                showToast('Please install MetaMask to use this dApp', 'error');
-                window.open('https://metamask.io/download/', '_blank');
+            if (!window.tronLink) {
+                showToast('Please install TronLink wallet', 'error');
+                window.open('https://www.tronlink.org/', '_blank');
+                return;
             }
-        }
-        
-        // Check network
-        async function checkNetwork() {
-            if (!provider) return;
             
-            const targetNetwork = 11155111n; // Sepolia testnet
-            const network = await provider.getNetwork();
-            
-            if (network.chainId !== targetNetwork && !DEMO_MODE) {
-                showToast('Please switch to Sepolia testnet', 'warning');
+            try {
+                const res = await window.tronLink.request({ method: 'tron_requestAccounts' });
                 
-                try {
-                    await window.ethereum.request({
-                        method: 'wallet_switchEthereumChain',
-                        params: [{ chainId: '0x' + targetNetwork.toString(16) }],
-                    });
-                } catch (error) {
-                    if (error.code === 4902) {
-                        // Chain not added, add it
-                        await window.ethereum.request({
-                            method: 'wallet_addEthereumChain',
-                            params: [{
-                                chainId: '0x' + targetNetwork.toString(16),
-                                chainName: 'Sepolia Testnet',
-                                nativeCurrency: { name: 'ETH', symbol: 'ETH', decimals: 18 },
-                                rpcUrls: ['https://sepolia.infura.io/v3/'],
-                                blockExplorerUrls: ['https://sepolia.etherscan.io/']
-                            }]
-                        });
-                    }
+                if (res.code === 200) {
+                    tronWeb = window.tronWeb;
+                    userAddress = tronWeb.defaultAddress.base58;
+                    updateWalletUI();
+                    showToast('Wallet connected!', 'success');
                 }
-            }
-        }
-        
-        // Handle account changes
-        function handleAccountsChanged(accounts) {
-            if (accounts.length === 0) {
-                userAccount = null;
-                updateWalletUI();
-                showToast('Wallet disconnected', 'error');
-            } else if (accounts[0] !== userAccount) {
-                userAccount = accounts[0];
-                updateWalletUI();
-                showToast('Account changed', 'success');
+            } catch (error) {
+                console.error('Connection error:', error);
+                showToast('Failed to connect wallet', 'error');
             }
         }
         
         // Update wallet UI
         async function updateWalletUI() {
             const walletButton = document.querySelector('.connect-wallet');
-            const balanceDisplay = document.getElementById('token-balance');
+            const balanceDisplay = document.getElementById('wallet-balance');
             
-            if (userAccount) {
-                walletButton.classList.add('connected');
-                document.getElementById('wallet-text').textContent = 
-                    `${userAccount.slice(0, 6)}...${userAccount.slice(-4)}`;
+            if (userAddress) {
+                walletButton.textContent = `${userAddress.slice(0, 6)}...${userAddress.slice(-4)}`;
                 
-                balanceDisplay.style.display = 'block';
-                await updateTokenBalance();
-            } else {
-                walletButton.classList.remove('connected');
-                document.getElementById('wallet-text').textContent = 'Connect Wallet';
-                balanceDisplay.style.display = 'none';
-            }
-        }
-        
-        // Update token balance
-        async function updateTokenBalance() {
-            if (!userAccount || !erc404Contract) return;
-            
-            try {
-                // In production, this would call the contract
-                // const balance = await erc404Contract.balanceOf(userAccount);
-                const balance = Math.floor(Math.random() * 5000); // Demo value
-                document.getElementById('balance-amount').textContent = balance.toLocaleString();
-            } catch (error) {
-                console.error('Error fetching balance:', error);
+                // Get SHEN balance
+                const balance = await window.shenburyData.getUserBalance(userAddress);
+                document.getElementById('shen-balance').textContent = 
+                    window.shenburyData.formatNumber(balance, 0);
+                
+                balanceDisplay.style.display = 'flex';
             }
         }
         
@@ -2270,44 +383,38 @@
             // Apply sort
             filteredArtifacts.sort((a, b) => {
                 switch(currentSort) {
-                    case 'price-high':
-                        return b.currentBid - a.currentBid;
-                    case 'price-low':
-                        return a.currentBid - b.currentBid;
-                    case 'ending':
-                        return a.endTime - b.endTime;
+                    case 'value':
+                        return b.reservePrice - a.reservePrice;
+                    case 'date':
+                        return a.auctionDate.localeCompare(b.auctionDate);
                     default:
                         return a.lotNumber.localeCompare(b.lotNumber);
                 }
             });
             
-            grid.innerHTML = filteredArtifacts.map(artifact => {
-                const imageSrc = artifact.thumbnail || artifact.images[0] || '/assets/images/placeholder.jpg';
-                return `
-                    <div class="artifact-card" onclick="openArtifactModal(${artifact.id})">
-                        <div class="artifact-image-container ${artifact.imageOrientation || 'square'}">
-                            <img src="${imageSrc}" 
-                                 alt="${artifact.title}" 
-                                 class="artifact-image loading" 
-                                 loading="lazy"
-                                 onload="this.classList.remove('loading'); this.classList.add('loaded');"
-                                 onerror="this.src='/assets/images/placeholder.jpg'">
-                        </div>
-                        <div class="artifact-info">
-                            <div class="artifact-lot">LOT ${artifact.lotNumber}</div>
-                            <h3 class="artifact-title">${artifact.title}</h3>
-                            <p class="artifact-dynasty">${artifact.chinese}<br>${artifact.dynastyInfo}</p>
-                            <p class="artifact-estimate">Estimate: $${(artifact.estimate.low / 1000000).toFixed(1)}M - $${(artifact.estimate.high / 1000000).toFixed(1)}M</p>
-                            <p class="artifact-bid">$${(artifact.currentBid / 1000000).toFixed(1)}M</p>
-                            <p class="artifact-estimate">${artifact.bidCount} bids • ${getTimeLeft(artifact.endTime)}</p>
-                            <div class="artifact-erc404">
-                                <strong>ERC-404:</strong> ${artifact.fractionalAvailable.toLocaleString()} SHEN available<br>
-                                ${artifact.tokenHolders} fractional owners
-                            </div>
-                        </div>
+            grid.innerHTML = filteredArtifacts.map(artifact => `
+                <div class="artifact-card" onclick="openArtifactModal(${artifact.id})">
+                    <div class="artifact-image-container">
+                        <img src="${artifact.images[0]}" 
+                             alt="${artifact.title}" 
+                             class="artifact-image" 
+                             loading="lazy">
                     </div>
-                `;
-            }).join('');
+                    <div class="artifact-info">
+                        <div class="artifact-status ${artifact.status}">${artifact.status}</div>
+                        <div class="artifact-lot">LOT ${artifact.lotNumber}</div>
+                        <h3 class="artifact-title">${artifact.title}</h3>
+                        <p class="artifact-dynasty">${artifact.chinese}<br>${artifact.dynastyInfo}</p>
+                        <p class="reserve-price">Reserve: ${window.shenburyData.formatCurrency(artifact.reservePrice)}</p>
+                        <p class="artifact-estimate">Estimate: ${artifact.estimateRange}</p>
+                        <p class="auction-date">Auction: ${artifact.auctionDate}</p>
+                        ${artifact.fractionalAvailable ? 
+                            '<div class="fractional-notice">Fractional ownership available via SHEN tokens</div>' : 
+                            ''
+                        }
+                    </div>
+                </div>
+            `).join('');
         }
         
         // Filter by dynasty
@@ -2331,87 +438,18 @@
             selectedArtifact = artifacts.find(a => a.id === id);
             if (!selectedArtifact) return;
             
-            currentImageIndex = 0;
-            
             // Update modal content
-            updateModalImage();
+            document.getElementById('modal-image').src = selectedArtifact.images[0];
             document.getElementById('modal-lot').textContent = `LOT ${selectedArtifact.lotNumber}`;
             document.getElementById('modal-title').textContent = selectedArtifact.title;
             document.getElementById('modal-dynasty').textContent = `${selectedArtifact.chinese} | ${selectedArtifact.dynastyInfo}`;
             document.getElementById('modal-description').textContent = selectedArtifact.description;
-            document.getElementById('modal-provenance').textContent = selectedArtifact.provenance;
-            document.getElementById('modal-condition').textContent = selectedArtifact.condition;
-            document.getElementById('modal-dimensions').textContent = selectedArtifact.dimensions;
-            document.getElementById('modal-literature').textContent = selectedArtifact.literature;
-            document.getElementById('modal-current-bid').textContent = `$${(selectedArtifact.currentBid / 1000000).toFixed(2)}M`;
-            document.getElementById('modal-bid-count').textContent = `${selectedArtifact.bidCount} bids`;
-            document.getElementById('min-bid').textContent = (selectedArtifact.currentBid + selectedArtifact.minBidIncrement).toLocaleString();
-            document.getElementById('available-tokens').textContent = selectedArtifact.fractionalAvailable.toLocaleString();
-            
-            // Show technical notes and cultural significance if available
-            if (selectedArtifact.technicalNotes) {
-                document.getElementById('technical-notes-section').style.display = 'block';
-                document.getElementById('modal-technical-notes').textContent = selectedArtifact.technicalNotes;
-            } else {
-                document.getElementById('technical-notes-section').style.display = 'none';
-            }
-            
-            if (selectedArtifact.culturalSignificance) {
-                document.getElementById('cultural-significance-section').style.display = 'block';
-                document.getElementById('modal-cultural-significance').textContent = selectedArtifact.culturalSignificance;
-            } else {
-                document.getElementById('cultural-significance-section').style.display = 'none';
-            }
-            
-            // Create gallery dots if multiple images
-            createGalleryDots();
-            
-            // Clear input fields
-            document.getElementById('bid-amount').value = '';
-            document.getElementById('token-amount').value = '';
+            document.getElementById('modal-reserve').textContent = window.shenburyData.formatCurrency(selectedArtifact.reservePrice);
+            document.getElementById('modal-auction-date').textContent = selectedArtifact.auctionDate;
             
             // Show modal
             document.getElementById('artifact-modal').style.display = 'block';
             document.body.style.overflow = 'hidden';
-        }
-        
-        // Update modal image
-        function updateModalImage() {
-            if (!selectedArtifact || !selectedArtifact.images) return;
-            
-            const modalImage = document.getElementById('modal-image');
-            const imageSrc = selectedArtifact.images[currentImageIndex] || '/assets/images/placeholder.jpg';
-            
-            modalImage.style.opacity = '0';
-            setTimeout(() => {
-                modalImage.src = imageSrc;
-                modalImage.style.opacity = '1';
-            }, 200);
-        }
-        
-        // Create gallery dots
-        function createGalleryDots() {
-            const dotsContainer = document.getElementById('gallery-dots');
-            if (!selectedArtifact.images || selectedArtifact.images.length <= 1) {
-                dotsContainer.innerHTML = '';
-                return;
-            }
-            
-            dotsContainer.innerHTML = selectedArtifact.images.map((_, index) => 
-                `<span class="gallery-dot ${index === currentImageIndex ? 'active' : ''}" 
-                      onclick="changeImage(${index})"></span>`
-            ).join('');
-        }
-        
-        // Change image in gallery
-        function changeImage(index) {
-            currentImageIndex = index;
-            updateModalImage();
-            
-            // Update dots
-            document.querySelectorAll('.gallery-dot').forEach((dot, i) => {
-                dot.classList.toggle('active', i === index);
-            });
         }
         
         // Close modal
@@ -2419,212 +457,30 @@
             document.getElementById('artifact-modal').style.display = 'none';
             document.body.style.overflow = 'auto';
             selectedArtifact = null;
-            currentImageIndex = 0;
         }
         
-        // Place bid
-        async function placeBid() {
-            if (!userAccount) {
-                showToast('Please connect your wallet first', 'error');
-                return;
-            }
-            
-            const bidInput = document.getElementById('bid-amount');
-            const bidAmount = parseFloat(bidInput.value);
-            const minBid = selectedArtifact.currentBid + selectedArtifact.minBidIncrement;
-            
-            if (isNaN(bidAmount) || bidAmount < minBid) {
-                showToast(`Minimum bid is $${minBid.toLocaleString()}`, 'error');
-                return;
-            }
-            
-            // Disable button during transaction
-            const bidButton = event.target;
-            bidButton.disabled = true;
-            bidButton.textContent = 'Processing...';
-            
-            try {
-                if (DEMO_MODE) {
-                    // Demo mode simulation
-                    await new Promise(resolve => setTimeout(resolve, 2000));
-                    
-                    selectedArtifact.currentBid = bidAmount;
-                    selectedArtifact.bidCount++;
-                    
-                    showToast(`Demo Mode: Bid of $${bidAmount.toLocaleString()} placed successfully!`, 'success');
-                    
-                    // Update modal
-                    document.getElementById('modal-current-bid').textContent = `$${(bidAmount / 1000000).toFixed(2)}M`;
-                    document.getElementById('modal-bid-count').textContent = `${selectedArtifact.bidCount} bids`;
-                    
-                    // Update grid after modal closes
-                    setTimeout(() => {
-                        renderArtifacts();
-                        updateStats();
-                    }, 500);
-                    
-                    bidInput.value = '';
-                    
-                } else {
-                    // Real contract interaction would go here
-                    const tx = await auctionContract.placeBid(selectedArtifact.id, {
-                        value: ethers.parseUnits(bidAmount.toString(), 6) // USDT has 6 decimals
-                    });
-                    const receipt = await tx.wait();
-                    
-                    showToast(`Bid placed! Transaction: ${receipt.hash.slice(0, 10)}...`, 'success');
-                    
-                    // Update UI after blockchain confirmation
-                    selectedArtifact.currentBid = bidAmount;
-                    selectedArtifact.bidCount++;
-                    renderArtifacts();
-                    updateStats();
-                }
-                
-            } catch (error) {
-                console.error('Error placing bid:', error);
-                showToast(error.message || 'Failed to place bid', 'error');
-            } finally {
-                bidButton.disabled = false;
-                bidButton.textContent = 'Place Bid';
-            }
-        }
-        
-        // Buy tokens
-        async function buyTokens() {
-            if (!userAccount) {
-                showToast('Please connect your wallet first', 'error');
-                return;
-            }
-            
-            const tokenInput = document.getElementById('token-amount');
-            const tokenAmount = parseInt(tokenInput.value);
-            
-            if (isNaN(tokenAmount) || tokenAmount <= 0) {
-                showToast('Please enter a valid token amount', 'error');
-                return;
-            }
-            
-            if (tokenAmount > selectedArtifact.fractionalAvailable) {
-                showToast('Not enough tokens available', 'error');
-                return;
-            }
-            
-            const totalCost = tokenAmount * 100; // $100 per SHEN
-            const buyButton = event.target;
-            buyButton.disabled = true;
-            buyButton.textContent = 'Processing...';
-            
-            try {
-                if (DEMO_MODE) {
-                    // Demo mode simulation
-                    await new Promise(resolve => setTimeout(resolve, 2000));
-                    
-                    selectedArtifact.fractionalAvailable -= tokenAmount;
-                    selectedArtifact.tokenHolders++;
-                    
-                    showToast(`Demo Mode: Purchased ${tokenAmount} SHEN tokens for $${totalCost.toLocaleString()}!`, 'success');
-                    
-                    if (tokenAmount >= 10000) {
-                        showToast('Congratulations! You now own enough tokens for a full NFT!', 'success');
-                    }
-                    
-                    document.getElementById('available-tokens').textContent = 
-                        selectedArtifact.fractionalAvailable.toLocaleString();
-                    
-                    tokenInput.value = '';
-                    
-                } else {
-                    // Real contract interaction would go here
-                    const tx = await erc404Contract.buyTokens(selectedArtifact.id, tokenAmount, {
-                        value: ethers.parseUnits(totalCost.toString(), 6) // USDT
-                    });
-                    const receipt = await tx.wait();
-                    
-                    showToast(`Tokens purchased! Transaction: ${receipt.hash.slice(0, 10)}...`, 'success');
-                    
-                    selectedArtifact.fractionalAvailable -= tokenAmount;
-                    selectedArtifact.tokenHolders++;
-                    
-                    await updateTokenBalance();
-                }
-                
-                renderArtifacts();
-                
-            } catch (error) {
-                console.error('Error buying tokens:', error);
-                showToast(error.message || 'Failed to purchase tokens', 'error');
-            } finally {
-                buyButton.disabled = false;
-                buyButton.textContent = 'Buy Tokens';
-            }
-        }
-        
-        // Update statistics
+        // Update stats
         function updateStats() {
-            document.getElementById('total-lots').textContent = artifacts.length;
-            const totalBids = artifacts.reduce((sum, a) => sum + a.bidCount, 0);
-            document.getElementById('total-bids').textContent = totalBids;
-            const totalValue = artifacts.reduce((sum, a) => sum + a.currentBid, 0);
-            document.getElementById('total-value').textContent = `$${(totalValue / 1000000).toFixed(1)}M`;
+            const totalValue = artifacts.reduce((sum, a) => sum + a.reservePrice, 0);
+            document.getElementById('total-value').textContent = 
+                window.shenburyData.formatCurrency(totalValue);
         }
         
-        // Get time left for auction
-        function getTimeLeft(endTime) {
-            const now = Date.now();
-            const diff = endTime - now;
-            
-            if (diff <= 0) return 'Ended';
-            
-            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            
-            if (days > 0) return `${days}d ${hours}h`;
-            if (hours > 0) return `${hours}h ${minutes}m`;
-            return `${minutes}m`;
-        }
-        
-        // Start timers
-        function startTimers() {
-            setInterval(() => {
-                // Update time left in grid
-                const cards = document.querySelectorAll('.artifact-card');
-                cards.forEach((card, index) => {
-                    const artifact = artifacts[index];
-                    const timeElement = card.querySelector('.artifact-estimate:last-of-type');
-                    if (timeElement && artifact) {
-                        timeElement.textContent = `${artifact.bidCount} bids • ${getTimeLeft(artifact.endTime)}`;
-                    }
-                });
-            }, 60000); // Update every minute
-        }
-        
-        // Show toast notification
+        // Show toast
         function showToast(message, type = 'info') {
             const toast = document.getElementById('toast');
             toast.textContent = message;
             toast.className = `toast ${type}`;
             toast.classList.add('show');
             
-            // Auto-hide after 4 seconds (longer for important messages)
             setTimeout(() => {
                 toast.classList.remove('show');
-            }, type === 'error' ? 5000 : 4000);
+            }, 4000);
         }
         
-        // Scroll functions
-        function scrollToTop() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-        
-        function scrollToAuctions() {
-            document.getElementById('auctions').scrollIntoView({ behavior: 'smooth' });
-        }
-        
-        // Toggle mobile menu
-        function toggleMobileMenu() {
-            showToast('Mobile menu coming soon', 'info');
+        // Scroll to collection
+        function scrollToCollection() {
+            document.getElementById('collection').scrollIntoView({ behavior: 'smooth' });
         }
         
         // Modal close on outside click
@@ -2635,38 +491,13 @@
             }
         }
         
-        // Keyboard shortcuts
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && selectedArtifact) {
-                closeModal();
-            }
-            
-            // Arrow keys for image gallery
-            if (selectedArtifact && selectedArtifact.images && selectedArtifact.images.length > 1) {
-                if (e.key === 'ArrowLeft' && currentImageIndex > 0) {
-                    changeImage(currentImageIndex - 1);
-                } else if (e.key === 'ArrowRight' && currentImageIndex < selectedArtifact.images.length - 1) {
-                    changeImage(currentImageIndex + 1);
-                }
-            }
-        });
-        
-        // Handle resize events
-        let resizeTimer;
-        window.addEventListener('resize', () => {
-            clearTimeout(resizeTimer);
-            resizeTimer = setTimeout(() => {
-                renderArtifacts();
-            }, 250);
-        });
-        
         // Initialize on load
         window.addEventListener('load', init);
         
-        // Cleanup on unload
-        window.addEventListener('beforeunload', () => {
-            if (window.ethereum) {
-                window.ethereum.removeListener('accountsChanged', handleAccountsChanged);
+        // Listen for TronLink events
+        window.addEventListener('message', function (e) {
+            if (e.data.message && e.data.message.action === 'accountsChanged') {
+                location.reload();
             }
         });
     </script>
