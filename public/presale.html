@@ -3,80 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SHEN Token Presale | Shenbury 神堡 - Chinese Imperial Ceramics on TRON</title>
+    <title>SHEN Token Presale | Shenbury 神堡</title>
     
-    <!-- Preconnect to external domains -->
+    <!-- Preconnect for performance -->
     <link rel="preconnect" href="https://cdn.jsdelivr.net">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    
-    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&display=swap" rel="stylesheet">
-    
-    <!-- Enhanced SEO Meta Tags -->
-    <meta name="description" content="SHEN Token Presale on TRON Network. Shenbury 神堡 - The Art of Provenance. Authenticated Ru kiln ceramics with TRC-404 fractional ownership. Join the presale now!">
-    <meta name="keywords" content="SHEN token, TRC-404, TRON, presale, Shenbury, 神堡, Chinese ceramics, NFT, fractional ownership">
-    
-    <!-- Open Graph for Social -->
-    <meta property="og:title" content="SHEN Token Presale | Shenbury 神堡">
-    <meta property="og:description" content="Join the SHEN token presale on TRON. Own fractional shares of museum-quality Chinese imperial ceramics.">
-    <meta property="og:image" content="/assets/images/shen-presale-og.jpg">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://shenbury.vercel.app">
-    
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="SHEN Token Presale Live on TRON">
-    <meta name="twitter:description" content="Early access to SHEN tokens. Own fractional shares of $35M+ Chinese imperial ceramics collection.">
-    <meta name="twitter:image" content="/assets/images/shen-presale-twitter.jpg">
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-    <link rel="alternate icon" href="/favicon.ico">
     
     <!-- TronWeb -->
     <script src="https://cdn.jsdelivr.net/npm/tronweb@5.3.2/dist/TronWeb.js"></script>
     
     <style>
+        /* Base styles */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
         
-        :root {
-            --primary: #000000;
-            --secondary: #ffffff;
-            --accent: #c9302c;
-            --tron-blue: #FF0013;
-            --tron-red: #EB0029;
-            --gray-light: #f8f8f8;
-            --gray-medium: #e5e5e5;
-            --gray-dark: #666666;
-            --text-primary: #000000;
-            --text-secondary: #666666;
-            --hover: #c9302c;
-            --shadow: rgba(0, 0, 0, 0.08);
-            --font-primary: 'Cormorant Garamond', serif;
-            --font-secondary: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-        }
-        
         body {
-            font-family: var(--font-secondary);
-            background: var(--secondary);
-            color: var(--text-primary);
-            line-height: 1.6;
-            font-weight: 300;
+            font-family: 'Cormorant Garamond', serif;
+            background: #fafafa;
+            color: #333;
+            line-height: 1.5;
+            font-size: 16px;
         }
         
-        /* Typography */
-        h1, h2, h3, h4, h5, h6 {
-            font-family: var(--font-primary);
-            font-weight: 300;
-            letter-spacing: -0.02em;
-        }
-        
-        /* Loading State */
+        /* Loading screen */
         .loading {
             position: fixed;
             top: 0;
@@ -97,44 +51,38 @@
         }
         
         .loader {
-            width: 40px;
-            height: 40px;
-            border: 2px solid var(--gray-medium);
-            border-top-color: var(--tron-red);
+            width: 48px;
+            height: 48px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #FF0013;
             border-radius: 50%;
-            animation: spin 0.8s linear infinite;
+            animation: spin 1s linear infinite;
         }
         
         @keyframes spin {
-            to { transform: rotate(360deg); }
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
         
-        /* Header */
+        /* Header styles */
         header {
-            background: var(--secondary);
-            border-bottom: 1px solid var(--gray-medium);
+            background: white;
+            border-bottom: 1px solid #e5e5e5;
             position: sticky;
             top: 0;
-            z-index: 1000;
-            padding: 0 2rem;
-            backdrop-filter: blur(10px);
-            background: rgba(255, 255, 255, 0.95);
+            z-index: 100;
         }
         
         nav {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            height: 80px;
+            justify-content: space-between;
+            padding: 0.75rem 1.5rem;
             max-width: 1400px;
             margin: 0 auto;
-            position: relative;
         }
         
         .logo {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
             cursor: pointer;
         }
         
@@ -145,250 +93,256 @@
         }
         
         .logo-chinese {
-            font-family: var(--font-primary);
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: #FF0013;
+        }
+        
+        .logo-english {
             font-size: 1.25rem;
             font-weight: 400;
         }
         
-        .logo-english {
-            font-family: var(--font-primary);
-            font-size: 1.75rem;
-            font-weight: 400;
-            letter-spacing: 0.05em;
-        }
-        
         .logo-tagline {
-            font-size: 0.625rem;
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
-            color: var(--text-secondary);
+            font-size: 0.75rem;
+            color: #666;
+            font-style: italic;
             margin-top: 0.25rem;
-            font-family: var(--font-secondary);
         }
         
         .nav-center {
             display: flex;
-            gap: 3rem;
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
+            gap: 2rem;
         }
         
         .nav-center a {
-            color: var(--text-primary);
             text-decoration: none;
-            font-size: 0.875rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
+            color: #666;
+            font-size: 1rem;
             transition: color 0.3s ease;
-            position: relative;
         }
         
-        .nav-center a:hover {
-            color: var(--hover);
-        }
-        
-        .nav-center a.active::after {
-            content: '';
-            position: absolute;
-            bottom: -29px;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: var(--accent);
-        }
-        
-        .nav-right {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
+        .nav-center a:hover,
+        .nav-center a.active {
+            color: #FF0013;
         }
         
         .wallet-info {
             display: flex;
             align-items: center;
             gap: 1rem;
-            font-size: 0.875rem;
-            flex-shrink: 0;
         }
         
         .wallet-balance {
             display: flex;
-            align-items: center;
             gap: 1rem;
-            background: var(--gray-light);
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            display: none;
-            animation: fadeIn 0.3s ease;
+            font-size: 0.875rem;
+            color: #666;
         }
         
         .balance-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .balance-item span {
-            font-weight: 500;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
+            padding: 0.5rem 1rem;
+            background: #f5f5f5;
+            border-radius: 8px;
         }
         
         .connect-wallet {
-            background: transparent;
-            color: var(--primary);
-            border: 2px solid var(--primary);
-            padding: 0.75rem 2rem;
-            font-size: 0.875rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 400;
             display: flex;
             align-items: center;
             gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: linear-gradient(135deg, #FF0013 0%, #cc000f 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(255, 0, 19, 0.3);
+        }
+        
+        .connect-wallet::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent 30%,
+                rgba(255, 255, 255, 0.1) 50%,
+                transparent 70%
+            );
+            transform: rotate(45deg);
+            transition: all 0.6s;
+            animation: shimmer 3s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% {
+                transform: translateX(-100%) translateY(-100%) rotate(45deg);
+            }
+            100% {
+                transform: translateX(100%) translateY(100%) rotate(45deg);
+            }
         }
         
         .connect-wallet:hover {
-            background: var(--primary);
-            color: white;
+            background: linear-gradient(135deg, #e60012 0%, #b3000d 100%);
             transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 20px rgba(255, 0, 19, 0.4);
         }
         
-        .connect-wallet.connected {
-            background: transparent;
-            color: var(--primary);
-            border-color: var(--primary);
-        }
-        
-        .connect-wallet.connected:hover {
-            background: var(--gray-light);
+        .connect-wallet:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 10px rgba(255, 0, 19, 0.3);
         }
         
         .tron-logo {
-            width: 16px;
-            height: 16px;
-        }
-        
-        /* Presale Hero */
-        .presale-hero {
-            background: linear-gradient(to bottom, #1a1a1a 0%, #2d1810 100%);
-            color: white;
-            padding: 4rem 2rem;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .presale-hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at center, rgba(201, 48, 44, 0.1) 0%, transparent 70%);
+            animation: tron-pulse 2s ease-in-out infinite;
             z-index: 1;
         }
         
-        .presale-hero-content {
-            max-width: 1200px;
-            margin: 0 auto;
+        @keyframes tron-pulse {
+            0%, 100% {
+                transform: scale(1) rotate(0deg);
+            }
+            25% {
+                transform: scale(1.1) rotate(5deg);
+            }
+            50% {
+                transform: scale(1) rotate(0deg);
+            }
+            75% {
+                transform: scale(1.1) rotate(-5deg);
+            }
+        }
+        
+        .connect-wallet span {
             position: relative;
-            z-index: 2;
+            z-index: 1;
         }
         
-        .presale-badge {
-            display: inline-block;
-            background: rgba(201, 48, 44, 0.9);
-            padding: 0.5rem 1.5rem;
-            border-radius: 100px;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            margin-bottom: 2rem;
-            backdrop-filter: blur(10px);
-            font-weight: 500;
+        /* Additional glow effect when wallet is connected */
+        .connect-wallet.connected {
+            background: linear-gradient(135deg, #28a745 0%, #218838 100%);
+            box-shadow: 0 2px 10px rgba(40, 167, 69, 0.3);
         }
         
-        .presale-hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            font-weight: 300;
+        .connect-wallet.connected:hover {
+            background: linear-gradient(135deg, #218838 0%, #1e7e34 100%);
+            box-shadow: 0 4px 20px rgba(40, 167, 69, 0.4);
         }
         
-        .presale-hero p {
-            font-size: 1.25rem;
-            opacity: 0.9;
-            max-width: 700px;
-            margin: 0 auto 2rem;
-        }
-        
-        .network-info {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-            font-size: 1rem;
-            margin-bottom: 2rem;
-        }
-        
-        .network-badge {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: all 0.3s ease;
-        }
-        
-        .network-badge:hover {
-            background: rgba(255, 255, 255, 0.15);
-            transform: scale(1.05);
-        }
-        
-        .network-badge svg {
-            animation: tronSpin 8s linear infinite;
-        }
-        
-        @keyframes tronSpin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-        
-        /* Countdown Timer */
-        .countdown-section {
-            background: var(--secondary);
-            padding: 3rem 2rem;
+        /* Hero section */
+        .presale-hero {
+            background: linear-gradient(135deg, #FF0013 0%, #cc000f 100%);
+            color: white;
+            padding: 2rem 1rem;
             text-align: center;
-            border-bottom: 1px solid var(--gray-medium);
         }
         
-        .countdown-container {
+        .presale-hero-content {
             max-width: 800px;
             margin: 0 auto;
         }
         
+        .presale-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 24px;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+        }
+        
+        .presale-hero h1 {
+            font-size: 2rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+        
+        .presale-hero p {
+            font-size: 1rem;
+            opacity: 0.9;
+            margin-bottom: 1rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .network-info {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .network-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            font-size: 0.875rem;
+        }
+        
+        /* Live indicator */
+        .live-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.75rem;
+            color: #90EE90;
+        }
+        
+        .live-indicator::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: #90EE90;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        
+        /* Countdown section */
+        .countdown-section {
+            background: white;
+            padding: 1.5rem 1rem;
+            border-bottom: 1px solid #e5e5e5;
+        }
+        
+        .countdown-container {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
         .countdown-title {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            color: var(--text-secondary);
+            font-size: 1.25rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+            color: #333;
         }
         
         .countdown {
             display: flex;
             justify-content: center;
-            gap: 2rem;
-            margin-bottom: 2rem;
+            gap: 1.5rem;
         }
         
         .countdown-item {
@@ -397,307 +351,371 @@
         
         .countdown-value {
             display: block;
-            font-size: 3rem;
-            font-weight: 300;
-            color: var(--accent);
-            font-family: var(--font-primary);
+            font-size: 2rem;
+            font-weight: 500;
+            color: #FF0013;
             line-height: 1;
         }
         
         .countdown-label {
-            font-size: 0.875rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--text-secondary);
-            margin-top: 0.5rem;
+            font-size: 0.75rem;
+            color: #666;
+            margin-top: 0.25rem;
         }
         
-        /* Presale Stats */
+        /* Stats section */
         .presale-stats {
-            background: white;
-            padding: 3rem 2rem;
-            border-bottom: 1px solid var(--gray-medium);
+            padding: 2rem 1rem;
+            background: #fafafa;
         }
         
         .stats-container {
             max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 3rem;
-            text-align: center;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
         }
         
         .stat-card {
-            padding: 2rem;
-            background: var(--secondary);
-            border: 1px solid var(--gray-medium);
-            border-radius: 0;
-            transition: all 0.3s ease;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
         }
         
         .stat-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            border-color: var(--accent);
+            transform: translateY(-2px);
         }
         
         .stat-icon {
-            width: 48px;
-            height: 48px;
-            margin: 0 auto 1rem;
-            opacity: 0.8;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 32px;
+        }
+        
+        .stat-icon svg {
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
         }
         
         .stat-value {
-            font-size: 2rem;
-            font-weight: 400;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-            font-family: var(--font-primary);
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 0.25rem;
         }
         
         .stat-label {
-            font-size: 0.875rem;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
+            font-size: 0.75rem;
+            color: #666;
         }
         
-        /* Presale Progress */
+        /* Progress section */
         .presale-progress {
-            padding: 4rem 2rem;
             background: white;
+            padding: 2rem 1rem;
+            border-top: 1px solid #e5e5e5;
         }
         
         .progress-container {
             max-width: 800px;
             margin: 0 auto;
-            text-align: center;
         }
         
         .progress-title {
-            font-size: 2rem;
-            margin-bottom: 3rem;
-        }
-        
-        .progress-bar-container {
-            background: var(--gray-light);
-            height: 40px;
-            border-radius: 100px;
-            overflow: hidden;
-            position: relative;
+            font-size: 1.5rem;
+            font-weight: 400;
+            text-align: center;
             margin-bottom: 2rem;
         }
         
-        .progress-bar {
-            background: var(--accent);
-            height: 100%;
-            border-radius: 100px;
-            transition: width 1s ease;
+        .stage-progress {
+            display: flex;
+            justify-content: space-between;
+            margin: 1.5rem 0 2rem;
             position: relative;
+        }
+        
+        .stage-progress::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: #e5e5e5;
+            z-index: 0;
+        }
+        
+        .stage-item {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            flex: 1;
+        }
+        
+        .stage-dot {
+            width: 40px;
+            height: 40px;
+            background: white;
+            border: 2px solid #e5e5e5;
+            border-radius: 50%;
+            margin: 0 auto 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .stage-item.active .stage-dot {
+            background: #FF0013;
+            color: white;
+            border-color: #FF0013;
+            transform: scale(1.1);
+        }
+        
+        .stage-item.completed .stage-dot {
+            background: #28a745;
+            color: white;
+            border-color: #28a745;
+        }
+        
+        .stage-price {
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+        
+        .stage-bonus {
+            font-size: 0.75rem;
+            color: #666;
+        }
+        
+        .progress-bar-container {
+            background: #f0f0f0;
+            height: 16px;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 0.75rem;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #FF0013 0%, #ff3333 100%);
+            transition: width 0.5s ease;
+            position: relative;
+        }
+        
+        .progress-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.2) 50%, transparent 100%);
+            animation: shimmer 2s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
         }
         
         .progress-info {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 1rem;
+            font-size: 0.875rem;
+            color: #666;
         }
         
-        .progress-amount {
-            font-size: 1.125rem;
-            font-weight: 500;
-        }
-        
-        .progress-percentage {
-            font-size: 2rem;
-            font-weight: 300;
-            color: var(--accent);
-            margin-bottom: 1rem;
-            font-family: var(--font-primary);
-        }
-        
-        /* Buy Section */
+        /* Buy section */
         .buy-section {
-            padding: 4rem 2rem;
-            background: var(--gray-light);
+            background: #f8f8f8;
+            padding: 2rem 1rem;
         }
         
         .buy-container {
-            max-width: 600px;
+            max-width: 500px;
             margin: 0 auto;
-            background: white;
-            padding: 3rem;
-            border: 1px solid var(--gray-medium);
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
         }
         
         .buy-title {
-            font-size: 2rem;
+            font-size: 1.5rem;
+            font-weight: 400;
             text-align: center;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
         }
         
         .price-info {
-            background: var(--gray-light);
-            padding: 2rem;
-            border-radius: 12px;
-            margin-bottom: 2rem;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
             text-align: center;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
         }
         
         .price-stage {
-            font-size: 0.875rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--text-secondary);
-            margin-bottom: 0.5rem;
+            font-size: 0.75rem;
+            color: #666;
+            margin-bottom: 0.25rem;
         }
         
         .price-current {
-            font-size: 2.5rem;
-            font-weight: 300;
-            color: var(--accent);
-            margin-bottom: 0.5rem;
-            font-family: var(--font-primary);
+            font-size: 1.75rem;
+            font-weight: 500;
+            color: #FF0013;
+            margin-bottom: 0.25rem;
         }
         
         .price-next {
-            font-size: 0.875rem;
-            color: var(--text-secondary);
+            font-size: 0.75rem;
+            color: #666;
         }
         
         .buy-form {
-            margin-bottom: 2rem;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
         }
         
         .form-group {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
         }
         
         .form-label {
             display: block;
-            font-size: 0.875rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--text-secondary);
-            margin-bottom: 0.5rem;
+            font-size: 0.75rem;
+            color: #666;
+            margin-bottom: 0.25rem;
         }
         
         .input-group {
             display: flex;
-            gap: 1rem;
-            align-items: stretch;
+            align-items: center;
+            border: 1px solid #e5e5e5;
+            border-radius: 6px;
+            overflow: hidden;
+            transition: border-color 0.3s ease;
+        }
+        
+        .input-group:focus-within {
+            border-color: #FF0013;
         }
         
         .form-input {
             flex: 1;
-            padding: 1rem;
-            border: 1px solid var(--gray-medium);
-            border-radius: 8px;
+            padding: 0.75rem;
+            border: none;
             font-size: 1rem;
-            transition: all 0.3s ease;
-        }
-        
-        .form-input:focus {
             outline: none;
-            border-color: var(--tron-red);
         }
         
         .currency-selector {
-            display: flex;
-            align-items: center;
-            padding: 0 1rem;
-            background: var(--gray-light);
-            border: 1px solid var(--gray-medium);
-            border-radius: 8px;
+            padding: 0.75rem;
+            background: #f5f5f5;
             font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .currency-selector:hover {
-            border-color: var(--tron-red);
+            font-size: 0.875rem;
         }
         
         .quick-amounts {
             display: flex;
             gap: 0.5rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
         }
         
         .quick-amount {
             flex: 1;
-            padding: 0.75rem;
-            background: white;
-            border: 1px solid var(--gray-medium);
-            border-radius: 0;
-            text-align: center;
+            padding: 0.5rem;
+            background: #f5f5f5;
+            border: 1px solid #e5e5e5;
+            border-radius: 6px;
+            font-size: 0.75rem;
             cursor: pointer;
             transition: all 0.3s ease;
-            font-size: 0.875rem;
         }
         
         .quick-amount:hover {
-            border-color: var(--accent);
-            background: var(--gray-light);
-        }
-        
-        .quick-amount.active {
-            background: var(--accent);
+            background: #FF0013;
             color: white;
-            border-color: var(--accent);
+            border-color: #FF0013;
         }
         
         .conversion-info {
-            background: var(--gray-light);
+            background: #f5f5f5;
             padding: 1rem;
-            border-radius: 0;
-            margin-bottom: 1.5rem;
+            border-radius: 6px;
             text-align: center;
+            margin-bottom: 1rem;
             font-size: 0.875rem;
-            border: 1px solid var(--gray-medium);
         }
         
         .conversion-value {
             font-size: 1.25rem;
-            font-weight: 400;
-            color: var(--accent);
-            margin: 0.5rem 0;
-            font-family: var(--font-primary);
+            font-weight: 500;
+            color: #333;
+            margin: 0.25rem 0;
         }
         
         .buy-button {
             width: 100%;
-            padding: 1.25rem;
-            background: var(--accent);
+            padding: 1rem;
+            background: linear-gradient(135deg, #FF0013 0%, #cc000f 100%);
             color: white;
-            border: 2px solid var(--accent);
-            border-radius: 0;
-            font-size: 1rem;
-            font-weight: 400;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.125rem;
+            font-weight: 500;
             cursor: pointer;
             transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
             position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(255, 0, 19, 0.3);
         }
         
-        .buy-button:hover {
-            background: #a02622;
-            border-color: #a02622;
+        .buy-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.2),
+                transparent
+            );
+            transition: left 0.5s;
+        }
+        
+        .buy-button:hover:not(:disabled) {
+            background: linear-gradient(135deg, #e60012 0%, #b3000d 100%);
             transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(201, 48, 44, 0.3);
+            box-shadow: 0 6px 20px rgba(255, 0, 19, 0.4);
+        }
+        
+        .buy-button:hover:not(:disabled)::before {
+            left: 100%;
+        }
+        
+        .buy-button:active:not(:disabled) {
+            transform: translateY(0);
+            box-shadow: 0 2px 10px rgba(255, 0, 19, 0.3);
         }
         
         .buy-button:disabled {
-            background: var(--gray-medium);
+            opacity: 0.7;
             cursor: not-allowed;
-            transform: none;
-        }
-        
-        .buy-button.loading {
-            color: transparent;
+            background: #ccc;
+            box-shadow: none;
         }
         
         .buy-button.loading::after {
@@ -709,401 +727,104 @@
             left: 50%;
             margin-left: -10px;
             margin-top: -10px;
-            border: 2px solid white;
+            border: 2px solid #ffffff;
             border-radius: 50%;
             border-top-color: transparent;
-            animation: spin 0.8s linear infinite;
+            animation: spin 1s linear infinite;
         }
         
-        /* Token Info */
-        .token-info-section {
-            padding: 4rem 2rem;
+        /* Contract info */
+        .contract-info {
+            background: #f0f0f0;
+            padding: 1rem;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            margin-top: 2rem;
+            word-break: break-all;
+        }
+        
+        /* Exchange section */
+        .exchange-section {
             background: white;
+            padding: 2rem 1rem;
+            border-top: 1px solid #e5e5e5;
         }
         
-        .token-info-container {
-            max-width: 1200px;
+        .exchange-container {
+            max-width: 500px;
             margin: 0 auto;
-        }
-        
-        .token-info-title {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-        
-        .token-features {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 3rem;
-            margin-bottom: 4rem;
-        }
-        
-        .feature-card {
-            text-align: center;
-            padding: 2rem;
-            border: 1px solid var(--gray-medium);
-            background: white;
-            transition: all 0.3s ease;
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            border-color: var(--accent);
-        }
-        
-        .feature-icon {
-            width: 64px;
-            height: 64px;
-            margin: 0 auto 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--gray-light);
-            border-radius: 50%;
-            font-size: 2rem;
-        }
-        
-        .feature-title {
-            font-size: 1.25rem;
-            margin-bottom: 1rem;
-            font-weight: 400;
-        }
-        
-        .feature-description {
-            font-size: 0.875rem;
-            color: var(--text-secondary);
-            line-height: 1.6;
-        }
-        
-        /* Tokenomics */
-        .tokenomics {
-            background: var(--gray-light);
-            padding: 3rem;
-            border: 1px solid var(--gray-medium);
-            margin-bottom: 4rem;
-        }
-        
-        .tokenomics-title {
-            font-size: 1.75rem;
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-        
-        .tokenomics-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .tokenomics-item {
-            background: white;
-            padding: 2rem;
-            border-radius: 12px;
             text-align: center;
         }
         
-        .tokenomics-percentage {
-            font-size: 2rem;
-            font-weight: 300;
-            color: var(--accent);
-            margin-bottom: 0.5rem;
-            font-family: var(--font-primary);
-        }
-        
-        .tokenomics-label {
-            font-size: 1rem;
-            color: var(--text-primary);
-            margin-bottom: 0.5rem;
-        }
-        
-        .tokenomics-description {
-            font-size: 0.875rem;
-            color: var(--text-secondary);
-        }
-        
-        /* Roadmap */
-        .roadmap-section {
-            padding: 4rem 2rem;
-            background: white;
-        }
-        
-        .roadmap-container {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        
-        .roadmap-title {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-        
-        .roadmap-timeline {
-            position: relative;
-            padding: 2rem 0;
-        }
-        
-        .roadmap-timeline::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: var(--gray-medium);
-            transform: translateX(-50%);
-        }
-        
-        .roadmap-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 4rem;
-            position: relative;
-        }
-        
-        .roadmap-item:nth-child(even) {
-            flex-direction: row-reverse;
-        }
-        
-        .roadmap-content {
-            flex: 1;
-            padding: 2rem;
-            background: var(--gray-light);
-            border-radius: 12px;
-            margin: 0 2rem;
-        }
-        
-        .roadmap-date {
-            font-size: 0.875rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--tron-red);
-            margin-bottom: 0.5rem;
-        }
-        
-        .roadmap-title-item {
-            font-size: 1.25rem;
-            margin-bottom: 1rem;
-            font-weight: 400;
-        }
-        
-        .roadmap-description {
-            font-size: 0.875rem;
-            color: var(--text-secondary);
-            line-height: 1.6;
-        }
-        
-        .roadmap-dot {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            width: 20px;
-            height: 20px;
-            background: white;
-            border: 3px solid var(--tron-red);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 1;
-        }
-        
-        .roadmap-item.completed .roadmap-dot {
-            background: var(--tron-red);
-        }
-        
-        /* FAQ */
-        .faq-section {
-            padding: 4rem 2rem;
-            background: var(--gray-light);
-        }
-        
-        .faq-container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .faq-title {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-        
-        .faq-item {
-            background: white;
-            margin-bottom: 1rem;
-            border-radius: 12px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-        
-        .faq-question {
-            padding: 1.5rem 2rem;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: all 0.3s ease;
-        }
-        
-        .faq-question:hover {
-            background: var(--gray-light);
-        }
-        
-        .faq-question h3 {
-            font-size: 1.125rem;
-            font-weight: 400;
-            margin: 0;
-        }
-        
-        .faq-icon {
-            width: 24px;
-            height: 24px;
-            transition: transform 0.3s ease;
-        }
-        
-        .faq-item.active .faq-icon {
-            transform: rotate(180deg);
-        }
-        
-        .faq-answer {
-            display: none;
-            padding: 0 2rem 2rem;
-            color: var(--text-secondary);
-            line-height: 1.6;
-        }
-        
-        .faq-item.active .faq-answer {
-            display: block;
-            animation: slideDown 0.3s ease;
-        }
-        
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        /* Footer */
-        footer {
-            background: var(--primary);
-            color: white;
-            padding: 3rem 2rem;
-        }
-        
-        .footer-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 3rem;
-        }
-        
-        .footer-section h4 {
-            font-size: 0.875rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 1rem;
-            font-weight: 400;
-            font-family: var(--font-secondary);
-        }
-        
-        .footer-section a {
-            color: rgba(255, 255, 255, 0.7);
-            text-decoration: none;
-            font-size: 0.875rem;
-            display: block;
-            margin-bottom: 0.5rem;
-            transition: color 0.3s ease;
-        }
-        
-        .footer-section a:hover {
-            color: white;
-        }
-        
-        .footer-bottom {
-            text-align: center;
-            margin-top: 3rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 0.875rem;
-            color: rgba(255, 255, 255, 0.5);
-        }
-        
-        .footer-logo {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            margin-bottom: 1rem;
-        }
-        
-        .footer-logo .logo-text {
-            display: flex;
-            align-items: baseline;
-            gap: 0.5rem;
-        }
-        
-        .footer-logo .logo-chinese {
-            font-family: var(--font-primary);
-            font-size: 1rem;
-            color: rgba(255, 255, 255, 0.9);
-        }
-        
-        .footer-logo .logo-english {
-            font-family: var(--font-primary);
+        .exchange-container h2 {
             font-size: 1.5rem;
             font-weight: 400;
-            color: white;
+            margin-bottom: 0.5rem;
         }
         
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
+        .exchange-container p {
+            font-size: 0.875rem;
+            color: #666;
+            margin-bottom: 1.5rem;
         }
         
-        .social-link {
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
+        .exchange-box {
+            background: #f8f8f8;
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+        
+        .exchange-input-group {
             display: flex;
             align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
+            gap: 1rem;
+            margin-bottom: 1rem;
         }
         
-        .social-link:hover {
-            background: var(--tron-red);
+        .exchange-input {
+            flex: 1;
+            padding: 1rem;
+            border: 2px solid #e5e5e5;
+            border-radius: 8px;
+            font-size: 1.25rem;
+            text-align: center;
+            outline: none;
         }
         
-        /* Toast Notifications */
+        .exchange-input:focus {
+            border-color: #FF0013;
+        }
+        
+        .exchange-arrow {
+            font-size: 1.5rem;
+            color: #666;
+        }
+        
+        .exchange-rate {
+            font-size: 0.875rem;
+            color: #666;
+            margin: 1rem 0;
+        }
+        
+        /* Toast notification */
         .toast {
             position: fixed;
             bottom: 2rem;
             right: 2rem;
-            background: var(--primary);
+            padding: 1rem 1.5rem;
+            background: #333;
             color: white;
-            padding: 1rem 2rem;
             border-radius: 8px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            transform: translateY(100px);
             opacity: 0;
+            transform: translateY(20px);
             transition: all 0.3s ease;
-            z-index: 3000;
+            z-index: 1000;
             max-width: 400px;
         }
         
         .toast.show {
-            transform: translateY(0);
             opacity: 1;
+            transform: translateY(0);
         }
         
         .toast.success {
@@ -1114,73 +835,35 @@
             background: #dc3545;
         }
         
-        .toast.info {
-            background: #17a2b8;
-        }
-        
         .toast.warning {
             background: #ffc107;
-            color: #212529;
+            color: #333;
         }
         
-        /* Mobile Menu */
-        .mobile-menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 0.5rem;
+        /* Data loading state */
+        .data-loading {
+            color: #666;
+            font-style: italic;
         }
         
-        .mobile-menu-toggle span {
-            display: block;
-            width: 25px;
-            height: 2px;
-            background: var(--primary);
-            margin: 5px 0;
-            transition: all 0.3s ease;
-        }
-        
-        /* Responsive */
-        @media (max-width: 1024px) {
-            .nav-center {
-                display: none;
-            }
-            
-            .mobile-menu-toggle {
-                display: block;
-            }
-            
-            .stats-container {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 2rem;
-            }
-            
-            .token-features {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-            
-            .tokenomics-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .footer-content {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        
+        /* Responsive design */
         @media (max-width: 768px) {
-            .presale-hero h1 {
-                font-size: 2.5rem;
+            nav {
+                flex-wrap: wrap;
+                gap: 1rem;
             }
             
-            .presale-hero p {
-                font-size: 1.125rem;
+            .nav-center {
+                order: 3;
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .presale-hero h1 {
+                font-size: 2rem;
             }
             
             .countdown {
-                flex-wrap: wrap;
                 gap: 1rem;
             }
             
@@ -1190,46 +873,23 @@
             
             .stats-container {
                 grid-template-columns: 1fr;
-                gap: 1.5rem;
             }
             
-            .buy-container {
-                padding: 2rem;
+            .stage-progress {
+                flex-wrap: wrap;
+                gap: 1rem;
             }
             
-            .roadmap-timeline::before {
-                left: 20px;
+            .stage-item {
+                flex: 0 0 45%;
             }
             
-            .roadmap-item,
-            .roadmap-item:nth-child(even) {
-                flex-direction: column;
-                margin-left: 40px;
+            .quick-amounts {
+                flex-wrap: wrap;
             }
             
-            .roadmap-dot {
-                left: 20px;
-            }
-            
-            .roadmap-content {
-                margin: 0;
-            }
-            
-            .footer-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-            
-            .footer-logo {
-                align-items: center;
-            }
-            
-            .social-links {
-                justify-content: center;
-            }
-            
-            .wallet-balance {
-                display: none !important;
+            .quick-amount {
+                flex: 0 0 48%;
             }
         }
     </style>
@@ -1240,9 +900,21 @@
         <div class="loader"></div>
     </div>
 
+    <!-- 
+    IMPORTANT: Backend Setup Required
+    
+    This page requires a backend proxy to fetch TRX prices due to CORS restrictions.
+    You'll need to create an endpoint at /api/trx-price that fetches from:
+    - CoinGecko: https://api.coingecko.com/api/v3/simple/price?ids=tron&vs_currencies=usd
+    - Or Binance: https://api.binance.com/api/v3/ticker/price?symbol=TRXUSDT
+    
+    Example response format: { "price": 0.14 }
+    -->
+    
+    <!-- Header -->
     <header>
         <nav>
-            <div class="logo" onclick="scrollToTop()">
+            <div class="logo" onclick="window.location.href='/'">
                 <div class="logo-text">
                     <div class="logo-chinese">神堡</div>
                     <div class="logo-english">Shenbury</div>
@@ -1250,14 +922,14 @@
                 <div class="logo-tagline">The Art of Provenance</div>
             </div>
             <div class="nav-center">
-                <a href="#presale" class="active">Presale</a>
-                <a href="#tokenomics">Tokenomics</a>
-                <a href="#roadmap">Roadmap</a>
-                <a href="#faq">FAQ</a>
+                <a href="/">Collection</a>
+                <a href="/presale.html" class="active">Presale</a>
+                <a href="#exchange">Exchange</a>
+                <a href="#about">About</a>
             </div>
             <div class="nav-right">
                 <div class="wallet-info">
-                    <div class="wallet-balance" id="wallet-balance">
+                    <div class="wallet-balance" id="wallet-balance" style="display: none;">
                         <div class="balance-item">
                             <span id="trx-balance">0</span> TRX
                         </div>
@@ -1266,27 +938,22 @@
                         </div>
                     </div>
                     <button class="connect-wallet" onclick="connectWallet()">
-                        <svg class="tron-logo" viewBox="0 0 64 64" fill="currentColor">
+                        <svg class="tron-logo" viewBox="0 0 64 64" fill="currentColor" style="width: 16px; height: 16px;">
                             <path d="M61.55 19.28c-3-2.77-7.15-7-10.53-10.53l-2.3-2.39a7.75 7.75 0 00-11.34.36L3.86 43.16a4.69 4.69 0 00.69 7l11.5 9c.21.15.33.24.42.24s.18-.06.33-.21l42.41-37.11a5.4 5.4 0 001.34-2.8z"/>
                         </svg>
                         <span id="wallet-text">Connect TronLink</span>
                     </button>
                 </div>
-                <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
             </div>
         </nav>
     </header>
 
     <!-- Presale Hero -->
-    <section class="presale-hero" id="presale">
+    <section class="presale-hero">
         <div class="presale-hero-content">
             <div class="presale-badge">🔥 Presale Live Now</div>
             <h1>SHEN Token Presale</h1>
-            <p>Join the SHEN token presale on TRON. Get early access to the platform that will revolutionize Chinese art collecting through blockchain technology.</p>
+            <p>Join the revolution in Chinese art collecting. Get early access to SHEN tokens with up to 30% bonus.</p>
             <div class="network-info">
                 <div class="network-badge">
                     <svg width="20" height="20" viewBox="0 0 64 64" fill="currentColor">
@@ -1294,7 +961,8 @@
                     </svg>
                     <span>TRON Network</span>
                 </div>
-                <div class="network-badge">TRC-404 Standard</div>
+                <div class="network-badge">TRC20 Standard</div>
+                <span class="live-indicator">Live Data</span>
             </div>
         </div>
     </section>
@@ -1302,22 +970,22 @@
     <!-- Countdown Timer -->
     <section class="countdown-section">
         <div class="countdown-container">
-            <h2 class="countdown-title">Stage 1 Ends In</h2>
+            <h2 class="countdown-title">Current Stage Ends In</h2>
             <div class="countdown" id="countdown">
                 <div class="countdown-item">
-                    <span class="countdown-value" id="days">14</span>
+                    <span class="countdown-value" id="days">--</span>
                     <span class="countdown-label">Days</span>
                 </div>
                 <div class="countdown-item">
-                    <span class="countdown-value" id="hours">23</span>
+                    <span class="countdown-value" id="hours">--</span>
                     <span class="countdown-label">Hours</span>
                 </div>
                 <div class="countdown-item">
-                    <span class="countdown-value" id="minutes">59</span>
+                    <span class="countdown-value" id="minutes">--</span>
                     <span class="countdown-label">Minutes</span>
                 </div>
                 <div class="countdown-item">
-                    <span class="countdown-value" id="seconds">59</span>
+                    <span class="countdown-value" id="seconds">--</span>
                     <span class="countdown-label">Seconds</span>
                 </div>
             </div>
@@ -1329,13 +997,26 @@
         <div class="stats-container">
             <div class="stat-card">
                 <div class="stat-icon">💰</div>
-                <div class="stat-value" id="total-raised">$0</div>
-                <div class="stat-label">Total Raised</div>
+                <div class="stat-value" id="total-raised">
+                    <span class="data-loading">Loading...</span>
+                </div>
+                <div class="stat-label">Total Raised (USD)</div>
             </div>
             <div class="stat-card">
-                <div class="stat-icon">👥</div>
-                <div class="stat-value" id="total-participants">0</div>
-                <div class="stat-label">Participants</div>
+                <div class="stat-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+                        <!-- Coin background -->
+                        <circle cx="16" cy="16" r="15" fill="#FFD700"/>
+                        <!-- Inner circle for depth -->
+                        <circle cx="16" cy="16" r="13" fill="none" stroke="#FFA500" stroke-width="0.5"/>
+                        <!-- Letter S -->
+                        <text x="16" y="22" font-family="Cormorant Garamond, Georgia, serif" font-size="18" font-weight="500" text-anchor="middle" fill="#8B6914">S</text>
+                    </svg>
+                </div>
+                <div class="stat-value" id="tokens-sold-stat">
+                    <span class="data-loading">Loading...</span>
+                </div>
+                <div class="stat-label">SHEN Sold</div>
             </div>
             <div class="stat-card">
                 <div class="stat-icon">🎯</div>
@@ -1343,23 +1024,46 @@
                 <div class="stat-label">Current Price</div>
             </div>
             <div class="stat-card">
-                <div class="stat-icon">📈</div>
-                <div class="stat-value" id="next-price">$0.20</div>
-                <div class="stat-label">Next Stage Price</div>
+                <div class="stat-icon">💎</div>
+                <div class="stat-value" id="current-bonus">30%</div>
+                <div class="stat-label">Current Bonus</div>
             </div>
         </div>
     </section>
 
-    <!-- Presale Progress -->
+    <!-- Stage Progress -->
     <section class="presale-progress">
         <div class="progress-container">
-            <h2 class="progress-title">Presale Progress</h2>
+            <h2 class="progress-title">Presale Stages</h2>
+            <div class="stage-progress">
+                <div class="stage-item active" id="stage-0">
+                    <div class="stage-dot">1</div>
+                    <div class="stage-price">$0.10</div>
+                    <div class="stage-bonus">30% Bonus</div>
+                </div>
+                <div class="stage-item" id="stage-1">
+                    <div class="stage-dot">2</div>
+                    <div class="stage-price">$0.20</div>
+                    <div class="stage-bonus">20% Bonus</div>
+                </div>
+                <div class="stage-item" id="stage-2">
+                    <div class="stage-dot">3</div>
+                    <div class="stage-price">$0.35</div>
+                    <div class="stage-bonus">10% Bonus</div>
+                </div>
+                <div class="stage-item" id="stage-3">
+                    <div class="stage-dot">4</div>
+                    <div class="stage-price">$0.50</div>
+                    <div class="stage-bonus">No Bonus</div>
+                </div>
+            </div>
+            
             <div class="progress-bar-container">
                 <div class="progress-bar" id="progress-bar" style="width: 0%"></div>
             </div>
             <div class="progress-info">
                 <span class="progress-amount">
-                    <span id="tokens-sold">0</span> / <span id="tokens-total">10,000,000</span> SHEN
+                    <span id="tokens-sold">0</span> / <span id="tokens-total">40,000,000</span> SHEN
                 </span>
                 <span class="progress-percentage" id="progress-percentage">0%</span>
             </div>
@@ -1372,35 +1076,41 @@
             <h2 class="buy-title">Buy SHEN Tokens</h2>
             
             <div class="price-info">
-                <div class="price-stage">Stage 1 - Early Supporters</div>
-                <div class="price-current">$0.10 per SHEN</div>
-                <div class="price-next">Next stage: $0.20 (+100%)</div>
+                <div class="price-stage">Stage <span id="stage-number">1</span> - Early Supporters</div>
+                <div class="price-current">$<span id="stage-price">0.10</span> per SHEN</div>
+                <div class="price-next">Next stage: $<span id="next-price">0.20</span> (+<span id="price-increase">100</span>%)</div>
             </div>
             
             <form class="buy-form" onsubmit="handleBuy(event)">
                 <div class="form-group">
-                    <label class="form-label">Amount to Spend</label>
+                    <label class="form-label">Amount in TRX</label>
                     <div class="input-group">
-                        <input type="number" class="form-input" id="spend-amount" placeholder="Enter amount" min="10" step="any" required>
-                        <div class="currency-selector" id="currency-selector" onclick="toggleCurrency()">
-                            <span id="selected-currency">TRX</span>
-                            <span style="margin-left: 0.5rem;">▼</span>
+                        <input type="number" class="form-input" id="spend-amount" 
+                               placeholder="Enter TRX amount" min="100" step="any" required>
+                        <div class="currency-selector">
+                            <span>TRX</span>
                         </div>
                     </div>
                 </div>
                 
                 <div class="quick-amounts">
-                    <button type="button" class="quick-amount" onclick="setAmount(100)">100</button>
-                    <button type="button" class="quick-amount" onclick="setAmount(500)">500</button>
-                    <button type="button" class="quick-amount" onclick="setAmount(1000)">1000</button>
-                    <button type="button" class="quick-amount" onclick="setAmount(5000)">5000</button>
+                    <button type="button" class="quick-amount" onclick="setAmount(1000)">1,000</button>
+                    <button type="button" class="quick-amount" onclick="setAmount(5000)">5,000</button>
+                    <button type="button" class="quick-amount" onclick="setAmount(10000)">10,000</button>
+                    <button type="button" class="quick-amount" onclick="setAmount(50000)">50,000</button>
                 </div>
                 
                 <div class="conversion-info">
                     <div>You will receive</div>
                     <div class="conversion-value" id="token-receive">0 SHEN</div>
-                    <div id="bonus-info" style="color: var(--tron-red); font-weight: 500; display: none;">
-                        +<span id="bonus-amount">0</span>% Bonus!
+                    <div id="bonus-info" style="display: none;">
+                        <span style="color: #FF0013;">+<span id="bonus-amount">0</span> bonus tokens!</span>
+                    </div>
+                    <div style="font-size: 0.75rem; margin-top: 0.5rem;">
+                        1 TRX = $<span id="trx-price">0.14</span>
+                    </div>
+                    <div id="validation-info" style="font-size: 0.75rem; margin-top: 0.5rem; color: #666;">
+                        <!-- Validation messages will appear here -->
                     </div>
                 </div>
                 
@@ -1409,172 +1119,43 @@
                 </button>
             </form>
             
-            <div style="text-align: center; margin-top: 1rem; font-size: 0.875rem; color: var(--text-secondary);">
-                <p>Minimum purchase: 10 TRX</p>
-                <p>Contract: <span style="font-family: monospace;">Coming Soon</span></p>
+            <div class="contract-info">
+                <strong>Presale Contract:</strong><br>
+                <span id="presale-address" style="font-family: monospace; font-size: 0.8rem;">
+                    Not deployed yet
+                </span>
             </div>
         </div>
     </section>
 
-    <!-- Token Info -->
-    <section class="token-info-section" id="tokenomics">
-        <div class="token-info-container">
-            <h2 class="token-info-title">SHEN Token Features</h2>
+    <!-- Simple Exchange Section -->
+    <section class="exchange-section" id="exchange">
+        <div class="exchange-container">
+            <h2>Quick TRX ↔ SHEN Exchange</h2>
+            <p>Simple token exchange for presale participants</p>
             
-            <div class="token-features">
-                <div class="feature-card">
-                    <div class="feature-icon">🎫</div>
-                    <h3 class="feature-title">Platform Access</h3>
-                    <p class="feature-description">SHEN tokens provide access to exclusive artifact sales, authentication services, and private viewings</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">💳</div>
-                    <h3 class="feature-title">Transaction Currency</h3>
-                    <p class="feature-description">All artifact purchases and platform fees are paid in SHEN, creating constant utility and demand</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🔐</div>
-                    <h3 class="feature-title">Authentication Gateway</h3>
-                    <p class="feature-description">Stake SHEN to access detailed provenance data, monthly audits, and exclusive collection viewings</p>
-                </div>
-            </div>
-            
-            <div class="tokenomics">
-                <h3 class="tokenomics-title">Token Distribution</h3>
-                <div class="tokenomics-grid">
-                    <div class="tokenomics-item">
-                        <div class="tokenomics-percentage">40%</div>
-                        <div class="tokenomics-label">Public Sale</div>
-                        <div class="tokenomics-description">Available during presale stages</div>
-                    </div>
-                    <div class="tokenomics-item">
-                        <div class="tokenomics-percentage">25%</div>
-                        <div class="tokenomics-label">Platform Operations</div>
-                        <div class="tokenomics-description">Liquidity, staking rewards, partnerships</div>
-                    </div>
-                    <div class="tokenomics-item">
-                        <div class="tokenomics-percentage">25%</div>
-                        <div class="tokenomics-label">Ecosystem Fund</div>
-                        <div class="tokenomics-description">Artifact acquisitions, insurance, security</div>
-                    </div>
-                    <div class="tokenomics-item">
-                        <div class="tokenomics-percentage">10%</div>
-                        <div class="tokenomics-label">Team & Advisors</div>
-                        <div class="tokenomics-description">Vested over 24 months</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Roadmap -->
-    <section class="roadmap-section" id="roadmap">
-        <div class="roadmap-container">
-            <h2 class="roadmap-title">Roadmap</h2>
-            
-            <div class="roadmap-timeline">
-                <div class="roadmap-item completed">
-                    <div class="roadmap-content">
-                        <div class="roadmap-date">Q1 2024</div>
-                        <h3 class="roadmap-title-item">Platform Development</h3>
-                        <p class="roadmap-description">Smart contract development, security audits, and platform architecture</p>
-                    </div>
-                    <div class="roadmap-dot"></div>
+            <div class="exchange-box">
+                <div class="exchange-input-group">
+                    <input type="number" class="exchange-input" id="exchange-trx" 
+                           placeholder="0" oninput="updateExchange('trx')">
+                    <span>TRX</span>
                 </div>
                 
-                <div class="roadmap-item completed">
-                    <div class="roadmap-content">
-                        <div class="roadmap-date">Q2 2024</div>
-                        <h3 class="roadmap-title-item">Presale Launch</h3>
-                        <p class="roadmap-description">SHEN token presale on TRON network with early bird bonuses</p>
-                    </div>
-                    <div class="roadmap-dot"></div>
+                <div class="exchange-arrow">↓</div>
+                
+                <div class="exchange-input-group">
+                    <input type="number" class="exchange-input" id="exchange-shen" 
+                           placeholder="0" oninput="updateExchange('shen')">
+                    <span>SHEN</span>
                 </div>
                 
-                <div class="roadmap-item">
-                    <div class="roadmap-content">
-                        <div class="roadmap-date">Q3 2024</div>
-                        <h3 class="roadmap-title-item">DEX Listing & Staking</h3>
-                        <p class="roadmap-description">List on major TRON DEXs and launch staking rewards program</p>
-                    </div>
-                    <div class="roadmap-dot"></div>
+                <div class="exchange-rate">
+                    Exchange Rate: 1 SHEN = $<span id="exchange-rate">0.10</span>
                 </div>
                 
-                <div class="roadmap-item">
-                    <div class="roadmap-content">
-                        <div class="roadmap-date">Q4 2024</div>
-                        <h3 class="roadmap-title-item">First Auction</h3>
-                        <p class="roadmap-description">Launch first Chinese ceramics auction with TRC-404 integration</p>
-                    </div>
-                    <div class="roadmap-dot"></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ -->
-    <section class="faq-section" id="faq">
-        <div class="faq-container">
-            <h2 class="faq-title">Frequently Asked Questions</h2>
-            
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFAQ(this)">
-                    <h3>What is SHEN token?</h3>
-                    <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                    </svg>
-                </div>
-                <div class="faq-answer">
-                    <p>SHEN is the platform utility token for Shenbury. It provides access to our exclusive artifact marketplace, is used for all transaction fees, and unlocks premium features like detailed authentication reports and private viewing streams. Think of it as your membership token to the world's most exclusive Chinese art collection.</p>
-                </div>
-            </div>
-            
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFAQ(this)">
-                    <h3>How do I participate in the presale?</h3>
-                    <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                    </svg>
-                </div>
-                <div class="faq-answer">
-                    <p>Simply connect your TronLink wallet, enter the amount of TRX you want to spend, and click "Buy SHEN Tokens". The tokens will be sent to your wallet immediately after the transaction is confirmed.</p>
-                </div>
-            </div>
-            
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFAQ(this)">
-                    <h3>How will artifact fractional shares work?</h3>
-                    <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                    </svg>
-                </div>
-                <div class="faq-answer">
-                    <p>After the platform launch, authenticated artifacts will be tokenized into 100,000 shares each. Share prices will be based on professional appraisals with a 30% early buyer discount. Minimum investment will be 100 shares. All artifact purchases will require SHEN tokens, creating ongoing utility for SHEN holders.</p>
-                </div>
-            </div>
-            
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFAQ(this)">
-                    <h3>Are the artifacts real?</h3>
-                    <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                    </svg>
-                </div>
-                <div class="faq-answer">
-                    <p>Yes, all artifacts on Shenbury are authenticated Chinese imperial ceramics with documented provenance. Each piece has been verified by experts and comes with detailed documentation including provenance, condition reports, and historical significance.</p>
-                </div>
-            </div>
-            
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFAQ(this)">
-                    <h3>When will SHEN be listed on exchanges?</h3>
-                    <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                    </svg>
-                </div>
-                <div class="faq-answer">
-                    <p>SHEN tokens will be listed on major TRON DEXs in Q3 2024, immediately after the presale ends. We're in discussions with SunSwap and other leading exchanges to ensure deep liquidity from day one.</p>
-                </div>
+                <button class="buy-button" onclick="executeExchange()">
+                    Exchange Now
+                </button>
             </div>
         </div>
     </section>
@@ -1582,419 +1163,568 @@
     <!-- Toast Notification -->
     <div class="toast" id="toast"></div>
 
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <div class="footer-logo">
-                    <div class="logo-text">
-                        <div class="logo-chinese">神堡</div>
-                        <div class="logo-english">Shenbury</div>
-                    </div>
-                    <p style="color: rgba(255, 255, 255, 0.7); font-size: 0.875rem; margin-top: 0.5rem;">The Art of Provenance</p>
-                </div>
-                <div class="social-links">
-                    <a href="#" class="social-link">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/>
-                        </svg>
-                    </a>
-                    <a href="#" class="social-link">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/>
-                        </svg>
-                    </a>
-                    <a href="#" class="social-link">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29 29 0 001 11.75a29 29 0 00.46 5.33A2.78 2.78 0 003.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 001.94-2 29 29 0 00.46-5.25 29 29 0 00-.46-5.33z"/>
-                            <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-            <div class="footer-section">
-                <h4>Token</h4>
-                <a href="#presale">Buy SHEN</a>
-                <a href="#tokenomics">Tokenomics</a>
-                <a href="#roadmap">Roadmap</a>
-                <a href="#">Whitepaper</a>
-            </div>
-            <div class="footer-section">
-                <h4>Platform</h4>
-                <a href="#">Auctions</a>
-                <a href="#">Marketplace</a>
-                <a href="#">Staking</a>
-                <a href="#">Governance</a>
-            </div>
-            <div class="footer-section">
-                <h4>Resources</h4>
-                <a href="#">Documentation</a>
-                <a href="#">Smart Contracts</a>
-                <a href="#">Security Audits</a>
-                <a href="#">Media Kit</a>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2024 Shenbury 神堡. All rights reserved. | The Art of Provenance | TRC-404 Powered by TRON</p>
-        </div>
-    </footer>
-
     <script>
         // Configuration
-        const PRESALE_CONTRACT = 'TPYmHEhy5n8TCEVYTu3GUm5eQVLPh4vCXX'; // Will be replaced with actual contract
-        const SHEN_TOKEN_CONTRACT = 'TXXXXXXXXXXXXXXXXXXXXXXXXXXXXXshen'; // Will be replaced
-        const PRESALE_STAGES = [
-            { price: 0.10, tokens: 10000000, bonus: 30 },
-            { price: 0.20, tokens: 15000000, bonus: 20 },
-            { price: 0.35, tokens: 10000000, bonus: 10 },
-            { price: 0.50, tokens: 5000000, bonus: 0 }
-        ];
-        
-        // State
-        let tronWeb = null;
-        let userAddress = null;
-        let currentStage = 0;
-        let selectedCurrency = 'TRX';
-        let trxPrice = 0.14; // USD per TRX (will be fetched from API)
-        
-        // Demo data
-        let demoTotalRaised = 1234567;
-        let demoParticipants = 892;
-        let demoTokensSold = 2456789;
-        
-        // Initialize
-        async function init() {
-            hideLoading();
-            updatePresaleStats();
-            startCountdown();
-            updateProgress();
-            setupEventListeners();
-            
-            // Check if TronLink is installed
-            if (window.tronLink) {
-                // Check if already connected
-                if (window.tronLink.ready) {
-                    tronWeb = window.tronWeb;
-                    userAddress = tronWeb.defaultAddress.base58;
-                    updateWalletUI();
-                }
+        const CONFIG = {
+            PRESALE_CONTRACT: window.location.hostname === 'localhost' 
+                ? 'TVgSPg3KWq8dBhPMPQh4KQXkEPN3XfWtHg' // Testnet
+                : 'TXXXXXXXXXXXXXXXXXXXXXXXXXXXXXshen', // Mainnet (to be updated)
+            TOTAL_PRESALE_TOKENS: 40000000,
+            MIN_PURCHASE: 100,
+            UPDATE_INTERVAL: 10000, // 10 seconds
+            STAGES: [
+                { price: 0.10, bonus: 30 },
+                { price: 0.20, bonus: 20 },
+                { price: 0.35, bonus: 10 },
+                { price: 0.50, bonus: 0 }
+            ],
+            // Using proxy endpoints to avoid CORS issues
+            PRICE_FEEDS: [
+                '/api/trx-price' // You'll need to set up a backend proxy for this
+            ]
+        };
+
+        // State management
+        const state = {
+            tronWeb: null,
+            userAddress: null,
+            presaleContract: null,
+            contractData: null,
+            trxPrice: 0.14,
+            isLoading: false,
+            countdownInterval: null,
+            updateInterval: null,
+            lastUpdate: 0
+        };
+
+        // Contract ABI (simplified - add full ABI when available)
+        const PRESALE_ABI = [
+            {
+                "name": "getCurrentStage",
+                "outputs": [{"type": "uint256"}],
+                "type": "function",
+                "stateMutability": "view"
+            },
+            {
+                "name": "totalTokensSold",
+                "outputs": [{"type": "uint256"}],
+                "type": "function",
+                "stateMutability": "view"
+            },
+            {
+                "name": "getStageEndTime",
+                "inputs": [{"name": "_stage", "type": "uint256"}],
+                "outputs": [{"type": "uint256"}],
+                "type": "function",
+                "stateMutability": "view"
+            },
+            {
+                "name": "calculateTokenAmount",
+                "inputs": [{"name": "_trxAmount", "type": "uint256"}],
+                "outputs": [
+                    {"name": "baseTokens", "type": "uint256"},
+                    {"name": "bonusTokens", "type": "uint256"},
+                    {"name": "totalTokens", "type": "uint256"}
+                ],
+                "type": "function",
+                "stateMutability": "view"
+            },
+            {
+                "name": "getUserContribution",
+                "inputs": [{"name": "_user", "type": "address"}],
+                "outputs": [{"type": "uint256"}],
+                "type": "function",
+                "stateMutability": "view"
+            },
+            {
+                "name": "maxContributionPerWallet",
+                "outputs": [{"type": "uint256"}],
+                "type": "function",
+                "stateMutability": "view"
+            },
+            {
+                "name": "buyTokens",
+                "type": "function",
+                "stateMutability": "payable"
             }
-            
-            // Fetch TRX price
-            fetchTRXPrice();
-            
-            // Update stats every 5 seconds
-            setInterval(updatePresaleStats, 5000);
-            
-            // Demo: Simulate purchases
-            setInterval(simulatePurchase, 15000);
+        ];
+
+        // Initialize application
+        async function init() {
+            try {
+                // Check TronLink installation
+                if (!window.tronWeb || !window.tronLink) {
+                    console.log('TronLink not detected');
+                } else {
+                    await checkWalletConnection();
+                }
+
+                // Initialize contract if deployed
+                if (CONFIG.PRESALE_CONTRACT !== 'TXXXXXXXXXXXXXXXXXXXXXXXXXXXXXshen') {
+                    await initializeContract();
+                }
+
+                // Load all data
+                await loadAllData();
+
+                // Start intervals
+                startCountdown();
+                state.updateInterval = setInterval(loadAllData, CONFIG.UPDATE_INTERVAL);
+
+                // Hide loading screen
+                setTimeout(() => {
+                    document.getElementById('loading').classList.add('hidden');
+                }, 500);
+
+            } catch (error) {
+                console.error('Initialization error:', error);
+                showToast('Failed to initialize application', 'error');
+            }
         }
-        
-        // Hide loading screen
-        function hideLoading() {
-            setTimeout(() => {
-                document.getElementById('loading').classList.add('hidden');
-            }, 500);
+
+        // Initialize contract
+        async function initializeContract() {
+            if (!state.tronWeb) return;
+
+            try {
+                state.presaleContract = await state.tronWeb.contract(
+                    PRESALE_ABI,
+                    CONFIG.PRESALE_CONTRACT
+                );
+                document.getElementById('presale-address').textContent = CONFIG.PRESALE_CONTRACT;
+            } catch (error) {
+                console.error('Contract initialization error:', error);
+            }
         }
-        
-        // Connect TronLink Wallet
+
+        // Check wallet connection
+        async function checkWalletConnection() {
+            if (window.tronWeb && window.tronWeb.ready) {
+                state.tronWeb = window.tronWeb;
+                state.userAddress = window.tronWeb.defaultAddress.base58;
+                await updateWalletUI();
+                return true;
+            }
+            return false;
+        }
+
+        // Connect wallet
         async function connectWallet() {
             if (!window.tronLink) {
-                showToast('Please install TronLink wallet extension', 'error');
+                showToast('Please install TronLink wallet', 'error');
                 window.open('https://www.tronlink.org/', '_blank');
                 return;
             }
-            
+
             try {
-                // Request account access
                 const res = await window.tronLink.request({ method: 'tron_requestAccounts' });
                 
                 if (res.code === 200) {
-                    tronWeb = window.tronWeb;
-                    userAddress = tronWeb.defaultAddress.base58;
-                    updateWalletUI();
+                    state.tronWeb = window.tronWeb;
+                    state.userAddress = window.tronWeb.defaultAddress.base58;
+                    await initializeContract();
+                    await updateWalletUI();
+                    await loadAllData();
                     showToast('Wallet connected successfully!', 'success');
                 }
             } catch (error) {
-                console.error('Error connecting wallet:', error);
+                console.error('Connection error:', error);
                 showToast('Failed to connect wallet', 'error');
             }
         }
-        
+
         // Update wallet UI
         async function updateWalletUI() {
+            if (!state.userAddress) return;
+
             const walletButton = document.querySelector('.connect-wallet');
-            const walletBalance = document.getElementById('wallet-balance');
-            
-            if (userAddress) {
-                walletButton.classList.add('connected');
-                document.getElementById('wallet-text').textContent = 
-                    `${userAddress.slice(0, 6)}...${userAddress.slice(-4)}`;
-                
-                walletBalance.style.display = 'flex';
-                await updateBalances();
-            } else {
-                walletButton.classList.remove('connected');
-                document.getElementById('wallet-text').textContent = 'Connect TronLink';
-                walletBalance.style.display = 'none';
-            }
-        }
-        
-        // Update balances
-        async function updateBalances() {
-            if (!tronWeb || !userAddress) return;
-            
+            const walletText = document.getElementById('wallet-text');
+            const balanceDisplay = document.getElementById('wallet-balance');
+
+            // Update button style and address display
+            walletButton.classList.add('connected');
+            walletText.textContent = `${state.userAddress.slice(0, 6)}...${state.userAddress.slice(-4)}`;
+
             try {
                 // Get TRX balance
-                const trxBalance = await tronWeb.trx.getBalance(userAddress);
-                document.getElementById('trx-balance').textContent = 
-                    (trxBalance / 1e6).toFixed(2);
-                
-                // Get SHEN balance (demo mode for now)
-                const shenBalance = Math.floor(Math.random() * 5000);
-                document.getElementById('shen-balance').textContent = 
-                    shenBalance.toLocaleString();
+                const trxBalance = await state.tronWeb.trx.getBalance(state.userAddress);
+                document.getElementById('trx-balance').textContent = (trxBalance / 1e6).toFixed(2);
+
+                // Get SHEN balance (if token contract exists)
+                // TODO: Add SHEN token balance check when token contract is available
+
+                balanceDisplay.style.display = 'flex';
             } catch (error) {
-                console.error('Error fetching balances:', error);
+                console.error('Error updating wallet UI:', error);
             }
         }
-        
-        // Fetch TRX price from API
+
+        // Load all data in a single operation
+        async function loadAllData() {
+            // Prevent concurrent updates
+            const now = Date.now();
+            if (now - state.lastUpdate < 1000) return;
+            state.lastUpdate = now;
+
+            try {
+                // Fetch TRX price and contract data in parallel
+                const [trxPrice, contractData] = await Promise.all([
+                    fetchTRXPrice(),
+                    fetchContractData()
+                ]);
+
+                // Update state
+                state.trxPrice = trxPrice || state.trxPrice;
+                state.contractData = contractData || state.contractData;
+
+                // Update UI
+                updateUI();
+
+            } catch (error) {
+                console.error('Error loading data:', error);
+            }
+        }
+
+        // Fetch TRX price from backend proxy
         async function fetchTRXPrice() {
             try {
-                const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=tron&vs_currencies=usd');
-                const data = await response.json();
-                trxPrice = data.tron.usd;
-            } catch (error) {
-                console.error('Error fetching TRX price:', error);
-                trxPrice = 0.14; // Fallback price
-            }
-        }
-        
-        // Update presale stats
-        function updatePresaleStats() {
-            // Update raised amount
-            document.getElementById('total-raised').textContent = 
-                `${demoTotalRaised.toLocaleString()}`;
-            
-            // Update participants
-            document.getElementById('total-participants').textContent = 
-                demoParticipants.toLocaleString();
-            
-            // Update current price
-            document.getElementById('current-price').textContent = 
-                `${PRESALE_STAGES[currentStage].price.toFixed(2)}`;
-            
-            // Update next price
-            const nextStage = currentStage < PRESALE_STAGES.length - 1 ? currentStage + 1 : currentStage;
-            document.getElementById('next-price').textContent = 
-                `${PRESALE_STAGES[nextStage].price.toFixed(2)}`;
-        }
-        
-        // Update progress bar
-        function updateProgress() {
-            const totalTokens = PRESALE_STAGES.reduce((sum, stage) => sum + stage.tokens, 0);
-            const percentage = (demoTokensSold / totalTokens) * 100;
-            
-            document.getElementById('progress-bar').style.width = `${percentage}%`;
-            document.getElementById('tokens-sold').textContent = demoTokensSold.toLocaleString();
-            document.getElementById('tokens-total').textContent = totalTokens.toLocaleString();
-            document.getElementById('progress-percentage').textContent = `${percentage.toFixed(1)}%`;
-            
-            // Check if we need to move to next stage
-            let tokensSoldInStages = 0;
-            for (let i = 0; i <= currentStage; i++) {
-                tokensSoldInStages += PRESALE_STAGES[i].tokens;
-            }
-            
-            if (demoTokensSold >= tokensSoldInStages && currentStage < PRESALE_STAGES.length - 1) {
-                currentStage++;
-                updatePresaleStats();
-            }
-        }
-        
-        // Countdown timer
-        function startCountdown() {
-            const endTime = new Date().getTime() + (14 * 24 * 60 * 60 * 1000); // 14 days from now
-            
-            const updateCountdown = () => {
-                const now = new Date().getTime();
-                const distance = endTime - now;
-                
-                if (distance < 0) {
-                    document.getElementById('days').textContent = '0';
-                    document.getElementById('hours').textContent = '0';
-                    document.getElementById('minutes').textContent = '0';
-                    document.getElementById('seconds').textContent = '0';
-                    return;
+                // For development, use a fallback price
+                // In production, this should call your backend API
+                if (window.location.hostname === 'localhost') {
+                    return 0.14; // Default development price
                 }
                 
+                const response = await fetch('/api/trx-price');
+                const data = await response.json();
+                return data.price || 0.14;
+            } catch (error) {
+                console.error('Failed to fetch TRX price:', error);
+                return 0.14; // Fallback price
+            }
+        }
+
+        // Fetch contract data
+        async function fetchContractData() {
+            if (!state.presaleContract) return null;
+
+            try {
+                const [currentStage, totalSold, maxContribution] = await Promise.all([
+                    state.presaleContract.getCurrentStage().call(),
+                    state.presaleContract.totalTokensSold().call(),
+                    state.presaleContract.maxContributionPerWallet().call()
+                ]);
+
+                const stageEndTime = await state.presaleContract.getStageEndTime(currentStage).call();
+
+                return {
+                    currentStage: parseInt(currentStage),
+                    totalSold: parseInt(totalSold) / 1e18,
+                    maxContribution: parseInt(maxContribution) / 1e6,
+                    stageEndTime: parseInt(stageEndTime) * 1000,
+                    currentPrice: CONFIG.STAGES[currentStage]?.price || 0.10,
+                    stageBonus: CONFIG.STAGES[currentStage]?.bonus || 0
+                };
+            } catch (error) {
+                console.error('Error fetching contract data:', error);
+                return null;
+            }
+        }
+
+        // Update UI with latest data
+        function updateUI() {
+            const data = state.contractData || {
+                currentStage: 0,
+                totalSold: 0,
+                currentPrice: 0.10,
+                stageBonus: 30,
+                stageEndTime: Date.now() + 7 * 24 * 60 * 60 * 1000
+            };
+
+            // Update TRX price
+            document.getElementById('trx-price').textContent = state.trxPrice.toFixed(4);
+
+            // Update stats
+            const totalRaised = data.totalSold * data.currentPrice;
+            document.getElementById('total-raised').textContent = formatCurrency(totalRaised);
+            document.getElementById('tokens-sold-stat').textContent = formatNumber(data.totalSold);
+            document.getElementById('current-price').textContent = `$${data.currentPrice.toFixed(2)}`;
+            document.getElementById('current-bonus').textContent = `${data.stageBonus}%`;
+
+            // Update stage progress
+            updateStageProgress(data.currentStage);
+
+            // Update progress bar
+            const percentage = (data.totalSold / CONFIG.TOTAL_PRESALE_TOKENS) * 100;
+            document.getElementById('progress-bar').style.width = `${percentage}%`;
+            document.getElementById('tokens-sold').textContent = formatNumber(data.totalSold);
+            document.getElementById('progress-percentage').textContent = `${percentage.toFixed(1)}%`;
+
+            // Update buy section
+            document.getElementById('stage-number').textContent = data.currentStage + 1;
+            document.getElementById('stage-price').textContent = data.currentPrice.toFixed(2);
+
+            // Update next stage info
+            if (data.currentStage < 3) {
+                const nextStage = CONFIG.STAGES[data.currentStage + 1];
+                document.getElementById('next-price').textContent = nextStage.price.toFixed(2);
+                const increase = ((nextStage.price - data.currentPrice) / data.currentPrice) * 100;
+                document.getElementById('price-increase').textContent = increase.toFixed(0);
+            }
+
+            // Update exchange rate
+            document.getElementById('exchange-rate').textContent = data.currentPrice.toFixed(2);
+        }
+
+        // Update stage progress visual
+        function updateStageProgress(currentStage) {
+            document.querySelectorAll('.stage-item').forEach((item, index) => {
+                item.classList.remove('active', 'completed');
+                if (index < currentStage) {
+                    item.classList.add('completed');
+                } else if (index === currentStage) {
+                    item.classList.add('active');
+                }
+            });
+        }
+
+        // Countdown timer
+        function startCountdown() {
+            if (state.countdownInterval) clearInterval(state.countdownInterval);
+
+            state.countdownInterval = setInterval(() => {
+                const endTime = state.contractData?.stageEndTime || (Date.now() + 7 * 24 * 60 * 60 * 1000);
+                const distance = endTime - Date.now();
+
+                if (distance < 0) {
+                    document.getElementById('days').textContent = '0';
+                    document.getElementById('hours').textContent = '00';
+                    document.getElementById('minutes').textContent = '00';
+                    document.getElementById('seconds').textContent = '00';
+                    return;
+                }
+
                 const days = Math.floor(distance / (1000 * 60 * 60 * 24));
                 const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                 const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
                 const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-                
+
                 document.getElementById('days').textContent = days;
                 document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
                 document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
                 document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
-            };
-            
-            updateCountdown();
-            setInterval(updateCountdown, 1000);
+            }, 1000);
         }
-        
-        // Setup event listeners
-        function setupEventListeners() {
-            const spendInput = document.getElementById('spend-amount');
-            spendInput.addEventListener('input', updateConversion);
-        }
-        
-        // Toggle currency
-        function toggleCurrency() {
-            selectedCurrency = selectedCurrency === 'TRX' ? 'USDT' : 'TRX';
-            document.getElementById('selected-currency').textContent = selectedCurrency;
-            updateConversion();
-            
-            // Update quick amounts
-            const quickAmounts = selectedCurrency === 'TRX' 
-                ? [100, 500, 1000, 5000]
-                : [10, 50, 100, 500];
-            
-            document.querySelectorAll('.quick-amount').forEach((button, index) => {
-                button.textContent = quickAmounts[index];
-                button.onclick = () => setAmount(quickAmounts[index]);
-            });
-        }
-        
+
         // Set amount
         function setAmount(amount) {
             document.getElementById('spend-amount').value = amount;
             updateConversion();
-            
-            // Update active state
-            document.querySelectorAll('.quick-amount').forEach(btn => {
-                btn.classList.remove('active');
-                if (parseInt(btn.textContent) === amount) {
-                    btn.classList.add('active');
-                }
-            });
         }
-        
-        // Update conversion
-        function updateConversion() {
-            const spendAmount = parseFloat(document.getElementById('spend-amount').value) || 0;
-            if (spendAmount <= 0) {
+
+        // Update conversion with contract validation
+        async function updateConversion() {
+            const trxAmount = parseFloat(document.getElementById('spend-amount').value) || 0;
+            const trxAmountSun = trxAmount * 1e6;
+
+            if (!state.presaleContract || trxAmount <= 0) {
                 document.getElementById('token-receive').textContent = '0 SHEN';
                 document.getElementById('bonus-info').style.display = 'none';
+                document.getElementById('validation-info').textContent = '';
                 return;
             }
-            
-            // Convert to USD
-            const usdAmount = selectedCurrency === 'TRX' 
-                ? spendAmount * trxPrice 
-                : spendAmount;
-            
-            // Calculate tokens
-            const currentPrice = PRESALE_STAGES[currentStage].price;
-            const baseTokens = usdAmount / currentPrice;
-            const bonus = PRESALE_STAGES[currentStage].bonus;
-            const bonusTokens = baseTokens * (bonus / 100);
-            const totalTokens = baseTokens + bonusTokens;
-            
-            document.getElementById('token-receive').textContent = 
-                `${Math.floor(totalTokens).toLocaleString()} SHEN`;
-            
-            if (bonus > 0) {
-                document.getElementById('bonus-info').style.display = 'block';
-                document.getElementById('bonus-amount').textContent = bonus;
-            } else {
-                document.getElementById('bonus-info').style.display = 'none';
+
+            try {
+                // Get token calculation from contract
+                const result = await state.presaleContract.calculateTokenAmount(trxAmountSun).call();
+                const totalTokens = parseInt(result.totalTokens) / 1e18;
+                const bonusTokens = parseInt(result.bonusTokens) / 1e18;
+
+                document.getElementById('token-receive').textContent = `${formatNumber(totalTokens)} SHEN`;
+
+                if (bonusTokens > 0) {
+                    document.getElementById('bonus-info').style.display = 'block';
+                    document.getElementById('bonus-amount').textContent = formatNumber(bonusTokens);
+                } else {
+                    document.getElementById('bonus-info').style.display = 'none';
+                }
+
+                // Validate contribution limits
+                if (state.userAddress) {
+                    const [userContribution, maxContribution] = await Promise.all([
+                        state.presaleContract.getUserContribution(state.userAddress).call(),
+                        state.presaleContract.maxContributionPerWallet().call()
+                    ]);
+
+                    const currentContribution = parseInt(userContribution) / 1e6;
+                    const maxAllowed = parseInt(maxContribution) / 1e6;
+                    const remainingAllowed = maxAllowed - currentContribution;
+
+                    if (trxAmount > remainingAllowed) {
+                        document.getElementById('validation-info').textContent = 
+                            `⚠️ Exceeds wallet limit. Max allowed: ${remainingAllowed.toFixed(2)} TRX`;
+                        document.getElementById('validation-info').style.color = '#dc3545';
+                        document.getElementById('buy-button').disabled = true;
+                    } else {
+                        document.getElementById('validation-info').textContent = 
+                            `✓ Within wallet limit (${currentContribution.toFixed(2)} / ${maxAllowed.toFixed(2)} TRX used)`;
+                        document.getElementById('validation-info').style.color = '#28a745';
+                        document.getElementById('buy-button').disabled = false;
+                    }
+                }
+
+            } catch (error) {
+                console.error('Error calculating tokens:', error);
+                // Fallback calculation
+                const data = state.contractData || { currentPrice: 0.10, stageBonus: 30 };
+                const usdValue = trxAmount * state.trxPrice;
+                const baseTokens = usdValue / data.currentPrice;
+                const bonusTokens = baseTokens * (data.stageBonus / 100);
+                const totalTokens = baseTokens + bonusTokens;
+
+                document.getElementById('token-receive').textContent = `${formatNumber(totalTokens)} SHEN`;
+                
+                if (data.stageBonus > 0) {
+                    document.getElementById('bonus-info').style.display = 'block';
+                    document.getElementById('bonus-amount').textContent = formatNumber(bonusTokens);
+                }
             }
         }
-        
+
         // Handle buy
         async function handleBuy(event) {
             event.preventDefault();
-            
-            if (!tronWeb || !userAddress) {
+
+            if (!state.userAddress) {
                 showToast('Please connect your wallet first', 'error');
                 return;
             }
-            
-            const spendAmount = parseFloat(document.getElementById('spend-amount').value);
-            if (spendAmount < 10 && selectedCurrency === 'TRX') {
-                showToast('Minimum purchase is 10 TRX', 'error');
+
+            if (!state.presaleContract) {
+                showToast('Presale contract not available', 'error');
                 return;
             }
-            
+
+            const trxAmount = parseFloat(document.getElementById('spend-amount').value);
+            if (trxAmount < CONFIG.MIN_PURCHASE) {
+                showToast(`Minimum purchase is ${CONFIG.MIN_PURCHASE} TRX`, 'error');
+                return;
+            }
+
             const buyButton = document.getElementById('buy-button');
             buyButton.disabled = true;
             buyButton.classList.add('loading');
             buyButton.textContent = '';
-            
+
             try {
-                if (selectedCurrency === 'TRX') {
-                    // Send TRX to presale contract
-                    const tx = await tronWeb.trx.sendTransaction(
-                        PRESALE_CONTRACT,
-                        Math.floor(spendAmount * 1e6) // Convert to SUN
-                    );
-                    
-                    showToast('Transaction submitted! Waiting for confirmation...', 'info');
-                    
-                    // Wait for confirmation (demo mode)
-                    setTimeout(() => {
-                        showToast('SHEN tokens purchased successfully!', 'success');
-                        
-                        // Update demo stats
-                        const usdAmount = spendAmount * trxPrice;
-                        const tokensReceived = usdAmount / PRESALE_STAGES[currentStage].price;
-                        demoTotalRaised += usdAmount;
-                        demoTokensSold += Math.floor(tokensReceived * (1 + PRESALE_STAGES[currentStage].bonus / 100));
-                        demoParticipants++;
-                        
-                        updatePresaleStats();
-                        updateProgress();
-                        updateBalances();
-                        
-                        // Reset form
-                        document.getElementById('spend-amount').value = '';
-                        updateConversion();
-                    }, 3000);
-                    
-                } else {
-                    // USDT purchase would require approval first
-                    showToast('USDT purchases coming soon!', 'info');
+                // Final validation
+                const trxAmountSun = trxAmount * 1e6;
+                const [userContribution, maxContribution] = await Promise.all([
+                    state.presaleContract.getUserContribution(state.userAddress).call(),
+                    state.presaleContract.maxContributionPerWallet().call()
+                ]);
+
+                const totalContribution = parseInt(userContribution) + trxAmountSun;
+                if (totalContribution > parseInt(maxContribution)) {
+                    throw new Error('Purchase would exceed maximum wallet contribution limit');
                 }
-                
+
+                // Execute purchase
+                const transaction = await state.presaleContract.buyTokens().send({
+                    feeLimit: 100_000_000,
+                    callValue: trxAmountSun,
+                    shouldPollResponse: true
+                });
+
+                if (transaction.receipt.result === 'SUCCESS') {
+                    showToast('Purchase successful! SHEN tokens sent to your wallet.', 'success');
+                    
+                    // Reset form
+                    document.getElementById('spend-amount').value = '';
+                    updateConversion();
+                    
+                    // Refresh data
+                    await loadAllData();
+                    await updateWalletUI();
+                } else {
+                    throw new Error('Transaction failed');
+                }
+
             } catch (error) {
                 console.error('Purchase error:', error);
-                showToast('Transaction failed. Please try again.', 'error');
+                let errorMessage = 'Transaction failed. Please try again.';
+                
+                if (error.message?.includes('wallet contribution limit')) {
+                    errorMessage = 'Purchase exceeds maximum wallet limit';
+                } else if (error.message?.includes('revert')) {
+                    errorMessage = 'Transaction reverted. Please check your balance and try again.';
+                } else if (error.message?.includes('insufficient')) {
+                    errorMessage = 'Insufficient TRX balance';
+                }
+                
+                showToast(errorMessage, 'error');
             } finally {
                 buyButton.disabled = false;
                 buyButton.classList.remove('loading');
                 buyButton.textContent = 'Buy SHEN Tokens';
             }
         }
-        
-        // Simulate purchase (for demo)
-        function simulatePurchase() {
-            const randomAmount = Math.floor(Math.random() * 1000) + 100;
-            demoTotalRaised += randomAmount;
-            demoTokensSold += Math.floor(randomAmount / PRESALE_STAGES[currentStage].price);
-            demoParticipants += Math.floor(Math.random() * 3) + 1;
+
+        // Update exchange
+        function updateExchange(source) {
+            const trxInput = document.getElementById('exchange-trx');
+            const shenInput = document.getElementById('exchange-shen');
+            const data = state.contractData || { currentPrice: 0.10 };
+
+            if (source === 'trx') {
+                const trxAmount = parseFloat(trxInput.value) || 0;
+                const usdValue = trxAmount * state.trxPrice;
+                const shenAmount = usdValue / data.currentPrice;
+                shenInput.value = shenAmount > 0 ? shenAmount.toFixed(2) : '';
+            } else {
+                const shenAmount = parseFloat(shenInput.value) || 0;
+                const usdValue = shenAmount * data.currentPrice;
+                const trxAmount = usdValue / state.trxPrice;
+                trxInput.value = trxAmount > 0 ? trxAmount.toFixed(2) : '';
+            }
+        }
+
+        // Execute exchange
+        async function executeExchange() {
+            const trxAmount = parseFloat(document.getElementById('exchange-trx').value);
             
-            updatePresaleStats();
-            updateProgress();
+            if (!state.userAddress) {
+                showToast('Please connect your wallet first', 'error');
+                return;
+            }
+            
+            if (!trxAmount || trxAmount < CONFIG.MIN_PURCHASE) {
+                showToast(`Minimum exchange is ${CONFIG.MIN_PURCHASE} TRX`, 'error');
+                return;
+            }
+            
+            // Set the amount and trigger purchase
+            document.getElementById('spend-amount').value = trxAmount;
+            await updateConversion();
+            await handleBuy({ preventDefault: () => {} });
         }
-        
-        // Toggle FAQ
-        function toggleFAQ(element) {
-            const faqItem = element.parentElement;
-            faqItem.classList.toggle('active');
+
+        // Utility functions
+        function formatNumber(num, decimals = 0) {
+            return new Intl.NumberFormat('en-US', {
+                minimumFractionDigits: decimals,
+                maximumFractionDigits: decimals
+            }).format(num);
         }
-        
-        // Show toast notification
+
+        function formatCurrency(amount) {
+            return new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD',
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0
+            }).format(amount);
+        }
+
         function showToast(message, type = 'info') {
             const toast = document.getElementById('toast');
             toast.textContent = message;
@@ -2005,28 +1735,24 @@
                 toast.classList.remove('show');
             }, 4000);
         }
-        
-        // Scroll functions
-        function scrollToTop() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-        
-        // Toggle mobile menu
-        function toggleMobileMenu() {
-            showToast('Mobile menu coming soon', 'info');
-        }
-        
-        // Initialize on load
-        window.addEventListener('load', init);
-        
+
+        // Event listeners
+        document.getElementById('spend-amount')?.addEventListener('input', updateConversion);
+
         // Listen for TronLink events
         window.addEventListener('message', function (e) {
             if (e.data.message && e.data.message.action === 'accountsChanged') {
-                if (e.data.message.data.address) {
-                    userAddress = e.data.message.data.address;
-                    updateWalletUI();
-                }
+                location.reload();
             }
+        });
+
+        // Initialize on load
+        window.addEventListener('load', init);
+
+        // Cleanup on unload
+        window.addEventListener('beforeunload', () => {
+            if (state.countdownInterval) clearInterval(state.countdownInterval);
+            if (state.updateInterval) clearInterval(state.updateInterval);
         });
     </script>
 </body>
